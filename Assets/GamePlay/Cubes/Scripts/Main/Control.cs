@@ -9,7 +9,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace TicTacToe.GamePlay.Main
+namespace TicTacToe3D.GamePlay.Main
 {
     /// <summary>
     /// Tic Tac Toe GamePlay Control Behaviour
@@ -19,7 +19,7 @@ namespace TicTacToe.GamePlay.Main
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
-        [SerializeField, ReadOnly] private Block.Input player;
+        [SerializeField, ReadOnly] private Cube.Input.KindOf player;
         [SerializeField, ReadOnly] private AI.Result result; // The result of the game.
         [Space(-10, order = 0)]
         [Header(Header.components, order = 1)]
@@ -28,8 +28,8 @@ namespace TicTacToe.GamePlay.Main
         [Header(Header.scripts, order = 0)]
         //[SerializeField, ReadOnly] private UI.Button.Restart restartButton; // The restart button for the game.
         //[SerializeField, ReadOnly] private UI.Toggle.Player playerToggle; // The player toggle for the game.
-        [SerializeField, NonReorderable, ReadOnly] private Block.Control[] blocks; // An array of block controls representing the cells of the board.
-        [SerializeField, NonReorderable, ReadOnly] private Block.Data[] data; // An array of block data representing the state of the board.
+        [SerializeField, NonReorderable, ReadOnly] private Cube.Control[] cubes; // An array of Cube controls representing the cells of the board.
+        [SerializeField, NonReorderable, ReadOnly] private Cube.Data[] data; // An array of Cube data representing the state of the board.
         [Space(20)]
         [SerializeField, ReadOnly] private AI ai; // The AI instance for the game.
         public GameObject panel;
@@ -41,7 +41,7 @@ namespace TicTacToe.GamePlay.Main
         /// <inheritdoc/>
         private void OnEnable()
         {
-            Block.Control.Handler += OnPlayable;
+            //Cube.Control.Handler += OnPlayable;
             AI.NotifyHandler += OnNotify;
         }
         /// <inheritdoc/>
@@ -58,33 +58,33 @@ namespace TicTacToe.GamePlay.Main
         /// <inheritdoc/>
         private void OnDisable()
         {
-            Block.Control.Handler -= OnPlayable;
+            //Cube.Control.Handler -= OnPlayable;
             AI.NotifyHandler -= OnNotify;
         }
         /// <inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
         public void ComponentsAssignment()
         {
-            if (blocks.IsNullOrEmpty() || data.Length == 0 || data == null)
+            if (cubes.IsNullOrEmpty() || data.Length == 0 || data == null)
             {
                 gridLayoutGroup = GetComponentInChildren<GridLayoutGroup>();
 
                 var transform = gridLayoutGroup.transform;
-                blocks = new Block.Control[transform.childCount];
-                data = new Block.Data[blocks.Length];
+                cubes = new Cube.Control[transform.childCount];
+                data = new Cube.Data[Cubes.Length];
 
-                for (var i = 0; i < blocks.Length; i++)
+                for (var i = 0; i < cubes.Length; i++)
                 {
-                    var block = transform.GetChild(i).GetComponent<Block.Control>();
+                    var cube = transform.GetChild(i).GetComponent<Cube.Control>();
 
-                    if (block.Index == -1)
+                    //if (cube.Index == -1)
                     {
-                        Debug.LogError("Block index error!");
+                        Debug.LogError("Cube index error!");
                         continue;
                     }
 
-                    blocks[block.Index] = block;
-                    data[block.Index] = block.Data;
+                    //cubes[cube.Index] = cube;
+                    //data[cube.Index] = cube.Data;
                 }
             }
 
@@ -92,12 +92,12 @@ namespace TicTacToe.GamePlay.Main
             //this.GetComponentInChildrenIfNull(ref playerToggle);
         }
         /// <summary>
-        /// Function used to be called when <see cref="Block.Control.Handler"/> is invoked.
+        /// Function used to be called when <see cref="Cube.Control.Handler"/> is invoked.
         /// </summary>
-        /// <param name="sender">Sender Object<br/>Must receive <see cref="Block.Control"/> as object</param>
+        /// <param name="sender">Sender Object<br/>Must receive <see cref="Cube.Control"/> as object</param>
         /// <param name="e">Arguments to Handler</param>
         /// <remarks>Default arguments when using <see cref="System.EventHandler"/></remarks>
-        public void OnPlayable(object sender, Block.Args e)
+        public void OnPlayable(object sender, Cube.Args e)
         {
             data[e.Data.Index] = e.Data;
             var isEnd = ResultBehaviour();
@@ -121,20 +121,20 @@ namespace TicTacToe.GamePlay.Main
 
             bool _draw()
             {
-                SetBlocksInteractable(false);
+                SetCubesInteractable(false);
                 return true;
             }
 
             bool _youLose()
             {
-                SetBlocksInteractable(false);
+                SetCubesInteractable(false);
                 _beahviour();
                 return true;
             }
 
             bool _youWin()
             {
-                SetBlocksInteractable(false);
+                SetCubesInteractable(false);
                 _beahviour();
                 return true;
             }
@@ -148,7 +148,7 @@ namespace TicTacToe.GamePlay.Main
             {
                 for (var i = 0; i < result.indexes.Length; i++)
                 {
-                    blocks[result.indexes[i]].SetColorText(Color.indianRed);
+                    //cubes[result.indexes[i]].SetColorText(Color.indianRed);
                 }
             }
         }
@@ -161,13 +161,13 @@ namespace TicTacToe.GamePlay.Main
             if (bestSlotIndex == -1)
                 return;
 
-            blocks[bestSlotIndex].SetInput();
+            //cubes[bestSlotIndex].SetInput();
         }
 
-        public void SetBlocksInteractable(bool value)
+        public void SetCubesInteractable(bool value)
         {
-            foreach (var block in blocks)
-                block.SetInteractable(value);
+            /*foreach (var cube in cubes)
+                cube.SetInteractable(value);*/
         }
 
         public void ResetGame()
@@ -178,7 +178,7 @@ namespace TicTacToe.GamePlay.Main
 
         public void SetPlayer(bool isHuman)
         {
-            player = isHuman ? Block.Input.x : Block.Input.o;
+            player = isHuman ? Cube.Input.KindOf.x : Cube.Input.KindOf.o;
         }
 
         private IEnumerator InstantiateSafetyAI(UnityAction<AI> call)
@@ -190,13 +190,13 @@ namespace TicTacToe.GamePlay.Main
 
         private IEnumerator FirstMovement()
         {
-            yield return new WaitWhile(() => player == Block.Input.blank);
-            if (player == Block.Input.o)
+            yield return new WaitWhile(() => player == Cube.Input.KindOf.hide);
+            if (player == Cube.Input.KindOf.o)
             {
                 var values = new int[] { 0, 2, 6, 8 };
                 var index = Random.Range(0, values.Length);
                 var value = values[index];
-                blocks[value].SetInput();
+                //cubes[value].SetInput();
             }
         }
 
@@ -215,14 +215,14 @@ namespace TicTacToe.GamePlay.Main
             }
         }
         /// <summary>
-        /// Return all blocks
+        /// Return all Cubes
         /// </summary>
         /// <remarks>Read only</remarks>
-        public Block.Control[] Blocks => blocks;
+        public Cube.Control[] Cubes => Cubes;
         /// <summary>
         /// Gets the input type of the human player.
         /// </summary>
-        public Block.Input Player => player;
+        public Cube.Input.KindOf Player => player;
         /// <summary>
         /// Gets the current result of the game.
         /// </summary>

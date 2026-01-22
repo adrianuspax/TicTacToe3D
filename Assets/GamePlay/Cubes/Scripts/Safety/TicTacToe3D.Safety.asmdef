@@ -1,6 +1,6 @@
 {
-    "name": "TicTacToe.Safety",
-    "rootNamespace": "TicTacToe.Safety",
+    "name": "TicTacToe3D.Safety",
+    "rootNamespace": "TicTacToe3D.Safety",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TicTacToe.GamePlay.Main
+namespace TicTacToe3D.GamePlay.Main
 {
     /// <inheritdoc/>
     public partial class AI

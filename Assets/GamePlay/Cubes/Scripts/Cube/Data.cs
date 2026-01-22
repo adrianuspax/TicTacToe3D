@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TicTacToe.GamePlay.Block
+namespace TicTacToe3D.GamePlay.Cube
 {
     /// <summary>
     /// Block Data Struct
@@ -10,13 +10,13 @@ namespace TicTacToe.GamePlay.Block
     public struct Data
     {
         [SerializeField] private int index; // The index of the block on the board.
-        [SerializeField] private Input input; //The input value (e.g., X or O) of the block.
+        [SerializeField] private Cube.Input.KindOf input; //The input value (e.g., X or O) of the block.
         /// <summary>
         /// Block Data Constructor
         /// </summary>
         /// <param name="index">Index of block from Tic Tac Toe</param>
         /// <param name="input">Current Player Inputed in the block</param>
-        public Data(int index = -1, Input input = Input.blank)
+        public Data(int index = -1, Cube.Input.KindOf input = Cube.Input.KindOf.hide)
         {
             if (index < 0 || index > 8)
                 index = -1;
@@ -34,13 +34,13 @@ namespace TicTacToe.GamePlay.Block
         /// <summary>
         /// Return the player input of the block
         /// </summary>
-        public Input Input
+        public Cube.Input.KindOf Input
         {
             readonly get => input; set => input = value;
         }
         /// <summary>
         /// return if the block is already inputted
         /// </summary>
-        public readonly bool IsInputted => ((int)input) > 0;
+        public readonly bool IsInputted => ((int)input) > -1;
     }
 }

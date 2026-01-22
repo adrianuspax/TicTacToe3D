@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TicTacToe.Safety
+namespace TicTacToe3D.Safety
 {
     public class Debug : MonoBehaviour
     {

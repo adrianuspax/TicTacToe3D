@@ -3,7 +3,6 @@ using ASPax.Attributes.Drawer.SpecialCases;
 using ASPax.Attributes.Meta;
 using ASPax.Extensions;
 using ASPax.Utilities;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,8 +21,8 @@ namespace TicTacToe.GamePlay.Block
         [SerializeField, ReadOnly] private Button button; //The button component of the block.
         [SerializeField, ReadOnly] private TextMeshProUGUI tmp; //The TextMeshProUGUI component for displaying text on the block.
 
-        [Header(Header.variables, order = 0)]
-        [SerializeField, ReadOnly] private Data data; //The data associated with this block.
+        //[Header(Header.variables, order = 0)]
+        //[SerializeField, ReadOnly] private Data data; //The data associated with this block.
         /// <summary>
         /// Method that can be called from the context menu in the Inpector for function tests
         /// </summary>
@@ -31,7 +30,7 @@ namespace TicTacToe.GamePlay.Block
         private void SetIndex()
         {
             var index = transform.GetSiblingIndex();
-            data = new() { Index = index };
+            //data = new() { Index = index };
 #if UNITY_EDITOR
             tmp.text = $"{index}";
 #endif
@@ -39,7 +38,7 @@ namespace TicTacToe.GamePlay.Block
         /// <summary>
         /// Play Handler invoked into <see cref="SetInput"/>
         /// </summary>
-        public static event EventHandler<Args> Handler;
+        //public static event EventHandler<Args> Handler;
         private static Input _lastInput; //Stores the last input made on any block.
         /// <inheritdoc/>
         private void Awake()
@@ -67,7 +66,7 @@ namespace TicTacToe.GamePlay.Block
         /// </summary>
         public void SetInput()
         {
-            if (data.IsInputted)
+            /*if (data.IsInputted)
                 return;
 
             _lastInput = _updateInputted();
@@ -95,7 +94,7 @@ namespace TicTacToe.GamePlay.Block
                     Input.o => "o",
                     _ => "blank",
                 };
-            }
+            }*/
         }
         /// <summary>
         /// Sets the interactable state of the button, enabling or disabling user interaction
@@ -113,7 +112,7 @@ namespace TicTacToe.GamePlay.Block
 
         public void ResetData()
         {
-            data = new();
+            //data = new();
             button.interactable = true;
             tmp.text = string.Empty;
             tmp.color = Color.black;
@@ -121,10 +120,10 @@ namespace TicTacToe.GamePlay.Block
         /// <summary>
         /// Get the block data
         /// </summary>
-        public Data Data => data;
+        //public Data Data => data;
         /// <summary>
         /// Return the index of the block
         /// </summary>
-        public int Index => data.Index;
+        //public int Index => data.Index;
     }
 }

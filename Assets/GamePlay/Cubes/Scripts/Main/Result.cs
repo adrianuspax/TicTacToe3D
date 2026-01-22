@@ -1,4 +1,4 @@
-namespace TicTacToe.GamePlay.Main
+namespace TicTacToe3D.GamePlay.Main
 {
     /// <summary>
     /// Represents the possible outcomes of the game.

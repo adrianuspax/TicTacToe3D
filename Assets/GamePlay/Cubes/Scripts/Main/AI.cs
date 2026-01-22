@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-namespace TicTacToe.GamePlay.Main
+namespace TicTacToe3D.GamePlay.Main
 {
     /// <summary>
     /// Represents the Artificial Intelligence for the Tic-Tac-Toe game.
@@ -16,11 +16,11 @@ namespace TicTacToe.GamePlay.Main
         /// Initializes a new instance of the <see cref="AI"/> class.
         /// </summary>
         /// <param name="player">The input type of the human player.</param>
-        public AI(Block.Input player)
+        public AI(Cube.Input.KindOf player)
         {
-            if (player == Block.Input.blank)
+            if (player == Cube.Input.KindOf.hide)
             {
-                Debug.LogError("AI player cannot be blank!");
+                Debug.LogError("AI player cannot be hide!");
                 return;
             }
 
@@ -28,14 +28,14 @@ namespace TicTacToe.GamePlay.Main
 
             ai = player switch
             {
-                Block.Input.x => Block.Input.o,
-                Block.Input.o => Block.Input.x,
-                _ => Block.Input.o,
+                Cube.Input.KindOf.x => Cube.Input.KindOf.o,
+                Cube.Input.KindOf.o => Cube.Input.KindOf.x,
+                _ => Cube.Input.KindOf.o,
             };
         }
 
-        [SerializeField] private Block.Input human; //The input type representing the human player.
-        [SerializeField] private Block.Input ai; // The input type representing the AI player.
+        [SerializeField] private Cube.Input.KindOf human; //The input type representing the human player.
+        [SerializeField] private Cube.Input.KindOf ai; // The input type representing the AI player.
         [SerializeField] private int move;
         [SerializeField, NonReorderable] private List<int> bestMoves;
         public static event UnityAction NotifyHandler;
@@ -50,7 +50,7 @@ namespace TicTacToe.GamePlay.Main
         /// </summary>
         /// <param name="board">The current state of the board.</param>
         /// <returns>The result of the game (win, lose, draw, or none).</returns>
-        public Result CheckForWinner(Block.Data[] board)
+        public Result CheckForWinner(Cube.Data[] board)
         {
             var length = winConditions.GetLength(0);
 
@@ -60,7 +60,7 @@ namespace TicTacToe.GamePlay.Main
                 var b = winConditions[i, 1];
                 var c = winConditions[i, 2];
 
-                if (board[a].Input != Block.Input.blank && board[a].Input == board[b].Input && board[b].Input == board[c].Input)
+                if (board[a].Input != Cube.Input.KindOf.hide && board[a].Input == board[b].Input && board[b].Input == board[c].Input)
                 {
                     var result = new Result(Main.Result.youLose, a, b, c);
                     if (board[a].Input != ai)
@@ -81,18 +81,18 @@ namespace TicTacToe.GamePlay.Main
         /// </summary>
         /// <param name="board">The current state of the board.</param>
         /// <returns>The index of the best move.</returns>
-        public int GetBestMove(Block.Data[] board)
+        public int GetBestMove(Cube.Data[] board)
         {
             var bestScore = int.MinValue;
             bestMoves = new List<int>();
 
             for (var i = 0; i < board.Length; i++)
             {
-                if (board[i].Input == Block.Input.blank)
+                if (board[i].Input == Cube.Input.KindOf.hide)
                 {
                     board[i].Input = ai;
                     var score = Minimax(board, 0, false);
-                    board[i].Input = Block.Input.blank;
+                    board[i].Input = Cube.Input.KindOf.hide;
                     Safety.Debug.Log("AI Move Index: " + i + " Score: " + score);
                     if (score > bestScore)
                     {
@@ -127,7 +127,7 @@ namespace TicTacToe.GamePlay.Main
         /// <param name="depth">The current depth of the recursion.</param>
         /// <param name="isMaximizing">True if the current move is for the maximizing player (AI), false otherwise.</param>
         /// <returns>The score of the move.</returns>
-        private int Minimax(Block.Data[] board, int depth, bool isMaximizing)
+        private int Minimax(Cube.Data[] board, int depth, bool isMaximizing)
         {
             int best;
             var score = Evaluate(board);
@@ -144,12 +144,12 @@ namespace TicTacToe.GamePlay.Main
 
                 for (var i = 0; i < board.Length; i++)
                 {
-                    if (board[i].Input == Block.Input.blank)
+                    if (board[i].Input == Cube.Input.KindOf.hide)
                     {
                         board[i].Input = ai;
                         var b = Minimax(board, depth + 1, false);
                         best = Mathf.Max(best, b);
-                        board[i].Input = Block.Input.blank;
+                        board[i].Input = Cube.Input.KindOf.hide;
                     }
                 }
             }
@@ -159,12 +159,12 @@ namespace TicTacToe.GamePlay.Main
 
                 for (var i = 0; i < board.Length; i++)
                 {
-                    if (board[i].Input == Block.Input.blank)
+                    if (board[i].Input == Cube.Input.KindOf.hide)
                     {
                         board[i].Input = human;
                         var b = Minimax(board, depth + 1, true);
                         best = Mathf.Min(best, b);
-                        board[i].Input = Block.Input.blank;
+                        board[i].Input = Cube.Input.KindOf.hide;
                     }
                 }
             }
@@ -176,7 +176,7 @@ namespace TicTacToe.GamePlay.Main
         /// </summary>
         /// <param name="board">The current state of the board.</param>
         /// <returns>A score of 10 for an AI win, -10 for a human win, and 0 otherwise.</returns>
-        private int Evaluate(Block.Data[] board)
+        private int Evaluate(Cube.Data[] board)
         {
             for (var i = 0; i < winConditions.GetLength(0); i++)
             {
@@ -201,10 +201,10 @@ namespace TicTacToe.GamePlay.Main
         /// </summary>
         /// <param name="board">The current state of the board.</param>
         /// <returns>True if there are available moves, false otherwise.</returns>
-        private bool IsMovesLeft(Block.Data[] board)
+        private bool IsMovesLeft(Cube.Data[] board)
         {
             for (var i = 0; i < board.Length; i++)
-                if (board[i].Input == Block.Input.blank)
+                if (board[i].Input == Cube.Input.KindOf.hide)
                     return true;
 
             return false;

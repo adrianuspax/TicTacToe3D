@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TicTacToe.GamePlay.Block
+namespace TicTacToe3D.GamePlay.Cube
 {
     /// <summary>
     /// Arguments for Play Handler
