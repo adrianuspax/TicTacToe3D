@@ -11,13 +11,13 @@
   <Project Path="Unity.Timeline.Editor.csproj" />
   <Project Path="Unity.Cinemachine.Editor.csproj" />
   <Project Path="Unity.Multiplayer.Center.Editor.csproj" />
-  <Project Path="Unity.2D.Psdimporter.Editor.csproj" />
+  <Project Path="Unity.RenderPipelines.Core.Editor.csproj" />
   <Project Path="UnityEngine.UI.csproj" />
   <Project Path="Unity.TerrainTools.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Runtime.csproj" />
   <Project Path="Unity.Collections.csproj" />
   <Project Path="Unity.2D.IK.Runtime.csproj" />
-  <Project Path="Unity.RenderPipelines.Core.Editor.csproj" />
+  <Project Path="Unity.2D.Psdimporter.Editor.csproj" />
   <Project Path="Unity.ProBuilder.Poly2Tri.csproj" />
   <Project Path="ASPax.Editor.csproj" />
   <Project Path="Unity.VisualScripting.Core.Editor.csproj" />
@@ -93,11 +93,11 @@
   <Project Path="Unity.2D.Animation.Runtime.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
+  <Project Path="UnityEditor.UI.Analytics.csproj" />
   <Project Path="Unity.2D.Common.Runtime.csproj" />
   <Project Path="Unity.ProBuilder.AssetIdRemapUtility.csproj" />
   <Project Path="ASPax.Attributes.Drawer.SpecialCases.csproj" />
   <Project Path="Unity.Settings.Editor.csproj" />
-  <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="Unity.ShaderGraph.Utilities.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
@@ -105,6 +105,7 @@
   <Project Path="Unity.2D.Aseprite.Common.csproj" />
   <Project Path="TicTacToe.GamePlay.Block.csproj" />
   <Project Path="TicTacToe.Input.Button.csproj" />
+  <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="ASPax.Attributes.Validator.csproj" />
   <Project Path="Unity.TerrainTools.csproj" />
   <Project Path="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" />
