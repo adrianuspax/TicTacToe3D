@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847414924}
     m_Modifications:
+    - target: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+      propertyPath: data.index
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -181,6 +185,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
   m_PrefabInstance: {fileID: 9360977}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9360979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 9360977}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
 --- !u!1001 &198761556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,6 +204,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847414924}
     m_Modifications:
+    - target: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+      propertyPath: data.index
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6
@@ -243,6 +262,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
   m_PrefabInstance: {fileID: 198761556}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &198761558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 198761556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
+--- !u!1 &283142207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 283142208}
+  - component: {fileID: 283142209}
+  m_Layer: 0
+  m_Name: MainControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &283142208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283142207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 953318384}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &283142209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283142207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 877c2e5859dac2b4c8582b727fb2ebea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.Main::TicTacToe3D.GamePlay.Main.Control
+  player: 0
+  result:
+    main: 0
+    indexes: 
+  cubes:
+  - {fileID: 198761558}
+  - {fileID: 1215232021}
+  - {fileID: 1617052779}
+  - {fileID: 287731483}
+  - {fileID: 9360979}
+  - {fileID: 1787960577}
+  - {fileID: 1370431848}
+  - {fileID: 475561341}
+  - {fileID: 3819487516681449733}
+  board:
+  - index: 8
+    input: -1
+  - index: 2
+    input: -1
+  - index: 1
+    input: -1
+  - index: 6
+    input: -1
+  - index: 7
+    input: -1
+  - index: 3
+    input: -1
+  - index: 5
+    input: -1
+  - index: 4
+    input: -1
+  - index: 0
+    input: -1
+  ai:
+    human: 0
+    ai: 0
+    move: 0
+    bestMoves: 
 --- !u!1001 &287731481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,6 +363,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847414924}
     m_Modifications:
+    - target: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+      propertyPath: data.index
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6
@@ -305,6 +421,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
   m_PrefabInstance: {fileID: 287731481}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &287731483 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 287731481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +800,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847414924}
     m_Modifications:
+    - target: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+      propertyPath: data.index
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -727,6 +858,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
   m_PrefabInstance: {fileID: 475561339}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &475561341 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 475561339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
 --- !u!1 &501171758
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +979,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 283142208}
   - {fileID: 348962635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -853,6 +996,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847414924}
     m_Modifications:
+    - target: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+      propertyPath: data.index
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6
@@ -907,6 +1054,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
   m_PrefabInstance: {fileID: 1215232019}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1215232021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 1215232019}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
 --- !u!1001 &1370431846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -915,6 +1073,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847414924}
     m_Modifications:
+    - target: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+      propertyPath: data.index
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6
@@ -969,6 +1131,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
   m_PrefabInstance: {fileID: 1370431846}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1370431848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 1370431846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
 --- !u!1001 &1617052777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -977,6 +1150,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847414924}
     m_Modifications:
+    - target: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+      propertyPath: data.index
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1031,6 +1208,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
   m_PrefabInstance: {fileID: 1617052777}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1617052779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 1617052777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
 --- !u!1001 &1787960575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1039,6 +1227,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1847414924}
     m_Modifications:
+    - target: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+      propertyPath: data.index
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6
@@ -1093,6 +1285,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8271272044352278103, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
   m_PrefabInstance: {fileID: 1787960575}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1787960577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 1787960575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
 --- !u!1 &1847414923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1393,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+--- !u!114 &3819487516681449733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}
+  m_PrefabInstance: {fileID: 3819487516681449732}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Cube
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

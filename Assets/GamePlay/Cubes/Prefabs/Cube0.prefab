@@ -490,12 +490,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cube
   isRunning: 0
-  input: -1
   animator: {fileID: 3933124885911524952}
   transform_: {fileID: 5096052277609862450}
   inputs:
   - {fileID: 961122671782030647}
   - {fileID: 7500527128998593349}
+  data:
+    index: 0
+    input: -1
   pointer: {fileID: 7776233709193436182}
   animatorHandler:
     animator: {fileID: 3933124885911524952}

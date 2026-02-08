@@ -4,6 +4,7 @@ using ASPax.Attributes.Meta;
 using ASPax.Extensions;
 using ASPax.Handlers;
 using ASPax.Utilities;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,7 +16,6 @@ namespace TicTacToe3D.GamePlay.Cube
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
         [SerializeField, ReadOnly] private bool isRunning;
-        [SerializeField, ReadOnly] private Input.KindOf input;
 
         [Header(Header.components, order = 0)]
         [SerializeField, ReadOnly] private Animator animator;
@@ -23,14 +23,17 @@ namespace TicTacToe3D.GamePlay.Cube
         [SerializeField, NonReorderable, ReadOnly] private Input[] inputs;
 
         [Header(Header.scripts, order = 0)]
+        [SerializeField, ReadOnly] private Data data;
         [SerializeField, ReadOnly] private Pointer pointer;
         [SerializeField, ReadOnly] private AnimatorHandler animatorHandler;
+
+        public static event EventHandler<Args> Handler;
 #if UNITY_EDITOR
         ///<inheritdoc/>
         [Button(nameof(Reset))]
         private void Reset()
         {
-            input = Input.KindOf.hide;
+            Start();
         }
         /// <summary>
         /// Method that can be called from the context menu in the Inpector for function tests
@@ -57,15 +60,17 @@ namespace TicTacToe3D.GamePlay.Cube
         ///<inheritdoc/>
         private void OnEnable()
         {
-            pointer.ClickHandler += () =>
+            /*pointer.ClickHandler += () =>
             {
                 SetInput(Input.KindOf.x);
-            };
+            };*/
+            return;
         }
         ///<inheritdoc/>
         private void Start()
         {
-            input = Input.KindOf.hide;
+            var index = transform.GetSiblingIndex();
+            data = new(index);
         }
         ///<inheritdoc/>
         private void OnDisable()
@@ -103,8 +108,13 @@ namespace TicTacToe3D.GamePlay.Cube
 
         public Coroutine SetInput(Input.KindOf input, float delay = 0)
         {
+            if (data.IsInputted)
+                return null;
+
             var routine = _routine();
-            input.ComparativeAssignment(ref this.input);
+            LastInput = data.Input = input;
+            var e = new Args(data);
+            Handler.Invoke(this, e);
             return StartCoroutine(routine);
 
             IEnumerator _routine()
@@ -118,5 +128,13 @@ namespace TicTacToe3D.GamePlay.Cube
                 yield return inputs[(int)input].SetTurnFlicker(true, 0.25f);
             }
         }
+
+        public Data Data
+        {
+            get => data;
+            set => data = value;
+        }
+
+        public static Input.KindOf LastInput { get; private set; }
     }
 }
