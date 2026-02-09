@@ -39,7 +39,7 @@ namespace TicTacToe.GamePlay.Block
         /// Play Handler invoked into <see cref="SetInput"/>
         /// </summary>
         //public static event EventHandler<Args> Handler;
-        private static Input _lastInput; //Stores the last input made on any block.
+        //private static Input _lastInput; //Stores the last input made on any block.
         /// <inheritdoc/>
         private void Awake()
         {
@@ -51,7 +51,7 @@ namespace TicTacToe.GamePlay.Block
             SetIndex();
             button.onClick.AddListener(SetInput);
             tmp.text = string.Empty;
-            _lastInput = Input.blank;
+            //_lastInput = Input.blank;
         }
         /// <inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
