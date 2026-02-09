@@ -31,11 +31,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.animation": {
-      "version": "13.0.2",
+      "version": "13.0.4",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.2d.common": "12.0.1",
+        "com.unity.2d.common": "12.0.2",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.collections": "2.4.3",
         "com.unity.modules.animation": "1.0.0",
@@ -57,7 +57,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.common": {
-      "version": "12.0.1",
+      "version": "12.0.2",
       "depth": 2,
       "source": "registry",
       "dependencies": {
@@ -129,11 +129,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.tooling": {
-      "version": "1.0.0",
+      "version": "1.0.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.2d.common": "12.0.1",
+        "com.unity.2d.common": "12.0.2",
         "com.unity.modules.uielements": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -224,7 +224,7 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.2d.animation": "13.0.2",
+        "com.unity.2d.animation": "13.0.4",
         "com.unity.2d.pixel-perfect": "5.1.1",
         "com.unity.2d.psdimporter": "12.0.1",
         "com.unity.2d.sprite": "1.0.0",
@@ -232,7 +232,7 @@
         "com.unity.2d.tilemap": "1.0.0",
         "com.unity.2d.tilemap.extras": "6.0.1",
         "com.unity.2d.aseprite": "3.0.1",
-        "com.unity.2d.tooling": "1.0.0"
+        "com.unity.2d.tooling": "1.0.2"
       }
     },
     "com.unity.feature.characters-animation": {
@@ -251,7 +251,7 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.mobile.android-logcat": "1.4.6",
+        "com.unity.mobile.android-logcat": "1.4.7",
         "com.unity.adaptiveperformance": "6.0.0",
         "com.unity.mobile.notifications": "2.4.2"
       }
@@ -311,7 +311,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.mobile.android-logcat": {
-      "version": "1.4.6",
+      "version": "1.4.7",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
