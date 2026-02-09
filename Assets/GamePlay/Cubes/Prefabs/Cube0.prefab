@@ -444,6 +444,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -5477749408508380018, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
   m_PrefabInstance: {fileID: 8449825356738849212}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5351275747581411187 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
+  m_PrefabInstance: {fileID: 8449825356738849212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6097659133833017539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2440093140511199615, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
@@ -546,6 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0042dbf303d4104197e70416e226865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TicTacToe3D.GamePlay.Cube::TicTacToe3D.GamePlay.Cube.PointerClick
+  meshRenderer: {fileID: 5351275747581411187}
+  boxCollider: {fileID: 207305503142055591}
 --- !u!65 &207305503142055591
 BoxCollider:
   m_ObjectHideFlags: 0

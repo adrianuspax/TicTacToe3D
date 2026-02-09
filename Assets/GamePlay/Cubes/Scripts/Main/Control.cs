@@ -143,8 +143,7 @@ namespace TicTacToe3D.GamePlay.Main
 
         public void SetCubesInteractable(bool value)
         {
-            /*foreach (var cube in cubes)
-                cube.SetInteractable(value);*/
+            Cube.Pointer.SetAllInteractable(value);
         }
 
         public void ResetGame()
