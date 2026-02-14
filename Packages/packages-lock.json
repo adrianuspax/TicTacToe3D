@@ -24,7 +24,7 @@
       "hash": "f47d0042b2d852a0e53e03f237f153e35702398d"
     },
     "com.autodesk.fbx": {
-      "version": "5.1.2",
+      "version": "5.1.3",
       "depth": 2,
       "source": "registry",
       "dependencies": {},
