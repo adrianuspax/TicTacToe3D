@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PanelPlayerBottomOffClip
+  m_Name: OffClip
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e81c8da750880594f8e8bbcbf87cda02, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -33,7 +33,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PanelPlayerBottomAnimatorController
+  m_Name: PanelMasterAnimatorController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isRunning
@@ -134,7 +134,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PanelPlayerBottomOpenClip
+  m_Name: OpenClip
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -148,7 +148,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0be552632a5aa3d4d937361d64bf9cb3, type: 2}
+  m_Motion: {fileID: 7400000, guid: c727f665dcf0cf443a7a7a262d65265c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -161,7 +161,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PanelPlayerBottomCloseClip
+  m_Name: CloseClip
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -175,7 +175,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e5c2242adaffba241847d58a47f331ca, type: 2}
+  m_Motion: {fileID: 7400000, guid: 181831369e8db7e429d2e793067b9770, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
