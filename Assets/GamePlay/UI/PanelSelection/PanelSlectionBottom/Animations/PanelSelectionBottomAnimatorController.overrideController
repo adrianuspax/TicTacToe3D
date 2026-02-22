@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PanelPlayerBottomAnimatorController
+  m_Name: PanelSelectionBottomAnimatorController
   m_Controller: {fileID: 9100000, guid: bb14f11c9dc1b1b4aac9bbbf008e7b20, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 181831369e8db7e429d2e793067b9770, type: 2}

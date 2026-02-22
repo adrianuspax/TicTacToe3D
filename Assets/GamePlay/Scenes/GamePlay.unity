@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 301490443}
   - component: {fileID: 301490444}
   m_Layer: 0
-  m_Name: PlayerControl
+  m_Name: SelectionControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3564,7 +3564,7 @@ GameObject:
   - component: {fileID: 1523715876}
   - component: {fileID: 1523715875}
   m_Layer: 0
-  m_Name: PanelPlayerBottom
+  m_Name: PanelSelectionBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3638,7 +3638,7 @@ GameObject:
   - component: {fileID: 1614948448}
   - component: {fileID: 1614948447}
   m_Layer: 0
-  m_Name: PanelPlayerUpper
+  m_Name: PanelSelectionUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3788,7 +3788,7 @@ GameObject:
   - component: {fileID: 1630210743}
   - component: {fileID: 1630210742}
   m_Layer: 0
-  m_Name: PanelPlayer
+  m_Name: PanelSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
