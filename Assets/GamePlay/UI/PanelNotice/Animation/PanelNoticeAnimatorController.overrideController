@@ -9,7 +9,9 @@ AnimatorOverrideController:
   m_Name: PanelNoticeAnimatorController
   m_Controller: {fileID: 9100000, guid: bb14f11c9dc1b1b4aac9bbbf008e7b20, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 9d82e8f57be38464a84f9d607cf79f9a, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: c727f665dcf0cf443a7a7a262d65265c, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: be38313efac93c54ea37eaff446f0704, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 181831369e8db7e429d2e793067b9770, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6df238f1c33df05449ff9bda4508db07, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
