@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b287495d0cfe19b419ea44f9f65bed67
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - toggleOnSprite: {fileID: 21300000, guid: d99646d436a4cee4998364d31de85ad5, type: 3}
+  - toggleOffSprite: {fileID: 21300000, guid: 432db974899380142abc764270771b86, type: 3}
+  - toggle: {instanceID: 0}
+  - tmp: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

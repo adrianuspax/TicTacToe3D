@@ -2642,7 +2642,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1193717357
 GameObject:
   m_ObjectHideFlags: 0
@@ -3561,6 +3561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1523715874}
+  - component: {fileID: 1523715877}
   - component: {fileID: 1523715876}
   - component: {fileID: 1523715875}
   m_Layer: 0
@@ -3626,6 +3627,39 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1523715877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523715873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b287495d0cfe19b419ea44f9f65bed67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TicTacToe3D.GamePlay.UI.PanelSelection.Bottom.Control
+  isHandled: 0
+  startingAnimationClipIndex: 1
+  finishingAnimationClipIndex: 2
+  parameterIndex: 0
+  isRunning: 0
+  animator: {fileID: 1523715876}
+  animatorHandler:
+    animator: {fileID: 1523715876}
+    parameterHandlers:
+    - name: isRunning
+      id: 1239866031
+    animationClips:
+    - {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
+    - {fileID: 7400000, guid: 0be552632a5aa3d4d937361d64bf9cb3, type: 2}
+    - {fileID: 7400000, guid: e5c2242adaffba241847d58a47f331ca, type: 2}
+  delay: 0
+  isRunning_: 0
+  toggleOnSprite: {fileID: 21300000, guid: d99646d436a4cee4998364d31de85ad5, type: 3}
+  toggleOffSprite: {fileID: 21300000, guid: 432db974899380142abc764270771b86, type: 3}
+  toggle: {fileID: 1160493028}
+  tmp: {fileID: 1487356442}
 --- !u!1 &1614948445
 GameObject:
   m_ObjectHideFlags: 0

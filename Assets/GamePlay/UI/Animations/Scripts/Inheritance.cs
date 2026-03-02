@@ -9,9 +9,9 @@ using UnityEngine;
 
 namespace TicTacToe3D.GamePlay.UI.Animations
 {
-    public class Behaviour : MonoBehaviour
+    public class Inheritance : MonoBehaviour
     {
-        [InfoBox("Inheritance from " + nameof(Animations) +"."+ nameof(Behaviour))]
+        [InfoBox("Inheritance from " + nameof(Animations) +"."+ nameof(Inheritance))]
         [Header(Header.MANAGEABLE, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
