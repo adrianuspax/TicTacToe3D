@@ -109,11 +109,13 @@
   <Project Path="Unity.Settings.Editor.csproj" />
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="Unity.ShaderGraph.Utilities.csproj" />
+  <Project Path="TicTacToe3D.UI.Interaction.Inheritance.csproj" />
   <Project Path="Unity.VisualScripting.Shared.Editor.csproj" />
   <Project Path="TicTacToe3D.Safety.csproj" />
   <Project Path="Unity.Profiling.Core.csproj" />
   <Project Path="Unity.2D.Aseprite.Common.csproj" />
   <Project Path="TicTacToe.Input.Button.csproj" />
+  <Project Path="TicTacToe3D.Animation.Inheritance.csproj" />
   <Project Path="Unity.CollabProxy.Editor.csproj" />
   <Project Path="ASPax.Attributes.Validator.csproj" />
   <Project Path="TicTacToe.GamePlay.Block.csproj" />
@@ -134,10 +136,11 @@
   <Project Path="Unity.RenderPipelines.Core.Editor.Shared.csproj" />
   <Project Path="TicTacToe.Input.csproj" />
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
-  <Project Path="TicTacToe3D.GamePlay.UI.Animations.csproj" />
+  <Project Path="TicTacToe3D.UI.Interaction.Toggle.csproj" />
   <Project Path="Autodesk.Fbx.Editor.csproj" />
   <Project Path="Unity.ScriptableBuildPipeline.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
+  <Project Path="TicTacToe3D.UI.Interaction.Button.csproj" />
   <Project Path="Unity.Rendering.LightTransport.Editor.csproj" />
   <Project Path="Unity.Collections.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Config.Runtime.csproj" />

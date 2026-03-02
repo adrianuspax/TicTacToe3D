@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 64e09a8529eba1d40bbd1995551ba5f5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - selectable: {instanceID: 0}
+  - icon: {instanceID: 0}
+  - tmp: {instanceID: 0}
+  - canvasGroup: {instanceID: 0}
+  - rectTransform: {instanceID: 0}
+  - toggleOnSprite: {fileID: 21300000, guid: d99646d436a4cee4998364d31de85ad5, type: 3}
+  - toggleOffSprite: {fileID: 21300000, guid: 432db974899380142abc764270771b86, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

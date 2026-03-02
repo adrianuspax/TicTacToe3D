@@ -228,7 +228,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 989856634}
-  - {fileID: 644177364}
   - {fileID: 1338313430}
   m_Father: {fileID: 1614948446}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2007,7 +2006,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 64589840}
+  m_Father: {fileID: 1338313430}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -2567,7 +2566,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1160493026}
+  - component: {fileID: 1160493030}
   - component: {fileID: 1160493028}
+  - component: {fileID: 1160493029}
   m_Layer: 0
   m_Name: TogglePlayer
   m_TagString: Untagged
@@ -2588,9 +2589,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1997901251}
+  - {fileID: 1487356440}
   m_Father: {fileID: 1523715874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -2643,6 +2645,38 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!225 &1160493029
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160493025}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1160493030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160493025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e09a8529eba1d40bbd1995551ba5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection.Bottom::TicTacToe3D.GamePlay.UI.PanelSelection.Bottom.TogglePlayer
+  selectable: {fileID: 1160493028}
+  icon: {fileID: 1997901252}
+  tmp: {fileID: 1487356442}
+  canvasGroup: {fileID: 1160493029}
+  rectTransform: {fileID: 1160493026}
+  isVisible: 0
+  toggleOnSprite: {fileID: 21300000, guid: d99646d436a4cee4998364d31de85ad5, type: 3}
+  toggleOffSprite: {fileID: 21300000, guid: 432db974899380142abc764270771b86, type: 3}
 --- !u!1 &1193717357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,6 +2981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338313430}
   - component: {fileID: 1338313431}
+  - component: {fileID: 1338313432}
   m_Layer: 0
   m_Name: togglePlayer
   m_TagString: Untagged
@@ -2967,6 +3002,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2083623500}
+  - {fileID: 644177364}
   m_Father: {fileID: 64589840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3022,6 +3058,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!225 &1338313432
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338313429}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1370431846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3445,7 +3493,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1523715874}
+  m_Father: {fileID: 1160493026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -3499,15 +3547,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 68.15
+  m_fontSize: 71.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
-  m_VerticalAlignment: 4096
+  m_HorizontalAlignment: 16
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -3585,7 +3633,6 @@ RectTransform:
   m_Children:
   - {fileID: 1277260375}
   - {fileID: 1160493026}
-  - {fileID: 1487356440}
   m_Father: {fileID: 301490443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.75}
@@ -3656,10 +3703,7 @@ MonoBehaviour:
     - {fileID: 7400000, guid: e5c2242adaffba241847d58a47f331ca, type: 2}
   delay: 0
   isRunning_: 0
-  toggleOnSprite: {fileID: 21300000, guid: d99646d436a4cee4998364d31de85ad5, type: 3}
-  toggleOffSprite: {fileID: 21300000, guid: 432db974899380142abc764270771b86, type: 3}
-  toggle: {fileID: 1160493028}
-  tmp: {fileID: 1487356442}
+  togglePlayer: {fileID: 1160493030}
 --- !u!1 &1614948445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4619,7 +4663,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1160493026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}

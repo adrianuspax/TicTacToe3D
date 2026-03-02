@@ -7,11 +7,11 @@ using ASPax.Utilities;
 using System.Collections;
 using UnityEngine;
 
-namespace TicTacToe3D.GamePlay.UI.Animations
+namespace TicTacToe3D.Animation.Inheritance
 {
-    public class Inheritance : MonoBehaviour
+    public class Default : MonoBehaviour
     {
-        [InfoBox("Inheritance from " + nameof(Animations) +"."+ nameof(Inheritance))]
+        [InfoBox("Inheritance from " + nameof(TicTacToe3D.Animation.Inheritance) +"."+ nameof(Default))]
         [Header(Header.MANAGEABLE, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
