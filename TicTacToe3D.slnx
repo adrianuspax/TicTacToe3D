@@ -74,6 +74,7 @@
   <Project Path="Unity.Mobile.AndroidLogcat.Editor.csproj" />
   <Project Path="Unity.Rider.Editor.csproj" />
   <Project Path="Unity.2D.Tooling.Editor.csproj" />
+  <Project Path="Unity.AutoGroupGenerator.Editor.csproj" />
   <Project Path="Unity.VisualScripting.State.csproj" />
   <Project Path="ASPax.Test.csproj" />
   <Project Path="Unity.InternalAPIEditorBridge.001.csproj" />
@@ -104,6 +105,7 @@
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
   <Project Path="UnityEditor.UI.Analytics.csproj" />
   <Project Path="Unity.2D.Common.Runtime.csproj" />
+  <Project Path="Unity.ScriptableBuildPipeline.csproj" />
   <Project Path="Unity.ProBuilder.AssetIdRemapUtility.csproj" />
   <Project Path="ASPax.Attributes.Drawer.SpecialCases.csproj" />
   <Project Path="Unity.Settings.Editor.csproj" />
@@ -138,7 +140,6 @@
   <Project Path="Unity.VisualScripting.DocCodeExamples.csproj" />
   <Project Path="TicTacToe3D.UI.Interaction.Toggle.csproj" />
   <Project Path="Autodesk.Fbx.Editor.csproj" />
-  <Project Path="Unity.ScriptableBuildPipeline.csproj" />
   <Project Path="Unity.PlasticSCM.Editor.Entities.csproj" />
   <Project Path="TicTacToe3D.UI.Interaction.Button.csproj" />
   <Project Path="Unity.Rendering.LightTransport.Editor.csproj" />
