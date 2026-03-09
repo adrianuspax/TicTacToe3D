@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TogglePlayer
+  m_Controller: {fileID: 9100000, guid: 7f6a71e5397414448ba9779bf3187d12, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 285805808318875957, guid: 7f6a71e5397414448ba9779bf3187d12, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 322439d24a20e5042942d6728dc7a7f2, type: 2}
+  - m_OriginalClip: {fileID: 2298010170811051632, guid: 7f6a71e5397414448ba9779bf3187d12, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5d81f1aaf21b28b44a4ea51e9fcba505, type: 2}
+  - m_OriginalClip: {fileID: -5422507950085349760, guid: 7f6a71e5397414448ba9779bf3187d12, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2f4dc9cc49be5b3459f8021fbe64c579, type: 2}
+  - m_OriginalClip: {fileID: -6280318092531322199, guid: 7f6a71e5397414448ba9779bf3187d12, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 48162ab22149da14cbd6e1e1872ae0a2, type: 2}
+  - m_OriginalClip: {fileID: -1231415762754927375, guid: 7f6a71e5397414448ba9779bf3187d12, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 708943595d30edd4e84d547f17a13cdc, type: 2}
