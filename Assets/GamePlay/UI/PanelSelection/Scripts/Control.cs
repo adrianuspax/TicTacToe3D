@@ -6,7 +6,7 @@ using ASPax.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TicTacToe3D.GamePlay.UI.PanelSelection.Bottom
+namespace TicTacToe3D.GamePlay.UI.PanelSelection
 {
     public class Control : Animation.Inheritance.Default
     {

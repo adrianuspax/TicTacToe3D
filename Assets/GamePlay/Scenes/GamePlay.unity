@@ -1530,7 +1530,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1.5
@@ -1582,7 +1582,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -1933,6 +1933,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -2566,7 +2567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1160493026}
-  - component: {fileID: 1160493030}
+  - component: {fileID: 1160493032}
   - component: {fileID: 1160493028}
   - component: {fileID: 1160493029}
   - component: {fileID: 1160493031}
@@ -2658,26 +2659,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1160493030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160493025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e09a8529eba1d40bbd1995551ba5f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection.Bottom::TicTacToe3D.GamePlay.UI.PanelSelection.Bottom.TogglePlayer
-  selectable: {fileID: 1160493028}
-  icon: {fileID: 1997901252}
-  tmp: {fileID: 1487356442}
-  canvasGroup: {fileID: 1160493029}
-  rectTransform: {fileID: 1160493026}
-  isVisible: 0
-  toggleOnSprite: {fileID: 21300000, guid: d99646d436a4cee4998364d31de85ad5, type: 3}
-  toggleOffSprite: {fileID: 21300000, guid: 432db974899380142abc764270771b86, type: 3}
 --- !u!95 &1160493031
 Animator:
   serializedVersion: 7
@@ -2688,7 +2669,7 @@ Animator:
   m_GameObject: {fileID: 1160493025}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 205dc8e28696f4d478550dabb0a6ed65, type: 2}
+  m_Controller: {fileID: 22100000, guid: a4e01e4b8742c3045a97f93763063d56, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2700,6 +2681,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1160493032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160493025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb84268f18c47848a2d554a3cdbc277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.TogglePlayer
+  selectable: {fileID: 1160493028}
+  icon: {fileID: 1997901252}
+  tmp: {fileID: 1487356442}
+  canvasGroup: {fileID: 1160493029}
+  rectTransform: {fileID: 1160493026}
+  isVisible: 0
+  toggleOnSprite: {fileID: 21300000, guid: d99646d436a4cee4998364d31de85ad5, type: 3}
+  toggleOffSprite: {fileID: 21300000, guid: 432db974899380142abc764270771b86, type: 3}
+  toggleOnText: '| I.A. |'
+  toggleOffText: '| YOU |'
 --- !u!1 &1193717357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2800,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -3003,6 +3007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1338313430}
+  - component: {fileID: 1338313434}
   - component: {fileID: 1338313431}
   - component: {fileID: 1338313432}
   - component: {fileID: 1338313433}
@@ -3104,7 +3109,7 @@ Animator:
   m_GameObject: {fileID: 1338313429}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: ffe7cd9bc89fc1c45a818155f842c4f3, type: 2}
+  m_Controller: {fileID: 22100000, guid: a4e01e4b8742c3045a97f93763063d56, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3116,6 +3121,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1338313434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338313429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb84268f18c47848a2d554a3cdbc277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.TogglePlayer
+  selectable: {fileID: 1338313431}
+  icon: {fileID: 2083623501}
+  tmp: {fileID: 644177366}
+  canvasGroup: {fileID: 1338313432}
+  rectTransform: {fileID: 1338313430}
+  isVisible: 0
+  toggleOnSprite: {fileID: 21300000, guid: 52c6b61474953304188775bfb0256451, type: 3}
+  toggleOffSprite: {fileID: 21300000, guid: aac19701b95c8f6419f510946b7cf86b, type: 3}
+  toggleOnText: < Player Select >
+  toggleOffText: < First Player >
 --- !u!1001 &1370431846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3566,7 +3593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <YOU>
+  m_text: '| YOU |'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87c5447e299d4f847843b3607d03bbbd, type: 2}
   m_sharedMaterial: {fileID: -368723978539381385, guid: 87c5447e299d4f847843b3607d03bbbd, type: 2}
@@ -3593,7 +3620,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.75
+  m_fontSize: 64.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3708,7 +3735,7 @@ Animator:
   m_GameObject: {fileID: 1523715873}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 77f9d1b20d94a6c4291825a3cb13b055, type: 2}
+  m_Controller: {fileID: 9100000, guid: bb14f11c9dc1b1b4aac9bbbf008e7b20, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3731,7 +3758,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b287495d0cfe19b419ea44f9f65bed67, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TicTacToe3D.GamePlay.UI.PanelSelection.Bottom.Control
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.Control
   isHandled: 0
   startingAnimationClipIndex: 1
   finishingAnimationClipIndex: 2
@@ -3745,11 +3772,11 @@ MonoBehaviour:
       id: 1239866031
     animationClips:
     - {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
-    - {fileID: 7400000, guid: 0be552632a5aa3d4d937361d64bf9cb3, type: 2}
-    - {fileID: 7400000, guid: e5c2242adaffba241847d58a47f331ca, type: 2}
+    - {fileID: 7400000, guid: c727f665dcf0cf443a7a7a262d65265c, type: 2}
+    - {fileID: 7400000, guid: 181831369e8db7e429d2e793067b9770, type: 2}
   delay: 0
   isRunning_: 0
-  togglePlayer: {fileID: 1160493030}
+  togglePlayer: {fileID: 1160493032}
 --- !u!1 &1614948445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,6 +3786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1614948446}
+  - component: {fileID: 1614948449}
   - component: {fileID: 1614948448}
   - component: {fileID: 1614948447}
   m_Layer: 0
@@ -3810,7 +3838,7 @@ Animator:
   m_GameObject: {fileID: 1614948445}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: b316af23f1d19d34ab3f0ce192fc6cb1, type: 2}
+  m_Controller: {fileID: 9100000, guid: bb14f11c9dc1b1b4aac9bbbf008e7b20, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3822,6 +3850,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1614948449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614948445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b287495d0cfe19b419ea44f9f65bed67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.Control
+  isHandled: 0
+  startingAnimationClipIndex: 1
+  finishingAnimationClipIndex: 2
+  parameterIndex: 0
+  isRunning: 0
+  animator: {fileID: 1614948448}
+  animatorHandler:
+    animator: {fileID: 1614948448}
+    parameterHandlers:
+    - name: isRunning
+      id: 1239866031
+    animationClips:
+    - {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
+    - {fileID: 7400000, guid: c727f665dcf0cf443a7a7a262d65265c, type: 2}
+    - {fileID: 7400000, guid: 181831369e8db7e429d2e793067b9770, type: 2}
+  delay: 0
+  isRunning_: 0
+  togglePlayer: {fileID: 1338313434}
 --- !u!1001 &1617052777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3996,6 +4054,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -4098,6 +4157,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

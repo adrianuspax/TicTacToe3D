@@ -1,7 +1,7 @@
 using ASPax.Attributes.Drawer.SpecialCases;
 using UnityEngine.Events;
 
-namespace TicTacToe3D.GamePlay.UI.PanelSelection.Bottom
+namespace TicTacToe3D.GamePlay.UI.PanelSelection
 {
     public class TogglePlayer : TicTacToe3D.UI.Interaction.Toggle.Default
     {
@@ -16,7 +16,6 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection.Bottom
         public override void ToggleBehaviour(bool isOn)
         {
             base.ToggleBehaviour(isOn);
-            tmp.text = isOn ? "| IA |" : "| YOU |";
             OnToggleValueChanged?.Invoke(isOn);
         }
     }

@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TogglePlayer
+  m_Name: TogglePlayerAnimatorControlOverride
   m_Controller: {fileID: 9100000, guid: 7f6a71e5397414448ba9779bf3187d12, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 285805808318875957, guid: 7f6a71e5397414448ba9779bf3187d12, type: 2}

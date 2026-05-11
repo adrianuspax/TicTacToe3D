@@ -14,6 +14,9 @@ namespace TicTacToe3D.UI.Interaction.Toggle
         [Header(Header.assets, order = 2)]
         [SerializeField] private Sprite toggleOnSprite;
         [SerializeField] private Sprite toggleOffSprite;
+        [Header(Header.variables, order = 0)]
+        [SerializeField] private string toggleOnText;
+        [SerializeField] private string toggleOffText;
         ///<inheritdoc/>
         protected override void Start()
         {
@@ -39,9 +42,16 @@ namespace TicTacToe3D.UI.Interaction.Toggle
         public virtual void ToggleBehaviour(bool isOn)
         {
             if (toggleOnSprite == null || toggleOffSprite == null)
-                Debug.LogWarning("Toggle sprites are not assigned!");
+                Debug.LogWarning("Toggle sprites are not assigned!", this);
             else
                 icon.sprite = isOn ? toggleOnSprite : toggleOffSprite;
+
+            var isTextNullOrEmpty = string.IsNullOrEmpty(toggleOnText) || string.IsNullOrEmpty(toggleOffText);
+
+            if (isTextNullOrEmpty)
+                Debug.LogWarning("Toggle texts are not assigned!", this);
+            else
+                tmp.text = isOn ? toggleOnText : toggleOffText;
         }
     }
 }
