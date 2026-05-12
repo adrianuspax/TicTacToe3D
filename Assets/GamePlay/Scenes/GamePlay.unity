@@ -3756,9 +3756,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1523715873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b287495d0cfe19b419ea44f9f65bed67, type: 3}
+  m_Script: {fileID: 11500000, guid: ad0503188ea02df4abd25cbfcd53fe37, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.Control
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection.Botton::TicTacToe3D.GamePlay.UI.PanelSelection.Botton.Control
   isHandled: 0
   startingAnimationClipIndex: 1
   finishingAnimationClipIndex: 2
@@ -3859,9 +3859,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1614948445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b287495d0cfe19b419ea44f9f65bed67, type: 3}
+  m_Script: {fileID: 11500000, guid: 7553451a53d4cf245af42811512e560e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.Control
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection.Upper::TicTacToe3D.GamePlay.UI.PanelSelection.Upper.Control
   isHandled: 0
   startingAnimationClipIndex: 1
   finishingAnimationClipIndex: 2
@@ -3880,6 +3880,7 @@ MonoBehaviour:
   delay: 0
   isRunning_: 0
   togglePlayer: {fileID: 1338313434}
+  bottonControl: {fileID: 1523715877}
 --- !u!1001 &1617052777
 PrefabInstance:
   m_ObjectHideFlags: 0

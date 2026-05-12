@@ -5,7 +5,7 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
 {
     public class TogglePlayer : TicTacToe3D.UI.Interaction.Toggle.Default
     {
-        public static event UnityAction<bool> OnToggleValueChanged;
+        public event UnityAction<bool> OnToggleValueChanged;
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
         public override void ComponentsAssignment()
