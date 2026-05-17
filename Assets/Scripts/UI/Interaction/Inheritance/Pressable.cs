@@ -14,7 +14,7 @@ namespace TicTacToe3D.UI.Interaction.Inheritance
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.components, order = 2)]
-        [SerializeField, ReadOnly] protected Selectable selectable;
+        [SerializeField, ReadOnly] private Selectable selectable;
         [SerializeField, ReadOnly] protected Image icon;
         [SerializeField, ReadOnly] protected TextMeshProUGUI tmp;
         [SerializeField, ReadOnly] protected CanvasGroup canvasGroup;
@@ -83,6 +83,11 @@ namespace TicTacToe3D.UI.Interaction.Inheritance
         {
             canvasGroup.FadeOut(time, this);
         }
+
+        protected T Get<T>() where T : Selectable
+        {
+            return (T)selectable;
+        }
         /// <summary>
         /// Is this object interactable
         /// </summary>
@@ -111,5 +116,7 @@ namespace TicTacToe3D.UI.Interaction.Inheritance
         /// Pivot Custom Component
         /// </summary>
         public RectTransform RectTransform => rectTransform;
+
+        public Selectable Selectable => selectable;
     }
 }

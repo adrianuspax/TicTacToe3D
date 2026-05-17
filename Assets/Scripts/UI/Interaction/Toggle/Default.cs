@@ -1,4 +1,5 @@
 using ASPax.Attributes.Drawer;
+using ASPax.Attributes.Meta;
 using ASPax.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,26 +18,38 @@ namespace TicTacToe3D.UI.Interaction.Toggle
         [Header(Header.variables, order = 0)]
         [SerializeField] private string toggleOnText;
         [SerializeField] private string toggleOffText;
+
+        [Header(Header.READONLY, order = 0), HorizontalLine]
+        [Space(-10, order = 1)]
+        [Header(Header.components, order = 2)]
+        [SerializeField, ReadOnly] private Toggle toggle;
         ///<inheritdoc/>
         protected override void Start()
         {
             base.Start();
-            ((Toggle)selectable).onValueChanged.AddListener(ToggleBehaviour);
+            toggle.onValueChanged.AddListener(ToggleBehaviour);
+        }
+        ///<inheritdoc/>
+        [ContextMenu("Components Assignment Root")]
+        public override void ComponentsAssignment()
+        {
+            base.ComponentsAssignment();
+            toggle = Get<Toggle>();
         }
 
         public virtual void AddListener(UnityEngine.Events.UnityAction<bool> call)
         {
-            ((Toggle)selectable).onValueChanged.AddListener(call);
+            toggle.onValueChanged.AddListener(call);
         }
 
         public virtual void RemoveListener(UnityAction<bool> call)
         {
-            ((Toggle)selectable).onValueChanged.RemoveListener(call);
+            toggle.onValueChanged.RemoveListener(call);
         }
 
         public override void RemoveAllListeners()
         {
-            ((Toggle)selectable).onValueChanged.RemoveAllListeners();
+            toggle.onValueChanged.RemoveAllListeners();
         }
 
         public virtual void ToggleBehaviour(bool isOn)
@@ -53,5 +66,7 @@ namespace TicTacToe3D.UI.Interaction.Toggle
             else
                 tmp.text = isOn ? toggleOnText : toggleOffText;
         }
+
+        public Toggle Toggle => toggle;
     }
 }

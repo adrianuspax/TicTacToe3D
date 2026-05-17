@@ -1,8 +1,6 @@
-using ASPax.Attributes.Drawer;
 using ASPax.Attributes.Drawer.SpecialCases;
 using ASPax.Attributes.Meta;
 using ASPax.Extensions;
-using ASPax.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +21,7 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection.Upper
         /// <summary>
         /// 
         /// </summary>
-        [SerializeField, ReadOnly] private Botton.Control bottonControl;
+        [SerializeField, ReadOnly] private Bottom.Control bottonControl;
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
         public override void ComponentsAssignment()
