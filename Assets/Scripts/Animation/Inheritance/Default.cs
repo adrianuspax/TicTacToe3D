@@ -15,33 +15,33 @@ namespace TicTacToe3D.Animation.Inheritance
         [Header(Header.MANAGEABLE, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
-        [BoxGroup, SerializeField] protected bool isHandled; // Determines if the animation is handled manually.
-        [BoxGroup, SerializeField, ShowIf(nameof(isHandled))] protected int startingAnimationClipIndex; // Index of the starting animation clip.
-        [BoxGroup, SerializeField, ShowIf(nameof(isHandled))] protected int finishingAnimationClipIndex; // Index of the finishing animation clip.
-        [BoxGroup, SerializeField, ShowIf(nameof(isHandled))] protected int parameterIndex; // Index of the animator parameter.
+        [BoxGroup, SerializeField] private bool _isHandled; // Determines if the animation is handled manually.
+        [BoxGroup, SerializeField, ShowIf(nameof(_isHandled))] private int _startingAnimationClipIndex; // Index of the starting animation clip.
+        [BoxGroup, SerializeField, ShowIf(nameof(_isHandled))] private int _finishingAnimationClipIndex; // Index of the finishing animation clip.
+        [BoxGroup, SerializeField, ShowIf(nameof(_isHandled))] private int _parameterIndex; // Index of the animator parameter.
         [Space(20, order = 0)]
         [Header(Header.READONLY, order = 1), HorizontalLine(order = 2)]
         [Space(-10, order = 3)]
         [Header(Header.variables, order = 4), HorizontalLine(order = 5)]
-        [BoxGroup, SerializeField, ReadOnly] protected bool isRunning; // Is the animation currently running?
+        [BoxGroup, SerializeField, ReadOnly] private bool _isRunning; // Is the animation currently running?
         [Space(20, order = 0)]
         [Header(Header.components, order = 1), HorizontalLine(order = 2)]
-        [BoxGroup, SerializeField, ReadOnly] protected Animator animator; // The Animator component.
+        [BoxGroup, SerializeField, ReadOnly] private Animator _animator; // The Animator component.
         [Space(20, order = 0)]
         [Header(Header.scripts, order = 1), HorizontalLine(order = 2)]
-        [BoxGroup, SerializeField, ReadOnly] protected AnimatorHandler animatorHandler; // Handler for the Animator.
-        protected Coroutine _coroutine; // Coroutine for delayed animations.
+        [BoxGroup, SerializeField, ReadOnly] private AnimatorHandler _animatorHandler; // Handler for the Animator.
+        private Coroutine _coroutine; // Coroutine for delayed animations.
 #if UNITY_EDITOR
         [Space(20, order = 0)]
         [InfoBox("Only Test!", InfoBoxType.Warning, order = 1)]
-        [BoxGroup, SerializeField] private float delay;
-        [BoxGroup, SerializeField] private bool isRunning_;
+        [BoxGroup, SerializeField] private float _delay; // Delay for testing the animation.
+        [BoxGroup, SerializeField] private bool _isRunningTest; // Used to toggle the animation for testing.
         ///<inheritdoc/>
         protected virtual void Reset()
         {
-            startingAnimationClipIndex = 1;
-            finishingAnimationClipIndex = 2;
-            parameterIndex = 0;
+            _startingAnimationClipIndex = 1;
+            _finishingAnimationClipIndex = 2;
+            _parameterIndex = 0;
         }
         /// <summary>
         /// Method that can be called from the context menu in the Inpector for function tests
@@ -49,8 +49,8 @@ namespace TicTacToe3D.Animation.Inheritance
         [Button(nameof(SetAnimation), SButtonEnableMode.Playmode)]
         private void SetAnimation()
         {
-            var s = SetAnimation(isRunning_, delay);
-            print($"{nameof(SetAnimation)}({nameof(isRunning)}: {isRunning}, {nameof(delay)}: {delay}) is called!  returns {_s()}.");
+            var s = SetAnimation(_isRunningTest, _delay);
+            print($"{nameof(SetAnimation)}({nameof(_isRunning)}: {_isRunning}, {nameof(_delay)}: {_delay}) is called!  returns {_s()}.");
 
             string _s()
             {
@@ -69,21 +69,23 @@ namespace TicTacToe3D.Animation.Inheritance
         protected virtual void Start()
         {
             _coroutine = null;
-            isRunning = false;
+            _isRunning = false;
 
-            if (isHandled)
+            if (_isHandled)
                 return;
-            startingAnimationClipIndex = 1;
-            finishingAnimationClipIndex = 2;
-            parameterIndex = 0;
+
+            _startingAnimationClipIndex = 1;
+            _finishingAnimationClipIndex = 2;
+            _parameterIndex = 0;
         }
         ///<inheritdoc/>
         [ContextMenu("Components Assignment Inheritance")]
         public virtual void ComponentsAssignment()
         {
-            this.GetComponentIfNull(ref animator);
-            if (animatorHandler.IsNecessaryUpdateInstance())
-                animatorHandler = new(animator);
+            this.GetComponentIfNull(ref _animator);
+            var isNecessaryUpdateInstance = _animatorHandler.IsNecessaryUpdateInstance();
+            if (isNecessaryUpdateInstance)
+                _animatorHandler = new(_animator);
         }
         /// <summary>
         /// Sets the animation state with an optional delay.
@@ -96,17 +98,17 @@ namespace TicTacToe3D.Animation.Inheritance
             if (_coroutine != null)
             {
                 StopCoroutine(_coroutine);
-                this.isRunning = !isRunning;
+                this._isRunning = !isRunning;
             }
 
-            if (this.isRunning == isRunning)
+            if (this._isRunning == isRunning)
                 return null;
-            var duration = animatorHandler.AnimationClips[isRunning ? startingAnimationClipIndex : finishingAnimationClipIndex].length;
+            var duration = _animatorHandler.AnimationClips[isRunning ? _startingAnimationClipIndex : _finishingAnimationClipIndex].length;
             if (delay > 0f)
                 duration += delay;
             var routine = PlayAnimation(isRunning, delay);
             _coroutine = StartCoroutine(routine);
-            isRunning.ComparativeAssignment(ref this.isRunning);
+            isRunning.ComparativeAssignment(ref this._isRunning);
             return duration;
         }
         /// <summary>
@@ -119,17 +121,66 @@ namespace TicTacToe3D.Animation.Inheritance
         {
             if (delay > 0f)
                 yield return new WaitForSeconds(delay);
-            animator.SetBool(animatorHandler.ParameterHandlers[parameterIndex].ID, isRunning);
-            this.isRunning = isRunning;
+            _animator.SetBool(_animatorHandler.ParameterHandlers[_parameterIndex].ID, isRunning);
+            this._isRunning = isRunning;
             _coroutine = null;
         }
+
+        protected void SetRunning(bool value)
+        {
+            _isRunning = value;
+        }
+        /// <summary>
+        /// Assign a new instance to the variable. <see cref="_animator"/>.
+        /// </summary>
+        /// <remarks> This will assign a new instance to <see cref="_animatorHandler"/>. </remarks>
+        protected void SetAnimatior(Animator animator)
+        {
+            _animator = animator;
+            _animatorHandler = new(_animator);
+        }
+
+        protected void SetHandled(bool value)
+        {
+            _isHandled = value;
+        }
+
+        protected void SetStartingAnimationClipIndex(int value)
+        {
+            _startingAnimationClipIndex = value;
+        }
+
+        protected void SetFinishingAnimationClipIndex(int value)
+        {
+            _finishingAnimationClipIndex = value;
+        }
+
+        protected void SetParameterIndex(int value)
+        {
+            _parameterIndex = value;
+        }
+
         /// <summary>
         /// Gets a value indicating whether the animation is currently running.
         /// </summary>
-        public virtual bool IsRunning => isRunning;
+        public virtual bool IsRunning => _isRunning;
         /// <summary>
         /// Gets the handler for the Animator.
         /// </summary>
-        public virtual AnimatorHandler AnimatorHandler => animatorHandler;
+        public virtual AnimatorHandler AnimatorHandler => _animatorHandler;
+
+        protected bool IsHandled => _isHandled;
+
+        protected int StartingAnimationClipIndex => _startingAnimationClipIndex;
+
+        protected int FinishingAnimationClipIndex => _finishingAnimationClipIndex;
+
+        protected int ParameterIndex => _parameterIndex;
+
+        protected Coroutine Coroutine
+        {
+            get => _coroutine;
+            set => _coroutine = value;
+        }
     }
 }

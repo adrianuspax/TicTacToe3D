@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace TicTacToe3D.GamePlay.UI.PanelSelection.Upper
 {
-    public class Control : TicTacToe3D.GamePlay.UI.PanelSelection.Control
+    public class Control : TicTacToe3D.GamePlay.UI.PanelSelection.Default
     {
         ///<inheritdoc/>
         private void OnEnable()
@@ -18,9 +18,7 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection.Upper
         {
             togglePlayer.OnToggleValueChanged -= ToggleFunction;
         }
-        /// <summary>
-        /// 
-        /// </summary>
+
         [SerializeField, ReadOnly] private Bottom.Control bottonControl;
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]

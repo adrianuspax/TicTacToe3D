@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace TicTacToe3D.GamePlay.UI.PanelSelection
 {
-    public class Control : Animation.Inheritance.Default
+    public class Default : Animation.Inheritance.Default
     {
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
