@@ -11,15 +11,15 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.scripts, order = 2)]
-        [SerializeField, ReadOnly] protected TogglePlayer togglePlayer;
+        [SerializeField, ReadOnly] protected ToggleDefault toggleDefault;
         ///<inheritdoc/>
         [ContextMenu("Components Assignment Inheritance")]
         public override void ComponentsAssignment()
         {
             base.ComponentsAssignment();
-            this.GetComponentInChildrenIfNull(ref togglePlayer);
+            this.GetComponentInChildrenIfNull(ref toggleDefault);
         }
 
-        public TogglePlayer TogglePlayer => togglePlayer;
+        public ToggleDefault TogglePlayer => toggleDefault;
     }
 }

@@ -4,35 +4,35 @@ using ASPax.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TicTacToe3D.GamePlay.UI.PanelSelection.Upper
+namespace TicTacToe3D.GamePlay.UI.PanelSelection
 {
-    public class Control : TicTacToe3D.GamePlay.UI.PanelSelection.Default
+    public class Upper : TicTacToe3D.GamePlay.UI.PanelSelection.Default
     {
         ///<inheritdoc/>
         private void OnEnable()
         {
-            togglePlayer.OnToggleValueChanged += ToggleFunction;
+            toggleDefault.OnToggleValueChanged += ToggleFunction;
         }
         ///<inheritdoc/>
         private void OnDisable()
         {
-            togglePlayer.OnToggleValueChanged -= ToggleFunction;
+            toggleDefault.OnToggleValueChanged -= ToggleFunction;
         }
 
-        [SerializeField, ReadOnly] private Bottom.Control bottonControl;
+        [SerializeField, ReadOnly] private Bottom bottomControl;
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
         public override void ComponentsAssignment()
         {
             base.ComponentsAssignment();
-            transform.parent.GetComponentInChildrenIfNull(ref bottonControl);
+            transform.parent.GetComponentInChildrenIfNull(ref bottomControl);
         }
         /// <summary>
         /// 
         /// </summary>
         private void ToggleFunction(bool isOn)
         {
-            bottonControl.SetAnimation(isOn);
+            bottomControl.SetAnimation(isOn);
         }
     }
 }

@@ -1018,6 +1018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 301490443}
+  - component: {fileID: 301490445}
   - component: {fileID: 301490444}
   m_Layer: 0
   m_Name: SelectionControl
@@ -1047,18 +1048,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &301490444
-CanvasGroup:
+--- !u!114 &301490444
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301490442}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eff9cb7cddc1154eb97716e979d2a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.Control
+--- !u!114 &301490445
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301490442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5e464cd489bcd48bb9c809eb5d4b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.Manager
+  _control: {fileID: 0}
 --- !u!1 &319341861
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,24 +3887,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0503188ea02df4abd25cbfcd53fe37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection.Botton::TicTacToe3D.GamePlay.UI.PanelSelection.Botton.Control
-  isHandled: 0
-  startingAnimationClipIndex: 1
-  finishingAnimationClipIndex: 2
-  parameterIndex: 0
-  isRunning: 0
-  animator: {fileID: 1523715876}
-  animatorHandler:
-    animator: {fileID: 1523715876}
-    parameterHandlers:
-    - name: isRunning
-      id: 1239866031
-    animationClips:
-    - {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
-    - {fileID: 7400000, guid: c727f665dcf0cf443a7a7a262d65265c, type: 2}
-    - {fileID: 7400000, guid: 181831369e8db7e429d2e793067b9770, type: 2}
-  delay: 0
-  isRunning_: 0
-  togglePlayer: {fileID: 1160493032}
+  _isHandled: 0
+  _startingAnimationClipIndex: 0
+  _finishingAnimationClipIndex: 0
+  _parameterIndex: 0
+  _isRunning: 0
+  _animator: {fileID: 0}
+  _animatorHandler:
+    animator: {fileID: 0}
+    parameterHandlers: []
+    animationClips: []
+  _delay: 0
+  _isRunningTest: 0
+  toggleDefault: {fileID: 0}
 --- !u!1 &1614948445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3976,25 +3985,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553451a53d4cf245af42811512e560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection.Upper::TicTacToe3D.GamePlay.UI.PanelSelection.Upper.Control
-  isHandled: 0
-  startingAnimationClipIndex: 1
-  finishingAnimationClipIndex: 2
-  parameterIndex: 0
-  isRunning: 0
-  animator: {fileID: 1614948448}
-  animatorHandler:
-    animator: {fileID: 1614948448}
-    parameterHandlers:
-    - name: isRunning
-      id: 1239866031
-    animationClips:
-    - {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
-    - {fileID: 7400000, guid: c727f665dcf0cf443a7a7a262d65265c, type: 2}
-    - {fileID: 7400000, guid: 181831369e8db7e429d2e793067b9770, type: 2}
-  delay: 0
-  isRunning_: 0
-  togglePlayer: {fileID: 1338313434}
-  bottonControl: {fileID: 1523715877}
+  _isHandled: 0
+  _startingAnimationClipIndex: 0
+  _finishingAnimationClipIndex: 0
+  _parameterIndex: 0
+  _isRunning: 0
+  _animator: {fileID: 0}
+  _animatorHandler:
+    animator: {fileID: 0}
+    parameterHandlers: []
+    animationClips: []
+  _delay: 0
+  _isRunningTest: 0
+  toggleDefault: {fileID: 0}
+  bottomControl: {fileID: 0}
 --- !u!1001 &1617052777
 PrefabInstance:
   m_ObjectHideFlags: 0

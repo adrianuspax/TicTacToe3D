@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace TicTacToe3D.GamePlay.UI.PanelSelection
 {
-    public class TogglePlayer : TicTacToe3D.UI.Interaction.Toggle.Default
+    public class ToggleDefault : TicTacToe3D.UI.Interaction.Toggle.Default
     {
         public event UnityAction<bool> OnToggleValueChanged;
         ///<inheritdoc/>

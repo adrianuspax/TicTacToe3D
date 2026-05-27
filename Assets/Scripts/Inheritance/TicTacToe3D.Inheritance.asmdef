@@ -1,0 +1,17 @@
+{
+    "name": "TicTacToe3D.Inheritance",
+    "rootNamespace": "TicTacToe3D.Inheritance",
+    "references": [
+        "GUID:2591a98a6b532a94ab3f838e90c1851c",
+        "GUID:96d56e891fd912540a8a1cc45a9b975c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
