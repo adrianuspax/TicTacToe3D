@@ -1019,7 +1019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 301490443}
   - component: {fileID: 301490445}
-  - component: {fileID: 301490444}
+  - component: {fileID: 301490446}
   m_Layer: 0
   m_Name: SelectionControl
   m_TagString: Untagged
@@ -1048,7 +1048,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &301490444
+--- !u!114 &301490445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1060,7 +1060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eff9cb7cddc1154eb97716e979d2a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.Control
---- !u!114 &301490445
+  upper: {fileID: 1614948449}
+  bottom: {fileID: 1523715877}
+--- !u!114 &301490446
 MonoBehaviour:
   m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1072,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5e464cd489bcd48bb9c809eb5d4b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection::TicTacToe3D.GamePlay.UI.PanelSelection.Manager
-  _control: {fileID: 0}
+  _instance: {fileID: 301490445}
 --- !u!1 &319341861
 GameObject:
   m_ObjectHideFlags: 0

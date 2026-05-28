@@ -19,22 +19,22 @@ namespace TicTacToe3D.Inheritance
             ComponentsAssignment();
         }
 #endif
-        [SerializeField, ReadOnly] private T _control; // The component being controlled.
+        [SerializeField, ReadOnly] private T _instance; // The component being controlled.
         ///<inheritdoc/>
         protected virtual void Awake()
         {
             ComponentsAssignment();
         }
         ///<inheritdoc/>
-        [ContextMenu("Components Assignment Inheritance")]
         public virtual void ComponentsAssignment()
         {
+            _instance = GetComponent<T>();
             hideFlags = HideFlags.HideInInspector;
-            this.GetComponentIfNull(ref _control);
+            this.GetComponentIfNull(ref _instance);
         }
         /// <summary>
         /// The component being controlled.
         /// </summary>
-        protected T Control => _control;
+        protected T Instance => _instance;
     }
 }
