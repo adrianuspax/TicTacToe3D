@@ -8,7 +8,7 @@ using UnityEngine;
 namespace TicTacToe3D.GamePlay.UI.PanelNotice
 {
     [RequireComponent(typeof(Manager))]
-    public class Control : Animation.Inheritance.Default
+    public class Control : Inheritance.AnimationHandler
     {
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
@@ -23,5 +23,8 @@ namespace TicTacToe3D.GamePlay.UI.PanelNotice
             this.GetComponentInChildrenIfNull(ref nopButton);
             this.GetComponentInChildrenIfNull(ref yesButton);
         }
+
+        public Button.Nop NopButton => nopButton;
+        public Button.Yes YesButton => yesButton;
     }
 }
