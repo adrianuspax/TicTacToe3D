@@ -4293,8 +4293,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1770448172}
+  - component: {fileID: 1770448175}
   - component: {fileID: 1770448174}
   - component: {fileID: 1770448173}
+  - component: {fileID: 1770448176}
   m_Layer: 0
   m_Name: NoticeControl
   m_TagString: Untagged
@@ -4356,6 +4358,50 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1770448175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770448171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382b807883ac6f54daf36e431039ccfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelNotice::TicTacToe3D.GamePlay.UI.PanelNotice.Control
+  _isHandled: 0
+  _startingAnimationClipIndex: 0
+  _finishingAnimationClipIndex: 0
+  _parameterIndex: 0
+  _isRunning: 0
+  _animator: {fileID: 1770448174}
+  _animatorHandler:
+    animator: {fileID: 1770448174}
+    parameterHandlers:
+    - name: isRunning
+      id: 1239866031
+    animationClips:
+    - {fileID: 7400000, guid: 7eae462c46e6f0c429f90cd09bf7cb27, type: 2}
+    - {fileID: 7400000, guid: be38313efac93c54ea37eaff446f0704, type: 2}
+    - {fileID: 7400000, guid: 6df238f1c33df05449ff9bda4508db07, type: 2}
+  _delay: 0
+  _isRunningTest: 0
+  nopButton: {fileID: 1420106786}
+  yesButton: {fileID: 1081668429}
+--- !u!114 &1770448176
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770448171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895fb8f7e20df8e449dd6ce0ef6998e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelNotice::TicTacToe3D.GamePlay.UI.PanelNotice.Manager
+  _instance: {fileID: 1770448175}
 --- !u!1001 &1787960575
 PrefabInstance:
   m_ObjectHideFlags: 0
