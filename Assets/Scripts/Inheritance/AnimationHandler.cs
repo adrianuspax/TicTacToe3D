@@ -24,6 +24,7 @@ namespace TicTacToe3D.Inheritance
         [Space(-10, order = 3)]
         [Header(Header.variables, order = 4), HorizontalLine(order = 5)]
         [BoxGroup, SerializeField, ReadOnly] private bool _isRunning; // Is the animation currently running?
+        //[BoxGroup, SerializeField, ReadOnly] private bool _isOpen;
         [Space(20, order = 0)]
         [Header(Header.components, order = 1), HorizontalLine(order = 2)]
         [BoxGroup, SerializeField, ReadOnly] private Animator _animator; // The Animator component.
@@ -49,14 +50,15 @@ namespace TicTacToe3D.Inheritance
         [Button(nameof(SetAnimation), SButtonEnableMode.Playmode)]
         private void SetAnimation()
         {
-            var s = SetAnimation(_isRunningTest, _delay);
-            print($"{nameof(SetAnimation)}({nameof(_isRunning)}: {_isRunning}, {nameof(_delay)}: {_delay}) is called!  returns {_s()}.");
-
-            string _s()
+            print($"{nameof(SetAnimation)}({nameof(_isRunning)}: {_isRunning}, {nameof(_delay)}: {_delay}) is called! _coroutine = {_c()}.");
+            SetAnimation(_isRunningTest, _delay);
+            return;
+            string _c()
             {
-                if (s == null)
-                    return "null";
-                return s.ToString();
+                if (_coroutine == null)
+                    return "NULL!";
+                else
+                    return "NOT NULL!";
             }
         }
 #endif
@@ -87,7 +89,7 @@ namespace TicTacToe3D.Inheritance
             if (isNecessaryUpdateInstance)
                 _animatorHandler = new(_animator);
         }
-        /// <summary>
+        /*/// <summary>
         /// Sets the animation state with an optional delay.
         /// </summary>
         /// <param name="isRunning">The target state of the animation.</param>
@@ -110,9 +112,9 @@ namespace TicTacToe3D.Inheritance
             _coroutine = StartCoroutine(routine);
             isRunning.ComparativeAssignment(ref this._isRunning);
             return duration;
-        }
-        //TESTARRRRRRRR
-        /*public virtual Coroutine SetAnimationProvisorio(bool isRunning, float delay = 0f)
+        }*/
+
+        public virtual Coroutine SetAnimation(bool isRunning, float delay = 0f)
         {
             if (_coroutine == null)
             {
@@ -132,7 +134,7 @@ namespace TicTacToe3D.Inheritance
                 var routine = PlayAnimation(isRunning, delay);
                 _coroutine = StartCoroutine(routine);
             }
-        }*/
+        }
         /// <summary>
         /// Plays the animation after an optional delay.
         /// </summary>
