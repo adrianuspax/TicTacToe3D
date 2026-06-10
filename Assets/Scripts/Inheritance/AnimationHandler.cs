@@ -23,8 +23,7 @@ namespace TicTacToe3D.Inheritance
         [Header(Header.READONLY, order = 1), HorizontalLine(order = 2)]
         [Space(-10, order = 3)]
         [Header(Header.variables, order = 4), HorizontalLine(order = 5)]
-        [BoxGroup, SerializeField, ReadOnly] private bool _isRunning; // Is the animation currently running?
-        //[BoxGroup, SerializeField, ReadOnly] private bool _isOpen;
+        [BoxGroup, SerializeField, ReadOnly] private bool _isToOpen;
         [Space(20, order = 0)]
         [Header(Header.components, order = 1), HorizontalLine(order = 2)]
         [BoxGroup, SerializeField, ReadOnly] private Animator _animator; // The Animator component.
@@ -36,7 +35,7 @@ namespace TicTacToe3D.Inheritance
         [Space(20, order = 0)]
         [InfoBox("Only Test!", InfoBoxType.Warning, order = 1)]
         [BoxGroup, SerializeField] private float _delay; // Delay for testing the animation.
-        [BoxGroup, SerializeField] private bool _isRunningTest; // Used to toggle the animation for testing.
+        [BoxGroup, SerializeField] private bool _isToOpenTest; // Used to toggle the animation for testing.
         ///<inheritdoc/>
         protected virtual void Reset()
         {
@@ -50,8 +49,8 @@ namespace TicTacToe3D.Inheritance
         [Button(nameof(SetAnimation), SButtonEnableMode.Playmode)]
         private void SetAnimation()
         {
-            print($"{nameof(SetAnimation)}({nameof(_isRunning)}: {_isRunning}, {nameof(_delay)}: {_delay}) is called! _coroutine = {_c()}.");
-            SetAnimation(_isRunningTest, _delay);
+            print($"{nameof(SetAnimation)}({nameof(_isToOpen)}: {_isToOpen}, {nameof(_delay)}: {_delay}) is called! _coroutine = {_c()}.");
+            SetAnimation(_isToOpenTest, _delay);
             return;
             string _c()
             {
@@ -71,7 +70,7 @@ namespace TicTacToe3D.Inheritance
         protected virtual void Start()
         {
             _coroutine = null;
-            _isRunning = false;
+            _isToOpen = false;
 
             if (_isHandled)
                 return;
@@ -114,48 +113,38 @@ namespace TicTacToe3D.Inheritance
             return duration;
         }*/
 
-        public virtual Coroutine SetAnimation(bool isRunning, float delay = 0f)
+        public virtual Coroutine SetAnimation(bool isToOpen, float delay = 0f)
         {
             if (_coroutine == null)
             {
-                _play();
+                var routine = PlayAnimation(isToOpen, delay);
+                _coroutine = StartCoroutine(routine);
             }
             else
             {
                 StopCoroutine(_coroutine);
                 _coroutine = null;
-                this._isRunning = !isRunning;
-                _play();
+                SetAnimation(isToOpen, delay);
             }
             return _coroutine;
-
-            void _play()
-            {
-                var routine = PlayAnimation(isRunning, delay);
-                _coroutine = StartCoroutine(routine);
-            }
         }
         /// <summary>
         /// Plays the animation after an optional delay.
         /// </summary>
-        /// <param name="isRunning">The target state of the animation.</param>
+        /// <param name="isToOpen">The target state of the animation.</param>
         /// <param name="delay">The delay before playing the animation.</param>
         /// <returns>An IEnumerator for the coroutine.</returns>
-        protected virtual IEnumerator PlayAnimation(bool isRunning, float delay)
+        protected virtual IEnumerator PlayAnimation(bool isToOpen, float delay)
         {
+            var duration = _animatorHandler.AnimationClips[isToOpen ? _startingAnimationClipIndex : _finishingAnimationClipIndex].length;
+
             if (delay > 0f)
                 yield return new WaitForSeconds(delay);
-            else
-                yield return null;
 
-            _animator.SetBool(_animatorHandler.ParameterHandlers[_parameterIndex].ID, isRunning);
-            this._isRunning = isRunning;
+            _animator.SetBool(_animatorHandler.ParameterHandlers[_parameterIndex].ID, isToOpen);
+            _isToOpen = isToOpen;
+            yield return new WaitForSeconds(duration);
             _coroutine = null;
-        }
-
-        protected void SetRunning(bool value)
-        {
-            _isRunning = value;
         }
         /// <summary>
         /// Assign a new instance to the variable. <see cref="_animator"/>.
@@ -165,6 +154,11 @@ namespace TicTacToe3D.Inheritance
         {
             _animator = animator;
             _animatorHandler = new(_animator);
+        }
+
+        protected void SetToOpen(bool value)
+        {
+            _isToOpen = value;
         }
 
         protected void SetHandled(bool value)
@@ -186,14 +180,15 @@ namespace TicTacToe3D.Inheritance
         {
             _parameterIndex = value;
         }
-
         /// <summary>
         /// Gets a value indicating whether the animation is currently running.
         /// </summary>
-        public virtual bool IsRunning => _isRunning;
+        public bool IsRunning => _coroutine != null;
         /// <summary>
         /// Gets the handler for the Animator.
         /// </summary>
+        public virtual bool IsToOpen => _isToOpen;
+
         public virtual AnimatorHandler AnimatorHandler => _animatorHandler;
 
         protected bool IsHandled => _isHandled;
@@ -203,11 +198,5 @@ namespace TicTacToe3D.Inheritance
         protected int FinishingAnimationClipIndex => _finishingAnimationClipIndex;
 
         protected int ParameterIndex => _parameterIndex;
-
-        protected Coroutine Coroutine
-        {
-            get => _coroutine;
-            set => _coroutine = value;
-        }
     }
 }
