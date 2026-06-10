@@ -14,6 +14,12 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
             toggleDefault.OnToggleValueChanged += ToggleFunction;
         }
         ///<inheritdoc/>
+        protected override void Start()
+        {
+            base.Start();
+            SetAnimation(true);
+        }
+        ///<inheritdoc/>
         private void OnDisable()
         {
             toggleDefault.OnToggleValueChanged -= ToggleFunction;

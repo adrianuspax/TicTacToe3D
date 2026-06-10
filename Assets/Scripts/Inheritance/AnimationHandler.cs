@@ -111,6 +111,28 @@ namespace TicTacToe3D.Inheritance
             isRunning.ComparativeAssignment(ref this._isRunning);
             return duration;
         }
+        //TESTARRRRRRRR
+        /*public virtual Coroutine SetAnimationProvisorio(bool isRunning, float delay = 0f)
+        {
+            if (_coroutine == null)
+            {
+                _play();
+            }
+            else
+            {
+                StopCoroutine(_coroutine);
+                _coroutine = null;
+                this._isRunning = !isRunning;
+                _play();
+            }
+            return _coroutine;
+
+            void _play()
+            {
+                var routine = PlayAnimation(isRunning, delay);
+                _coroutine = StartCoroutine(routine);
+            }
+        }*/
         /// <summary>
         /// Plays the animation after an optional delay.
         /// </summary>
@@ -121,6 +143,9 @@ namespace TicTacToe3D.Inheritance
         {
             if (delay > 0f)
                 yield return new WaitForSeconds(delay);
+            else
+                yield return null;
+
             _animator.SetBool(_animatorHandler.ParameterHandlers[_parameterIndex].ID, isRunning);
             this._isRunning = isRunning;
             _coroutine = null;
