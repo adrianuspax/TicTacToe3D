@@ -41,7 +41,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3267378983161200396}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 2
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_Intensity: 0.1
@@ -93,7 +93,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -168,7 +168,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6144550762936205807}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 2
   m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_Intensity: 0.1
@@ -220,7 +220,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -494,17 +494,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ff6185a8dadeb429e32fc35be751ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cube
-  isRunning: 0
-  animator: {fileID: 3933124885911524952}
-  transform_: {fileID: 5096052277609862450}
-  inputs:
+  _isRunning: 0
+  _animator: {fileID: 3933124885911524952}
+  _transform: {fileID: 5096052277609862450}
+  _inputs:
   - {fileID: 961122671782030647}
   - {fileID: 7500527128998593349}
-  data:
+  _data:
     index: 0
-    input: -1
-  pointer: {fileID: 7776233709193436182}
-  animatorHandler:
+    input: 0
+  _pointer: {fileID: 7776233709193436182}
+  _animatorHandler:
     animator: {fileID: 3933124885911524952}
     parameterHandlers:
     - name: isActivated
@@ -551,6 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0042dbf303d4104197e70416e226865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TicTacToe3D.GamePlay.Cube::TicTacToe3D.GamePlay.Cube.PointerClick
+  isInteractable: 0
   meshRenderer: {fileID: 5351275747581411187}
   boxCollider: {fileID: 207305503142055591}
 --- !u!65 &207305503142055591

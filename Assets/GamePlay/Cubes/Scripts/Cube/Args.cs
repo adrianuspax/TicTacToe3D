@@ -4,23 +4,24 @@ using UnityEngine;
 namespace TicTacToe3D.GamePlay.Cube
 {
     /// <summary>
-    /// Arguments for Play Handler
+    /// Argumentos para a manipulação de eventos
     /// </summary>
     [Serializable]
     public class Args : EventArgs
     {
-        [SerializeField] private Data data; // The data associated with the block involved in the event.
+        [SerializeField] private Data _data; // Dados associados a interaçao com o cubo.
         /// <summary>
-        /// Arguments Constructor
+        /// Construtor da classe <see cref="Args"/>.
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="data">Recebe os dados associados a interação com o cubo.</param>
         public Args(Data data)
         {
-            this.data = data;
+            this._data = data;
         }
         /// <summary>
-        /// Return the data of the block
+        /// Retorna <see cref="_data"/> (Apenas leitura)
         /// </summary>
-        public Data Data => data;
+        /// <value>Dados associados a interação com o cubo.</value>
+        public Data Data => _data;
     }
 }
