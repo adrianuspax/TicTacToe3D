@@ -47,8 +47,8 @@ namespace TicTacToe3D.GamePlay.Main
             //restartButton.AddListener(ResetGame);
             //playerToggle.AddListener(SetPlayer);
             StartCoroutine(routine);
-            routine = FirstMovement();
-            StartCoroutine(routine);
+            //routine = FirstMovement();
+            //StartCoroutine(routine);
         }
         /// <inheritdoc/>
         private void OnDisable()

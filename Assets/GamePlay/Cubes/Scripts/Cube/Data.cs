@@ -4,43 +4,45 @@ using UnityEngine;
 namespace TicTacToe3D.GamePlay.Cube
 {
     /// <summary>
-    /// Block Data Struct
+    /// Struct para armazenar os dados associados à interação com o cubo.
     /// </summary>
     [Serializable]
     public struct Data
     {
-        [SerializeField] private int index; // The index of the block on the board.
-        [SerializeField] private Cube.Input.KindOf input; //The input value (e.g., X or O) of the block.
+        [Tooltip("Índice do cubo")]
+        [SerializeField] private int _index;
+        [Tooltip("O input atribuído ao cubo: X ou O")]
+        [SerializeField] private Cube.Input.KindOf _input;
         /// <summary>
-        /// Block Data Constructor
+        /// Construtor da struct <see cref="Data"/>.
         /// </summary>
-        /// <param name="index">Index of block from Tic Tac Toe</param>
-        /// <param name="input">Current Player Inputed in the block</param>
+        /// <param name="index">Índice do cubo.<br/>Deve compreender entre 0 e 8.</param>
+        /// <param name="input">Atual input do player</param>
         public Data(int index = -1, Cube.Input.KindOf input = Cube.Input.KindOf.hide)
         {
             if (index < 0 || index > 8)
                 index = -1;
 
-            this.index = index;
-            this.input = input;
+            _index = index;
+            _input = input;
         }
         /// <summary>
-        /// Return the index of the block
+        /// Índice do cubo.
         /// </summary>
         public int Index
         {
-            readonly get => index; set => index = value;
+            readonly get => _index; set => _index = value;
         }
         /// <summary>
-        /// Return the player input of the block
+        /// Input atribuído ao cubo: X ou O.
         /// </summary>
         public Cube.Input.KindOf Input
         {
-            readonly get => input; set => input = value;
+            readonly get => _input; set => _input = value;
         }
         /// <summary>
-        /// return if the block is already inputted
+        /// Retorna verdadeiro se o cubo tiver um input atribuído, caso contrário, retorna falso.
         /// </summary>
-        public readonly bool IsInputted => ((int)input) > -1;
+        public readonly bool IsInputted => ((int)_input) > -1;
     }
 }

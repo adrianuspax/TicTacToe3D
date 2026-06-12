@@ -9,7 +9,8 @@ namespace TicTacToe3D.GamePlay.Cube
     [Serializable]
     public class Args : EventArgs
     {
-        [SerializeField] private Data _data; // Dados associados a interaçao com o cubo.
+        [Tooltip("Dados associados a interaçao com o cubo")]
+        [SerializeField] private Data _data;
         /// <summary>
         /// Construtor da classe <see cref="Args"/>.
         /// </summary>

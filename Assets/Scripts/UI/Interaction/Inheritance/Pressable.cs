@@ -109,7 +109,7 @@ namespace TicTacToe3D.UI.Interaction.Inheritance
         /// </summary>
         public TextMeshProUGUI TMPro => tmp;
         /// <summary>
-        /// return the <see cref="UnityEngine.UI.Image"/> components: <see cref="icon"/> and <see cref="ring"/>
+        /// return the <see cref="UnityEngine.UI.Image"/> components: <see cref="icon"/>
         /// </summary>
         public Image Icon => icon;
         /// <summary>

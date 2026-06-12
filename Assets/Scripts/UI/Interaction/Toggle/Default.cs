@@ -67,6 +67,28 @@ namespace TicTacToe3D.UI.Interaction.Toggle
                 tmp.text = isOn ? toggleOnText : toggleOffText;
         }
 
+        protected void SetSpriteOn(Sprite value)
+        {
+            toggleOnSprite = value;
+        }
+
+        protected void SetSpriteOff(Sprite value)
+        {
+            toggleOffSprite = value;
+        }
+
+        protected void SetTextOn(string value)
+        {
+            toggleOnText = value;
+        }
+
+        protected void SetTextOff(string value)
+        {
+            toggleOffText = value;
+        }
+
+        protected (Sprite On, Sprite Off) Sprite => (toggleOnSprite, toggleOffSprite);
+        protected (string On, string Off) Text => (toggleOnText, toggleOffText);
         public Toggle Toggle => toggle;
     }
 }

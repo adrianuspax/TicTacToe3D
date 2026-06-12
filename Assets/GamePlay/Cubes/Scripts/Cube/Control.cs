@@ -18,30 +18,37 @@ namespace TicTacToe3D.GamePlay.Cube
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
-        [SerializeField, ReadOnly] private bool _isRunning; // Indica se o cubo está em execução.
+        [Tooltip("Indica se o cubo está em execução")]
+        [SerializeField, ReadOnly] private bool _isRunning;
 
         [Header(Header.components, order = 0)]
-        [SerializeField, ReadOnly] private Animator _animator; // Referência ao componente Animator do cubo.
-        [SerializeField, ReadOnly] private Transform _transform; // Referência ao componente Transform do cubo.
-        [SerializeField, NonReorderable, ReadOnly] private Input[] _inputs; // Array de componentes Input associados ao cubo.
+        [Tooltip("Referência ao componente Animator do cubo")]
+        [SerializeField, ReadOnly] private Animator _animator;
+        [Tooltip("Referência ao componente Transform do cubo")]
+        [SerializeField, ReadOnly] private Transform _transform;
+        [Tooltip("Array de componentes Input associados ao cubo")]
+        [SerializeField, NonReorderable, ReadOnly] private Input[] _inputs;
 
         [Header(Header.scripts, order = 0)]
-        [SerializeField, ReadOnly] private Data _data; // Dados associados à interação com o cubo.
-        [SerializeField, ReadOnly] private Pointer _pointer; // Referência ao script Pointer para detectar interações do usuário.
-        [SerializeField, ReadOnly] private AnimatorHandler _animatorHandler; // Referência ao script AnimatorHandler para controlar as animações do cubo.
+        [Tooltip("Dados associados à interação com o cubo")]
+        [SerializeField, ReadOnly] private Data _data;
+        [Tooltip("Referência ao script Pointer para detectar interações do usuário")]
+        [SerializeField, ReadOnly] private Pointer _pointer;
+        [Tooltip("Referência ao script AnimatorHandler para controlar as animações do cubo")]
+        [SerializeField, ReadOnly] private AnimatorHandler _animatorHandler;
         /// <summary>
         /// Evento para notificar quando o cubo é interagido, passando os dados associados à interação.
         /// </summary>
         public static event EventHandler<Args> Handler;
 #if UNITY_EDITOR
         ///<inheritdoc/>
-        [Button(nameof(Reset))]
+        [Button(nameof(Reset), SButtonEnableMode.Editor)]
         private void Reset()
         {
             Start();
         }
         /// <summary>
-        /// Method that can be called from the context menu in the Inpector for function tests
+        /// Método de teste para atribuir a escolha X.
         /// </summary>
         [Button(nameof(X), SButtonEnableMode.Playmode)]
         private void X()
@@ -49,7 +56,7 @@ namespace TicTacToe3D.GamePlay.Cube
             SetInput(Input.KindOf.x);
         }
         /// <summary>
-        /// Method that can be called from the context menu in the Inpector for function tests
+        /// Método de teste para atribuir a escolha O.
         /// </summary>
         [Button(nameof(O), SButtonEnableMode.Playmode)]
         private void O()

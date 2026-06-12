@@ -25,8 +25,17 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
             IEnumerator _routine()
             {
                 yield return SetAnimation(true);
-                bottomControl.SetAnimation(true);
+                toggleDefault.Toggle.isOn = true;
             }
+
+            /*var routine = _routine();
+            StartCoroutine(routine);
+            return;
+            IEnumerator _routine()
+            {
+                yield return SetAnimation(true);
+                bottomControl.SetAnimation(true);
+            }*/
         }
         ///<inheritdoc/>
         private void OnDisable()

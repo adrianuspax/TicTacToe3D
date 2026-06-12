@@ -331,6 +331,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: e8419c20f7c602e408f6ec757aa73aad, type: 2}
     - target: {fileID: -4477012088767605914, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4477012088767605914, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4477012088767605914, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 23199fd9e429cd04aa1fc69f4a9d919e, type: 2}
@@ -344,6 +352,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3396913584297481876, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485280141793100459, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485280141793100459, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
+      propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6485280141793100459, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
@@ -418,17 +434,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e705ff8185a2f64cb32a4246fb7d67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TicTacToe3D.GamePlay.Cube.Input
-  time: 0.5
-  frequence: 50
-  rangeAlpha: {x: 0.2, y: 1}
-  softChance: 0.3
-  softTime: 0.1
-  isVisible: 0
-  isOn: 0
-  originalColor: {r: 0, g: 2.9960787, b: 2.9960787, a: 1}
-  emissionColorID: 0
-  meshRenderer: {fileID: 3791391370638359258}
-  light_: {fileID: 5866961913284322685}
+  _time: 0.5
+  _frequence: 50
+  _rangeAlpha: {x: 0.2, y: 1}
+  _softChance: 0.3
+  _softTime: 0.1
+  _isVisible: 0
+  _isOn: 0
+  _originalColor: {r: 0, g: 2.9960787, b: 2.9960787, a: 1}
+  _emissionColorID: 241
+  _meshRenderer: {fileID: 3791391370638359258}
+  _light: {fileID: 5866961913284322685}
 --- !u!23 &3405733457986906903 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6485280141793100459, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
@@ -466,17 +482,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e705ff8185a2f64cb32a4246fb7d67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Input
-  time: 0.5
-  frequence: 50
-  rangeAlpha: {x: 0.2, y: 1}
-  softChance: 0.3
-  softTime: 0.1
-  isVisible: 0
-  isOn: 0
-  originalColor: {r: 0, g: 2.9960785, b: 0, a: 1}
-  emissionColorID: 0
-  meshRenderer: {fileID: 3405733457986906903}
-  light_: {fileID: 8652061119965975982}
+  _time: 0.5
+  _frequence: 50
+  _rangeAlpha: {x: 0.2, y: 1}
+  _softChance: 0.3
+  _softTime: 0.1
+  _isVisible: 0
+  _isOn: 0
+  _originalColor: {r: 0, g: 3.0901961, b: 0, a: 1}
+  _emissionColorID: 241
+  _meshRenderer: {fileID: 3405733457986906903}
+  _light: {fileID: 8652061119965975982}
 --- !u!1 &8755743923869897965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
@@ -501,8 +517,8 @@ MonoBehaviour:
   - {fileID: 961122671782030647}
   - {fileID: 7500527128998593349}
   _data:
-    index: 0
-    input: 0
+    _index: 0
+    _input: 0
   _pointer: {fileID: 7776233709193436182}
   _animatorHandler:
     animator: {fileID: 3933124885911524952}
