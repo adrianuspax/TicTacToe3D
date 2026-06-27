@@ -4351,6 +4351,8 @@ MonoBehaviour:
   _delay: 0
   _isToOpenTest: 0
   toggleDefault: {fileID: 1338313434}
+  human: {fileID: 21300000, guid: 98d3a677594aa0a43adc99822d71a198, type: 3}
+  robot: {fileID: 21300000, guid: 63aec14765561d840ae2da536533ee57, type: 3}
   bottomControl: {fileID: 1523715877}
 --- !u!1001 &1617052777
 PrefabInstance:
