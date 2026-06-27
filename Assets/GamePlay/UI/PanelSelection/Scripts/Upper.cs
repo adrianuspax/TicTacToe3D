@@ -1,6 +1,8 @@
+using ASPax.Attributes.Drawer;
 using ASPax.Attributes.Drawer.SpecialCases;
 using ASPax.Attributes.Meta;
 using ASPax.Extensions;
+using ASPax.Utilities;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +11,9 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
 {
     public class Upper : TicTacToe3D.GamePlay.UI.PanelSelection.Default
     {
+        [Header(Header.READONLY, order = 0), HorizontalLine]
+        [Space(-10, order = 1)]
+        [Header(Header.scripts, order = 2)]
         [SerializeField, ReadOnly] private Bottom bottomControl;
         ///<inheritdoc/>
         private void OnEnable()
@@ -27,15 +32,6 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
                 yield return SetAnimation(true);
                 toggleDefault.Toggle.isOn = true;
             }
-
-            /*var routine = _routine();
-            StartCoroutine(routine);
-            return;
-            IEnumerator _routine()
-            {
-                yield return SetAnimation(true);
-                bottomControl.SetAnimation(true);
-            }*/
         }
         ///<inheritdoc/>
         private void OnDisable()
