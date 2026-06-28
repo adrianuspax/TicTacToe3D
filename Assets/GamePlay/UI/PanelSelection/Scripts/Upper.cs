@@ -14,8 +14,12 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         [Header(Header.MANAGEABLE, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.sprites, order = 2)]
-        [SerializeField] private Sprite human;
-        [SerializeField] private Sprite robot;
+        [SerializeField] private Sprite humanSprite;
+        [SerializeField] private Sprite robotSprite;
+        [Space(-10, order = 0)]
+        [Header(Header.strings, order = 1)]
+        [SerializeField] private string humanString;
+        [SerializeField] private string robotString;
 
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]

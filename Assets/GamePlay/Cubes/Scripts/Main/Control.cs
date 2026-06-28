@@ -45,7 +45,7 @@ namespace TicTacToe3D.GamePlay.Main
             var routine = InstantiateSafetyAI(value => ai = value);
             result = new();
             //restartButton.AddListener(ResetGame);
-            //playerToggle.AddListener(SetPlayer);
+            UI.PanelSelection.Manager.Instance.Bottom.TogglePlayer.Toggle.onValueChanged.AddListener(SetPlayer);
             StartCoroutine(routine);
             //routine = FirstMovement();
             //StartCoroutine(routine);
