@@ -13,35 +13,35 @@ namespace TicTacToe3D.GamePlay.Cube
         [Header(Header.MANAGEABLE, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
-        [Tooltip("Tempo para a nimação do Flicker")]
+        [Tooltip("Tempo para a nimação do Flicker.")]
         [SerializeField] private float _time;
-        [Tooltip("Frequência para a animação do Flicker")]
+        [Tooltip("Frequência para a animação do Flicker.")]
         [SerializeField] private float _frequence;
-        [Tooltip("Intervalo de valores de alpha para a animação do Flicker")]
+        [Tooltip("Intervalo de valores de alpha para a animação do Flicker.")]
         [SerializeField] private Vector2 _rangeAlpha;
-        [Tooltip("Chance de ocorrer a animação do Flicker de forma suave")]
+        [Tooltip("Chance de ocorrer a animação do Flicker de forma suave.")]
         [SerializeField, Range(0f, 1f)] private float _softChance;
-        [Tooltip("Tempo para a animação do Flicker ocorrer de forma suave")]
+        [Tooltip("Tempo para a animação do Flicker ocorrer de forma suave.")]
         [SerializeField] private float _softTime;
 
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
-        [Tooltip("Verdadeiro se o input está visível")]
+        [Tooltip("Verdadeiro se o input está visível.")]
         [SerializeField, ReadOnly] private bool _isVisible;
-        [Tooltip("Verdadeiro se o input está ligado (Luz)")]
+        [Tooltip("Verdadeiro se o input está ligado (Luz).")]
         [SerializeField, ReadOnly] private bool _isOn;
-        [Tooltip("Cor do input ligado")]
+        [Tooltip("Cor do input ligado.")]
         [SerializeField, ReadOnly] private Color _originalColor;
-        [Tooltip("ID do shader referente ao Emission Color")]
+        [Tooltip("ID do shader referente ao Emission Color.")]
         [SerializeField, ReadOnly] private int _emissionColorID;
         [Header(Header.components, order = 0)]
-        [Tooltip("Componente do Mehs Renderer")]
+        [Tooltip("Componente do Mehs Renderer.")]
         [SerializeField, ReadOnly] private MeshRenderer _meshRenderer;
-        [Tooltip("Componente Light")]
+        [Tooltip("Componente Light.")]
         [SerializeField, ReadOnly] private Light _light;
-
-        private MaterialPropertyBlock _materialPropertyBlock; // Propriedade para controlar as propriedades do material.
+        // Propriedade para controlar as propriedades do material.
+        private MaterialPropertyBlock _materialPropertyBlock;
 #if UNITY_EDITOR
         ///<inheritdoc/>
         [Button(nameof(Reset), SButtonEnableMode.Editor)]
@@ -157,9 +157,9 @@ namespace TicTacToe3D.GamePlay.Cube
             }
         }
 
-        public Coroutine SetTurnFlicker(bool isOn, float delay = 0f, bool forceVisibility = false)
+        public Coroutine SetTurnFlicker(bool isOn, float delay = 0f, bool isVisibilityForced = false)
         {
-            if (forceVisibility)
+            if (isVisibilityForced)
                 SetVisibility(true);
 
             if (_isVisible)

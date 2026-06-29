@@ -18,23 +18,23 @@ namespace TicTacToe3D.GamePlay.Cube
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
-        [Tooltip("Indica se o cubo está em execução")]
+        [Tooltip("Indica se o cubo está em execução.")]
         [SerializeField, ReadOnly] private bool _isRunning;
 
         [Header(Header.components, order = 0)]
-        [Tooltip("Referência ao componente Animator do cubo")]
+        [Tooltip("Referência ao componente Animator do cubo.")]
         [SerializeField, ReadOnly] private Animator _animator;
-        [Tooltip("Referência ao componente Transform do cubo")]
+        [Tooltip("Referência ao componente Transform do cubo.")]
         [SerializeField, ReadOnly] private Transform _transform;
-        [Tooltip("Array de componentes Input associados ao cubo")]
+        [Tooltip("Array de componentes Input associados ao cubo.")]
         [SerializeField, NonReorderable, ReadOnly] private Input[] _inputs;
 
         [Header(Header.scripts, order = 0)]
-        [Tooltip("Dados associados à interação com o cubo")]
+        [Tooltip("Dados associados à interação com o cubo.")]
         [SerializeField, ReadOnly] private Data _data;
-        [Tooltip("Referência ao script Pointer para detectar interações do usuário")]
+        [Tooltip("Referência ao script Pointer para detectar interações do usuário.")]
         [SerializeField, ReadOnly] private Pointer _pointer;
-        [Tooltip("Referência ao script AnimatorHandler para controlar as animações do cubo")]
+        [Tooltip("Referência ao script AnimatorHandler para controlar as animações do cubo.")]
         [SerializeField, ReadOnly] private AnimatorHandler _animatorHandler;
         /// <summary>
         /// Evento para notificar quando o cubo é interagido, passando os dados associados à interação.
@@ -72,11 +72,10 @@ namespace TicTacToe3D.GamePlay.Cube
         ///<inheritdoc/>
         private void OnEnable()
         {
-            /*pointer.ClickHandler += () =>
+            _pointer.ClickHandler += () =>
             {
                 SetInput(Input.KindOf.x);
-            };*/
-            return;
+            };
         }
         ///<inheritdoc/>
         private void Start()
@@ -152,7 +151,7 @@ namespace TicTacToe3D.GamePlay.Cube
             }
         }
         /// <summary>
-        /// Retorna/Atribui <see cref="_data"/>
+        /// Retorna e/ou Atribui <see cref="_data"/>
         /// </summary>
         /// <value>Dados associados a interação com o cubo.</value>
         public Data Data
@@ -160,6 +159,10 @@ namespace TicTacToe3D.GamePlay.Cube
             get => _data;
             set => _data = value;
         }
+        /// <summary>
+        /// Retorna <see cref="_inputs"/>
+        /// </summary>
+        public Input[] Inputs => _inputs;
         /// <summary>
         /// Atributo estático para armazenar a última entrada registrada em qualquer cubo.
         /// </summary>

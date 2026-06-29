@@ -16,12 +16,23 @@ namespace TicTacToe3D.GamePlay.UI.PanelNotice
         [SerializeField, ReadOnly] private Button.Nop nopButton;
         [SerializeField, ReadOnly] private Button.Yes yesButton;
         ///<inheritdoc/>
+        protected override void Start()
+        {
+            yesButton.Button.onClick.AddListener(SetAnimationFalse);
+            nopButton.Button.onClick.AddListener(SetAnimationFalse);
+        }
+        ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
         public override void ComponentsAssignment()
         {
             base.ComponentsAssignment();
             this.GetComponentInChildrenIfNull(ref nopButton);
             this.GetComponentInChildrenIfNull(ref yesButton);
+        }
+
+        private void SetAnimationFalse()
+        {
+            SetAnimation(false, 0.5f);
         }
 
         public Button.Nop NopButton => nopButton;

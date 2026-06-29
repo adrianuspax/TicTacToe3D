@@ -7,7 +7,6 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TicTacToe3D.GamePlay.Main
@@ -21,13 +20,17 @@ namespace TicTacToe3D.GamePlay.Main
         [Space(-10, order = 1)]
         [Header(Header.variables, order = 2)]
         [SerializeField, ReadOnly] private Cube.Input.KindOf player;
-        [SerializeField, ReadOnly] private AI.Result result; // The result of the game.
+        [Tooltip("The result of the game.")]
+        [SerializeField, ReadOnly] private AI.Result result;
 
         [Header(Header.scripts, order = 0)]
-        [SerializeField, NonReorderable, ReadOnly] private Cube.Control[] cubes; // An array of Cube controls representing the cells of the board.
-        [SerializeField, NonReorderable, ReadOnly] private Cube.Data[] board; // An array of Cube data representing the state of the board.
+        [Tooltip("An array of Cube controls representing the cells of the board.")]
+        [SerializeField, NonReorderable, ReadOnly] private Cube.Control[] cubes;
+        [Tooltip("An array of Cube data representing the state of the board.")]
+        [SerializeField, NonReorderable, ReadOnly] private Cube.Data[] board;
         [Space(20)]
-        [SerializeField, ReadOnly] private AI ai; // The AI instance for the game.
+        [Tooltip("The AI instance for the game.")]
+        [SerializeField, ReadOnly] private AI ai;
         /// <inheritdoc/>
         private void Awake()
         {
@@ -44,11 +47,10 @@ namespace TicTacToe3D.GamePlay.Main
         {
             var routine = InstantiateSafetyAI(value => ai = value);
             result = new();
-            //restartButton.AddListener(ResetGame);
             UI.PanelSelection.Manager.Instance.Bottom.TogglePlayer.Toggle.onValueChanged.AddListener(SetPlayer);
             StartCoroutine(routine);
-            //routine = FirstMovement();
-            //StartCoroutine(routine);
+            routine = FirstMovement();
+            UI.PanelSelection.Manager.Instance.Upper.TogglePlayer.Toggle.onValueChanged.AddListener(value => { if (!value) StartCoroutine(routine); });
         }
         /// <inheritdoc/>
         private void OnDisable()
@@ -118,13 +120,14 @@ namespace TicTacToe3D.GamePlay.Main
             {
                 return false;
             }
-
+            // Comportamento dos cubos quando o jogo termina.
             void _beahviour()
             {
-                for (var i = 0; i < result.indexes.Length; i++)
+                return;
+                /*for (var i = 0; i < result.indexes.Length; i++)
                 {
-                    //cubes[result.indexes[i]].SetColorText(Color.indianRed);
-                }
+                    cubes[result.indexes[i]].Inputs[i].SetTurnFlicker(false);
+                }*/
             }
         }
         /// <summary>
@@ -146,18 +149,12 @@ namespace TicTacToe3D.GamePlay.Main
             Cube.Pointer.SetAllInteractable(value);
         }
 
-        public void ResetGame()
-        {
-            var scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
-
         public void SetPlayer(bool isHuman)
         {
             player = isHuman ? Cube.Input.KindOf.x : Cube.Input.KindOf.o;
         }
 
-        private IEnumerator InstantiateSafetyAI(UnityAction<AI> call)
+        private IEnumerator InstantiateSafetyAI(UnityAction<AI> call) //Talvez isso não precise.
         {
             yield return null; //new WaitUntil(() => playerToggle.didStart);
             var value = new AI(player);
@@ -166,6 +163,7 @@ namespace TicTacToe3D.GamePlay.Main
 
         private IEnumerator FirstMovement(float delay = 0f)
         {
+            print("FirstMovement");
             yield return new WaitWhile(() => player == Cube.Input.KindOf.hide);
 
             if (player == Cube.Input.KindOf.o)
@@ -188,8 +186,8 @@ namespace TicTacToe3D.GamePlay.Main
             {
                 var waitForSeconds = new WaitForSeconds(0.75f);
                 yield return waitForSeconds;
-                /*if (result.main == Main.Result.none)
-                    panel.SetActive(true);*/
+                if (result.main == Main.Result.none)
+                    UI.PanelNotice.Manager.Instance.SetAnimation(true);
             }
         }
 
