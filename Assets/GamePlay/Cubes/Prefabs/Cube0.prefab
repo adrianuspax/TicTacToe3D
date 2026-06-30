@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
+      propertyPath: m_Name
+      value: CubeMesh
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: 246079e21d581354c98ecc68f031c3b3, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0

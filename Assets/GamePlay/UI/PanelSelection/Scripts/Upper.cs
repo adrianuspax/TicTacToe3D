@@ -24,7 +24,7 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.scripts, order = 2)]
-        [SerializeField, ReadOnly] private Bottom bottomControl;
+        [SerializeField, ReadOnly] private Bottom bottom;
         ///<inheritdoc/>
         private void OnEnable()
         {
@@ -39,7 +39,11 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
             return;
             IEnumerator _routine()
             {
+                bottom.TogglePlayer.Toggle.interactable = false;
+                toggleDefault.Toggle.interactable = false;
                 yield return SetAnimation(true);
+                toggleDefault.Toggle.interactable = true;
+                bottom.TogglePlayer.Toggle.interactable = true;
                 toggleDefault.Toggle.isOn = true;
             }
         }
@@ -53,14 +57,14 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         public override void ComponentsAssignment()
         {
             base.ComponentsAssignment();
-            transform.parent.GetComponentInChildrenIfNull(ref bottomControl);
+            transform.parent.GetComponentInChildrenIfNull(ref bottom);
         }
         /// <summary>
         /// 
         /// </summary>
         private void ToggleFunction(bool isOn)
         {
-            bottomControl.SetAnimation(isOn);
+            bottom.SetAnimation(isOn);
         }
     }
 }

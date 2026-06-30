@@ -904,42 +904,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877c2e5859dac2b4c8582b727fb2ebea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: TicTacToe3D.GamePlay.Main::TicTacToe3D.GamePlay.Main.Control
-  player: 0
+  player: -1
   result:
     main: 0
     indexes: 
-  cubes:
-  - {fileID: 827174334}
-  - {fileID: 1699964179}
-  - {fileID: 1927426406}
-  - {fileID: 1787960578}
-  - {fileID: 1617052780}
-  - {fileID: 1738267480}
-  - {fileID: 971080500}
-  - {fileID: 1850730589}
-  - {fileID: 475561342}
   board:
-  - _index: 7
-    _input: -1
-  - _index: 6
-    _input: -1
-  - _index: 8
-    _input: -1
-  - _index: 3
+  - _index: 0
     _input: -1
   - _index: 1
     _input: -1
   - _index: 2
     _input: -1
-  - _index: 0
-    _input: -1
-  - _index: 5
+  - _index: 3
     _input: -1
   - _index: 4
     _input: -1
+  - _index: 5
+    _input: -1
+  - _index: 6
+    _input: -1
+  - _index: 7
+    _input: -1
+  - _index: 8
+    _input: -1
   ai:
-    human: 0
-    ai: 0
+    human: -1
+    ai: -1
     move: 0
     bestMoves: 
 --- !u!1001 &287731481
@@ -3102,7 +3092,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!225 &1160493029
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3157,8 +3147,8 @@ MonoBehaviour:
   isVisible: 0
   toggleOnSprite: {fileID: 21300000, guid: d99646d436a4cee4998364d31de85ad5, type: 3}
   toggleOffSprite: {fileID: 21300000, guid: 432db974899380142abc764270771b86, type: 3}
-  toggleOnText: '| I.A. |'
-  toggleOffText: '| YOU |'
+  toggleOnText: '| YOU |'
+  toggleOffText: '| I.A. |'
   toggle: {fileID: 1160493028}
 --- !u!1 &1193717357
 GameObject:
@@ -4117,7 +4107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '| YOU |'
+  m_text: '| I.A. |'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87c5447e299d4f847843b3607d03bbbd, type: 2}
   m_sharedMaterial: {fileID: -368723978539381385, guid: 87c5447e299d4f847843b3607d03bbbd, type: 2}
@@ -4144,7 +4134,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.1
+  m_fontSize: 60.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4408,7 +4398,7 @@ MonoBehaviour:
   robotSprite: {fileID: 21300000, guid: 63aec14765561d840ae2da536533ee57, type: 3}
   humanString: < Your Time >
   robotString: < I.A. Time >
-  bottomControl: {fileID: 1523715877}
+  bottom: {fileID: 1523715877}
 --- !u!1001 &1617052777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4950,6 +4940,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1847414924}
+  - component: {fileID: 1847414925}
+  - component: {fileID: 1847414926}
   m_Layer: 0
   m_Name: Cubes
   m_TagString: Untagged
@@ -4981,6 +4973,41 @@ Transform:
   - {fileID: 198761557}
   m_Father: {fileID: 1481729953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847414925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847414923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a10a5e165c6aa4a8a963972a27ba37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.Cube::TicTacToe3D.GamePlay.Cube.Cubes
+  cubes:
+  - {fileID: 971080500}
+  - {fileID: 1617052780}
+  - {fileID: 1738267480}
+  - {fileID: 1787960578}
+  - {fileID: 475561342}
+  - {fileID: 1850730589}
+  - {fileID: 1699964179}
+  - {fileID: 827174334}
+  - {fileID: 1927426406}
+--- !u!114 &1847414926
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847414923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a838a4bdfabd4d489ac32eae16786f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TicTacToe3D.GamePlay.Main.Cubes::TicTacToe3D.GamePlay.Main.Cubes.Manager
+  _instance: {fileID: 1847414925}
 --- !u!114 &1850730589 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2599339663970282776, guid: 8acf5707a993eae4f9087e7530ff28c0, type: 3}

@@ -12,6 +12,13 @@ namespace TicTacToe3D.GamePlay.Main
     [Serializable]
     public partial class AI
     {
+#if UNITY_EDITOR
+        public AI()
+        {
+            human = Cube.Input.KindOf.hide;
+            ai = Cube.Input.KindOf.hide;
+        }
+#endif
         /// <summary>
         /// Initializes a new instance of the <see cref="AI"/> class.
         /// </summary>
@@ -90,9 +97,9 @@ namespace TicTacToe3D.GamePlay.Main
             {
                 if (board[i].Input == Cube.Input.KindOf.hide)
                 {
-                    board[i].Input = ai;
+                    board[i].SetInput(ai);
                     var score = Minimax(board, 0, false);
-                    board[i].Input = Cube.Input.KindOf.hide;
+                    board[i].SetInput(Cube.Input.KindOf.hide);
                     Safety.Debug.Log("AI Move Index: " + i + " Score: " + score);
                     if (score > bestScore)
                     {
@@ -146,10 +153,10 @@ namespace TicTacToe3D.GamePlay.Main
                 {
                     if (board[i].Input == Cube.Input.KindOf.hide)
                     {
-                        board[i].Input = ai;
+                        board[i].SetInput(ai);
                         var b = Minimax(board, depth + 1, false);
                         best = Mathf.Max(best, b);
-                        board[i].Input = Cube.Input.KindOf.hide;
+                        board[i].SetInput(Cube.Input.KindOf.hide);
                     }
                 }
             }
@@ -161,10 +168,10 @@ namespace TicTacToe3D.GamePlay.Main
                 {
                     if (board[i].Input == Cube.Input.KindOf.hide)
                     {
-                        board[i].Input = human;
+                        board[i].SetInput(human);
                         var b = Minimax(board, depth + 1, true);
                         best = Mathf.Min(best, b);
-                        board[i].Input = Cube.Input.KindOf.hide;
+                        board[i].SetInput(Cube.Input.KindOf.hide);
                     }
                 }
             }

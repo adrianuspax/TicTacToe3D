@@ -134,7 +134,8 @@ namespace TicTacToe3D.GamePlay.Cube
                 return null;
 
             var routine = _routine();
-            LastInput = _data.Input = input;
+            _data.SetInput(input);
+            LastInput = _data.Input;
             var e = new Args(_data);
             Handler.Invoke(this, e);
             return StartCoroutine(routine);
@@ -151,14 +152,18 @@ namespace TicTacToe3D.GamePlay.Cube
             }
         }
         /// <summary>
+        /// Atribui o valor para <see cref="_data"/><br/>
+        /// Apenas atribua se estiver certo disso!
+        /// </summary>
+        public void SetData(Data data)
+        {
+            _data = data;
+        }
+        /// <summary>
         /// Retorna e/ou Atribui <see cref="_data"/>
         /// </summary>
         /// <value>Dados associados a interação com o cubo.</value>
-        public Data Data
-        {
-            get => _data;
-            set => _data = value;
-        }
+        public Data Data => _data;
         /// <summary>
         /// Retorna <see cref="_inputs"/>
         /// </summary>

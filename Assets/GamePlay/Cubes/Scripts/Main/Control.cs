@@ -24,13 +24,20 @@ namespace TicTacToe3D.GamePlay.Main
         [SerializeField, ReadOnly] private AI.Result result;
 
         [Header(Header.scripts, order = 0)]
-        [Tooltip("An array of Cube controls representing the cells of the board.")]
-        [SerializeField, NonReorderable, ReadOnly] private Cube.Control[] cubes;
         [Tooltip("An array of Cube data representing the state of the board.")]
         [SerializeField, NonReorderable, ReadOnly] private Cube.Data[] board;
         [Space(20)]
         [Tooltip("The AI instance for the game.")]
         [SerializeField, ReadOnly] private AI ai;
+#if UNITY_EDITOR
+        ///<inheritdoc/>
+        [Button(nameof(Reset))]
+        private void Reset()
+        {
+            player = Cube.Input.KindOf.hide;
+            ai = new();
+        }
+#endif
         /// <inheritdoc/>
         private void Awake()
         {
@@ -45,12 +52,28 @@ namespace TicTacToe3D.GamePlay.Main
         /// <inheritdoc/>
         private void Start()
         {
-            var routine = InstantiateSafetyAI(value => ai = value);
+            IEnumerator routine;
             result = new();
             UI.PanelSelection.Manager.Instance.Bottom.TogglePlayer.Toggle.onValueChanged.AddListener(SetPlayer);
-            StartCoroutine(routine);
-            routine = FirstMovement();
-            UI.PanelSelection.Manager.Instance.Upper.TogglePlayer.Toggle.onValueChanged.AddListener(value => { if (!value) StartCoroutine(routine); });
+            UI.PanelSelection.Manager.Instance.Upper.TogglePlayer.Toggle.onValueChanged.AddListener(_call);
+            return;
+            void _call(bool value)
+            {
+                routine = _routine();
+                if (value)
+                    return;
+                else
+                    StartCoroutine(routine);
+            }
+
+            IEnumerator _routine()
+            {
+                routine = InstantiateSafetyAI(value => ai = value);
+                yield return StartCoroutine(routine);
+                routine = FirstMovement();
+                yield return StartCoroutine(routine);
+                UI.PanelSelection.Manager.Instance.Upper.TogglePlayer.Toggle.onValueChanged.RemoveListener(_call);
+            }
         }
         /// <inheritdoc/>
         private void OnDisable()
@@ -62,8 +85,9 @@ namespace TicTacToe3D.GamePlay.Main
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
         public void ComponentsAssignment()
         {
-            this.FindObjectsByTypeIfNull(ref cubes);
-            board = GetBoard();
+            var isNullOrEmpty = board.IsNullOrEmpty();
+            if (isNullOrEmpty)
+                board = GetBoard();
         }
         /// <summary>
         /// Function used to be called when <see cref="Cube.Control.Handler"/> is invoked.
@@ -73,7 +97,7 @@ namespace TicTacToe3D.GamePlay.Main
         /// <remarks>Default arguments when using <see cref="System.EventHandler"/></remarks>
         public void OnPlayable(object sender, Cube.Args e)
         {
-            cubes[e.Data.Index].Data = e.Data;
+            Main.Cubes.Manager.Instance.Array[e.Data.Index].SetData(e.Data);
             var isEnd = ResultBehaviour();
 
             if (isEnd)
@@ -141,7 +165,7 @@ namespace TicTacToe3D.GamePlay.Main
                 return null;
 
             var nextInput = GetNextInput();
-            return cubes[bestSlotIndex].SetInput(nextInput, delay);
+            return Main.Cubes.Manager.Instance.Array[bestSlotIndex].SetInput(nextInput, delay);
         }
 
         public void SetCubesInteractable(bool value)
@@ -154,16 +178,16 @@ namespace TicTacToe3D.GamePlay.Main
             player = isHuman ? Cube.Input.KindOf.x : Cube.Input.KindOf.o;
         }
 
-        private IEnumerator InstantiateSafetyAI(UnityAction<AI> call) //Talvez isso não precise.
+        private IEnumerator InstantiateSafetyAI(UnityAction<AI> call)
         {
-            yield return null; //new WaitUntil(() => playerToggle.didStart);
+            //yield return new WaitUntil(() => UI.PanelSelection.Manager.Instance.Bottom.TogglePlayer.didStart);
             var value = new AI(player);
             call?.Invoke(value);
+            yield return null;
         }
 
         private IEnumerator FirstMovement(float delay = 0f)
         {
-            print("FirstMovement");
             yield return new WaitWhile(() => player == Cube.Input.KindOf.hide);
 
             if (player == Cube.Input.KindOf.o)
@@ -172,7 +196,7 @@ namespace TicTacToe3D.GamePlay.Main
                 var index = Random.Range(0, values.Length);
                 var value = values[index];
                 var nextInput = GetNextInput();
-                yield return cubes[value].SetInput(nextInput, delay);
+                yield return Main.Cubes.Manager.Instance.Array[value].SetInput(nextInput, delay);
             }
         }
 
@@ -190,19 +214,33 @@ namespace TicTacToe3D.GamePlay.Main
                     UI.PanelNotice.Manager.Instance.SetAnimation(true);
             }
         }
-
+#if UNITY_EDITOR
         private Cube.Data[] GetBoard()
         {
+            var cubes = FindAnyObjectByType<Main.Cubes.Control>().Array;
+
             var isNullOrEmpty = cubes.IsNullOrEmpty();
             if (isNullOrEmpty)
             {
-                Debug.LogError($"{nameof(cubes)} is empty or null!", this);
+                Debug.LogError($"{nameof(Main.Cubes.Control.Array)} is empty or null!", this);
                 return null;
             }
 
             return cubes.Select(cube => cube.Data).ToArray();
         }
+#else
+        private Cube.Data[] GetBoard()
+        {
+            var isNullOrEmpty = Main.Cubes.Manager.Instance.Array.IsNullOrEmpty();
+            if (isNullOrEmpty)
+            {
+                Debug.LogError($"{nameof(Main.Cubes.Manager.Instance.Array)} is empty or null!", this);
+                return null;
+            }
 
+            return Main.Cubes.Manager.Instance.Array.Select(cube => cube.Data).ToArray();
+        }
+#endif
         public Cube.Input.KindOf GetNextInput()
         {
             return Cube.Control.LastInput switch
@@ -216,7 +254,7 @@ namespace TicTacToe3D.GamePlay.Main
         /// Return all Cubes
         /// </summary>
         /// <remarks>Read only</remarks>
-        public Cube.Control[] Cubes => cubes;
+        public Cube.Control[] Cubes => Main.Cubes.Manager.Instance.Array;
         /// <summary>
         /// Gets the input type of the human player.
         /// </summary>
@@ -226,13 +264,6 @@ namespace TicTacToe3D.GamePlay.Main
         /// </summary>
         public AI.Result Result => result;
 
-        public Cube.Data[] Board
-        {
-            get
-            {
-                board = GetBoard();
-                return board;
-            }
-        }
+        public Cube.Data[] Board => board;
     }
 }
