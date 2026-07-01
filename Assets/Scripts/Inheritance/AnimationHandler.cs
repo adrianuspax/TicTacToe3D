@@ -88,31 +88,12 @@ namespace TicTacToe3D.Inheritance
             if (isNecessaryUpdateInstance)
                 _animatorHandler = new(_animator);
         }
-        /*/// <summary>
+        /// <summary>
         /// Sets the animation state with an optional delay.
         /// </summary>
-        /// <param name="isRunning">The target state of the animation.</param>
+        /// <param name="isToOpen">The target state of the animation.</param>
         /// <param name="delay">The delay before the animation starts.</param>
-        /// <returns>The duration of the animation clip, including the delay, or null if the state is already set.</returns>
-        public virtual float? SetAnimation(bool isRunning, float delay = 0f)
-        {
-            if (_coroutine != null)
-            {
-                StopCoroutine(_coroutine);
-                this._isRunning = !isRunning;
-            }
-
-            if (this._isRunning == isRunning)
-                return null;
-            var duration = _animatorHandler.AnimationClips[isRunning ? _startingAnimationClipIndex : _finishingAnimationClipIndex].length;
-            if (delay > 0f)
-                duration += delay;
-            var routine = PlayAnimation(isRunning, delay);
-            _coroutine = StartCoroutine(routine);
-            isRunning.ComparativeAssignment(ref this._isRunning);
-            return duration;
-        }*/
-
+        /// <returns></returns>
         public virtual Coroutine SetAnimation(bool isToOpen, float delay = 0f)
         {
             if (_coroutine == null)

@@ -72,10 +72,10 @@ namespace TicTacToe3D.GamePlay.Cube
         ///<inheritdoc/>
         private void OnEnable()
         {
-            _pointer.ClickHandler += () =>
+            /*_pointer.ClickHandler += () =>
             {
                 SetInput(Input.KindOf.x);
-            };
+            };*/
         }
         ///<inheritdoc/>
         private void Start()

@@ -13,6 +13,9 @@ namespace TicTacToe3D.GamePlay.Main
     public partial class AI
     {
 #if UNITY_EDITOR
+        /// <summary>
+        /// Construtor será usado apenas no editor para resetar os valores
+        /// </summary>
         public AI()
         {
             human = Cube.Input.KindOf.hide;
@@ -40,13 +43,20 @@ namespace TicTacToe3D.GamePlay.Main
                 _ => Cube.Input.KindOf.o,
             };
         }
-
-        [SerializeField] private Cube.Input.KindOf human; //The input type representing the human player.
-        [SerializeField] private Cube.Input.KindOf ai; // The input type representing the AI player.
+        [Tooltip("The input type representing the human player.")]
+        [SerializeField] private Cube.Input.KindOf human;
+        [Tooltip("The input type representing the AI player.")]
+        [SerializeField] private Cube.Input.KindOf ai;
+        [Tooltip("Movimento.")]
         [SerializeField] private int move;
+        [Tooltip("Melhores Movimentos.")]
         [SerializeField, NonReorderable] private List<int> bestMoves;
+        /// <summary>
+        /// Ação para acionar a notificação de que o player fatalmente irá perder o jogo.
+        /// </summary>
         public static event UnityAction NotifyHandler;
-        private readonly int[,] winConditions = new int[,] // Defines the winning combinations on the Tic-Tac-Toe board.
+        // Defines the winning combinations on the Tic-Tac-Toe board.
+        private readonly int[,] winConditions = new int[,]
         {
             {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Lines
             {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Columns
@@ -136,7 +146,7 @@ namespace TicTacToe3D.GamePlay.Main
         /// <returns>The score of the move.</returns>
         private int Minimax(Cube.Data[] board, int depth, bool isMaximizing)
         {
-            int best;
+            var best = 0;
             var score = Evaluate(board);
             if (score == 10)
                 return score - depth;

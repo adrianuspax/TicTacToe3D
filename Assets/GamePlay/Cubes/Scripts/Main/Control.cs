@@ -180,7 +180,6 @@ namespace TicTacToe3D.GamePlay.Main
 
         private IEnumerator InstantiateSafetyAI(UnityAction<AI> call)
         {
-            //yield return new WaitUntil(() => UI.PanelSelection.Manager.Instance.Bottom.TogglePlayer.didStart);
             var value = new AI(player);
             call?.Invoke(value);
             yield return null;

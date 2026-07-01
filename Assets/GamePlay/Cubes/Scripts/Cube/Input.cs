@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace TicTacToe3D.GamePlay.Cube
 {
+    /// <summary>
+    /// Classe responsável por inputar o valor ao cubo e suas animações.
+    /// </summary>
     public partial class Input : MonoBehaviour
     {
         [Header(Header.MANAGEABLE, order = 0), HorizontalLine]
@@ -128,11 +131,11 @@ namespace TicTacToe3D.GamePlay.Cube
             _meshRenderer.SetPropertyBlock(_materialPropertyBlock);
         }
         /// <summary>
-        /// 
+        /// Método que liga ou deslga a luz do input.
         /// </summary>
-        /// <param name="isOn"></param>
-        /// <param name="delay"></param>
-        /// <returns></returns>
+        /// <param name="isOn">Se verdadeiro a luz estará ligada.</param>
+        /// <param name="delay">Delay para ligar ou desligar o input.</param>
+        /// <returns>Retorna uma co-routina para ser usado dentero de co-rotinas.</returns>
         public Coroutine SetTurn(bool isOn, float delay = 0f)
         {
             if (_isVisible)
@@ -145,7 +148,7 @@ namespace TicTacToe3D.GamePlay.Cube
                 Debug.LogWarning("Cannot change the turn state when the input is not visible!");
                 return null;
             }
-
+            // Co-rotina para ligar ou desligar a luz do input considerando o delay.
             IEnumerator _coroutine()
             {
                 if (delay > 0f)
@@ -156,7 +159,13 @@ namespace TicTacToe3D.GamePlay.Cube
                 isOn.ComparativeAssignment(ref this._isOn);
             }
         }
-
+        /// <summary>
+        /// Método que liga ou deslga a luz do input com animação piscante.
+        /// </summary>
+        /// <param name="isOn">Se verdadeiro, a animação piscante terminará acesa.</param>
+        /// <param name="delay">Delay para acender ou apagar com animação piscante.</param>
+        /// <param name="isVisibilityForced"></param>
+        /// <returns>Retorna uma co-routine para ser usado dentero de co-rotinas.</returns>
         public Coroutine SetTurnFlicker(bool isOn, float delay = 0f, bool isVisibilityForced = false)
         {
             if (isVisibilityForced)
@@ -172,7 +181,7 @@ namespace TicTacToe3D.GamePlay.Cube
                 Debug.LogWarning("Cannot change the turn state when the input is not visible!");
                 return null;
             }
-
+            // Co-rotina para ligar ou desligar a luz com animação piscante.
             IEnumerator _coroutine()
             {
                 if (delay > 0f)
@@ -194,7 +203,15 @@ namespace TicTacToe3D.GamePlay.Cube
                 }
             }
         }
-
+        /// <summary>
+        /// Co-rotina para animar a luz do input com efeito piscante.
+        /// </summary>
+        /// <param name="time">Tempo em segundos de duração da animação.</param>
+        /// <param name="frequence">Frequência de piscadas.</param>
+        /// <param name="rangeAlpha">Faixa de alpha em que as piscadas ficarão oscilando.<br/>x deve ser maior que 0 e y deve ser menor que 1.</param>
+        /// <param name="softChance">Valor que irá definir a possibilidade das psicadas serem suaves.<br/>O valor deve compreender entre 0 e 1.</param>
+        /// <param name="softTime">Tempo em segundos para a suavização das piscadas quando estiverem em <paramref name="softChance"/></param>
+        /// <returns>Use em <see cref="MonoBehaviour.StartCoroutine(IEnumerator)"/></returns>
         public IEnumerator Flicker(float time, float frequence, Vector2 rangeAlpha, float softChance, float softTime)
         {
             if (time <= 0f)
@@ -266,8 +283,13 @@ namespace TicTacToe3D.GamePlay.Cube
             SetMaterialLightColor(_originalColor);
             _light.intensity = originalIntensity;
         }
-
+        /// <summary>
+        /// Retoirna se o input está visível.
+        /// </summary>
         public bool IsVisible => _isVisible;
+        /// <summary>
+        /// Retorna se o input está aceso.
+        /// </summary>
         public bool IsOn => _isOn;
     }
 }

@@ -14,12 +14,6 @@ namespace TicTacToe3D.UI.Interaction.Button
         [Space(-10, order = 1)]
         [Header(Header.components, order = 2)]
         [SerializeField, ReadOnly] private Button button;
-        /*///<inheritdoc/>
-        protected override void Start()
-        {
-            base.Start();
-            ((Button)selectable).onClick.AddListener(ButtonBehaviour);
-        }*/
         ///<inheritdoc/>
         [ContextMenu("Components Assignment Root")]
         public override void ComponentsAssignment()
@@ -41,11 +35,6 @@ namespace TicTacToe3D.UI.Interaction.Button
         {
             button.onClick.RemoveAllListeners();
         }
-
-        /*public virtual void ButtonBehaviour()
-        {
-            
-        }*/
 
         public Button Button => button;
     }

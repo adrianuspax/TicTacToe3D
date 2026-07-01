@@ -1,5 +1,6 @@
 namespace TicTacToe3D.GamePlay.Cube
 {
+    /// <inheritdoc/>
     public partial class Input
     {
         /// <summary>
