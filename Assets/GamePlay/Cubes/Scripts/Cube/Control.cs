@@ -70,23 +70,10 @@ namespace TicTacToe3D.GamePlay.Cube
             ComponentsAssignment();
         }
         ///<inheritdoc/>
-        private void OnEnable()
-        {
-            /*_pointer.ClickHandler += () =>
-            {
-                SetInput(Input.KindOf.x);
-            };*/
-        }
-        ///<inheritdoc/>
         private void Start()
         {
             var index = transform.GetSiblingIndex();
             _data = new(index);
-        }
-        ///<inheritdoc/>
-        private void OnDisable()
-        {
-            return;
         }
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
@@ -168,6 +155,10 @@ namespace TicTacToe3D.GamePlay.Cube
         /// Retorna <see cref="_inputs"/>
         /// </summary>
         public Input[] Inputs => _inputs;
+        /// <summary>
+        /// 
+        /// </summary>
+        public Pointer Pointer => _pointer;
         /// <summary>
         /// Atributo estático para armazenar a última entrada registrada em qualquer cubo.
         /// </summary>

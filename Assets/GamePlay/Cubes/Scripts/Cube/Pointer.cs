@@ -20,7 +20,10 @@ namespace TicTacToe3D.GamePlay.Cube
         [SerializeField, ReadOnly] private MeshRenderer meshRenderer;
         [SerializeField, ReadOnly] private BoxCollider boxCollider;
 
-        private static bool _isInteractable;
+        private static bool _isInteractable; // Verificar se isso é necessário!
+        /// <summary>
+        /// Evento para ser chamado no clique e valerá para todos os cubos.
+        /// </summary>
         public event UnityAction ClickHandler;
         public event UnityAction DownHandler;
         public event UnityAction UpHandler;

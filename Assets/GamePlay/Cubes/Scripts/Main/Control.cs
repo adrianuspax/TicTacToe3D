@@ -72,6 +72,7 @@ namespace TicTacToe3D.GamePlay.Main
                 yield return StartCoroutine(routine);
                 routine = FirstMovement();
                 yield return StartCoroutine(routine);
+                Main.Cubes.Manager.SetInputPlayerInAllCubes(player);
                 UI.PanelSelection.Manager.Instance.Upper.TogglePlayer.Toggle.onValueChanged.RemoveListener(_call);
             }
         }
