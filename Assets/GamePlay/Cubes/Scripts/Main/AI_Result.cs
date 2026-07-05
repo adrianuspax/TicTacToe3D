@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace TicTacToe3D.GamePlay.Main
@@ -29,6 +30,15 @@ namespace TicTacToe3D.GamePlay.Main
             {
                 main = result;
                 this.indexes = indexes;
+            }
+            /// <summary>
+            /// Obtenha os índices dos cubos que não fazem parte da vitória.
+            /// </summary>
+            /// <returns>Array dos índices</returns>
+            public int[] GetExceptIndexes()
+            {
+                var array = new int[9]{0, 1, 2, 3, 4, 5, 6, 7, 8};
+                return array.Except(indexes).ToArray();
             }
         }
     }

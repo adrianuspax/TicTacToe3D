@@ -124,6 +124,9 @@ namespace TicTacToe3D.GamePlay.Main
             bool _draw()
             {
                 SetCubesInteractable(false);
+
+                foreach (var cube in Main.Cubes.Manager.Instance.Array)
+                    cube.Inputted.SetTurnFlicker(false);
                 return true;
             }
 
@@ -145,14 +148,23 @@ namespace TicTacToe3D.GamePlay.Main
             {
                 return false;
             }
-            // Comportamento dos cubos quando o jogo termina.
+            // Comportamento dos cubos quando o jogo termina e há um ganhador.
             void _beahviour()
             {
-                return;
-                /*for (var i = 0; i < result.indexes.Length; i++)
+                Cube.Control cube;
+                var exceptIndexes = result.GetExceptIndexes();
+
+                for (int i = 0; i < exceptIndexes.Length; i++)
                 {
-                    cubes[result.indexes[i]].Inputs[i].SetTurnFlicker(false);
-                }*/
+                    var x = exceptIndexes[i];
+                    cube = Main.Cubes.Manager.Instance.Array[x];
+
+                    if (cube.Data.IsInputted)
+                    {
+                        //cube.Inputted.SetTurnFlicker(false); //Esperar
+
+                    }
+                }
             }
         }
         /// <summary>

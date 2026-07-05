@@ -152,13 +152,17 @@ namespace TicTacToe3D.GamePlay.Cube
         /// <value>Dados associados a interação com o cubo.</value>
         public Data Data => _data;
         /// <summary>
-        /// Retorna <see cref="_inputs"/>
+        /// Retorna os possíveis inputs do cubo (X e O).
         /// </summary>
         public Input[] Inputs => _inputs;
         /// <summary>
-        /// 
+        /// Retorna a instância de <see cref="Pointer"/>
         /// </summary>
         public Pointer Pointer => _pointer;
+        /// <summary>
+        /// Retorna o que foi inputado no cubo (X ou O).
+        /// </summary>
+        public Input Inputted => _inputs[(int)_data.Input];
         /// <summary>
         /// Atributo estático para armazenar a última entrada registrada em qualquer cubo.
         /// </summary>

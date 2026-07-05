@@ -6,7 +6,12 @@ namespace TicTacToe3D.GamePlay.Main.Cubes
     /// <inheritdoc/>
     public class Manager : Inheritance.Manager<Control>
     {
-        private static Dictionary<Cube.Control, UnityAction> _trackedActions = new Dictionary<Cube.Control, UnityAction>();
+        private static Dictionary<Cube.Control, UnityAction> _trackedActions;
+        ///<inheritdoc/>
+        private void Start()
+        {
+            _trackedActions = new();
+        }
         ///<inheritdoc/>
         private void OnDisable()
         {
@@ -35,6 +40,9 @@ namespace TicTacToe3D.GamePlay.Main.Cubes
         /// </summary>
         public static void RemoveInputPlayerInAllCubes()
         {
+            if (Instance == null)
+                return;
+
             foreach (var cube in Instance.Array)
             {
                 var conditional = _trackedActions.TryGetValue(cube, out UnityAction action);
