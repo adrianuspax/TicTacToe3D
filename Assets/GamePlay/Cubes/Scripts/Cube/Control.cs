@@ -121,11 +121,12 @@ namespace TicTacToe3D.GamePlay.Cube
                 return null;
 
             var routine = _routine();
+            var coroutine = StartCoroutine(routine);
             _data.SetInput(input);
             LastInput = _data.Input;
-            var e = new Args(_data);
+            var e = new Args(_data, coroutine);
             Handler.Invoke(this, e);
-            return StartCoroutine(routine);
+            return coroutine;
             // Local function para a execução da coroutina.
             IEnumerator _routine()
             {

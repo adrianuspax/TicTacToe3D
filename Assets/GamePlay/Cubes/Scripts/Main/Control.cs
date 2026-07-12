@@ -29,6 +29,7 @@ namespace TicTacToe3D.GamePlay.Main
         [Space(20)]
         [Tooltip("The AI instance for the game.")]
         [SerializeField, ReadOnly] private AI ai;
+        private Coroutine _movement;
 #if UNITY_EDITOR
         ///<inheritdoc/>
         [Button(nameof(Reset))]
@@ -53,6 +54,7 @@ namespace TicTacToe3D.GamePlay.Main
         private void Start()
         {
             IEnumerator routine;
+            _movement = null;
             result = new();
             UI.PanelSelection.Manager.Instance.Bottom.TogglePlayer.Toggle.onValueChanged.AddListener(SetPlayer);
             UI.PanelSelection.Manager.Instance.Upper.TogglePlayer.Toggle.onValueChanged.AddListener(_call);
@@ -100,18 +102,25 @@ namespace TicTacToe3D.GamePlay.Main
         {
             Main.Cubes.Manager.Instance.Array[e.Data.Index].SetData(e.Data);
             var isEnd = ResultBehaviour();
-
+            var routine = _routine();
             if (isEnd)
                 return;
 
             if (e.Data.Input == player)
-                SetInputAI();
+                _movement = StartCoroutine(routine);
+            // Coroutine para aguardar o movimento do player.
+            IEnumerator _routine()
+            {
+                yield return e.Coroutine;
+                yield return SetInputAI(0.5f);
+            }
         }
 
         private bool ResultBehaviour()
         {
             board = GetBoard();
             result = ai.CheckForWinner(board);
+            var routine = _beahviour();
 
             return result.main switch
             {
@@ -133,14 +142,14 @@ namespace TicTacToe3D.GamePlay.Main
             bool _youLose()
             {
                 SetCubesInteractable(false);
-                _beahviour();
+                StartCoroutine(routine);
                 return true;
             }
 
             bool _youWin()
             {
                 SetCubesInteractable(false);
-                _beahviour();
+                StartCoroutine(routine);
                 return true;
             }
 
@@ -149,21 +158,18 @@ namespace TicTacToe3D.GamePlay.Main
                 return false;
             }
             // Comportamento dos cubos quando o jogo termina e há um ganhador.
-            void _beahviour()
+            IEnumerator _beahviour()
             {
                 Cube.Control cube;
                 var exceptIndexes = result.GetExceptIndexes();
-
+                yield return _movement;
                 for (int i = 0; i < exceptIndexes.Length; i++)
                 {
                     var x = exceptIndexes[i];
                     cube = Main.Cubes.Manager.Instance.Array[x];
 
                     if (cube.Data.IsInputted)
-                    {
-                        //cube.Inputted.SetTurnFlicker(false); //Esperar
-
-                    }
+                        cube.Inputted.SetTurnFlicker(false);
                 }
             }
         }
@@ -220,10 +226,12 @@ namespace TicTacToe3D.GamePlay.Main
 
             IEnumerator _routine()
             {
-                var waitForSeconds = new WaitForSeconds(0.75f);
-                yield return waitForSeconds;
+                yield return new WaitForEndOfFrame();
                 if (result.main == Main.Result.none)
+                {
+                    yield return _movement;
                     UI.PanelNotice.Manager.Instance.SetAnimation(true);
+                }
             }
         }
 #if UNITY_EDITOR
