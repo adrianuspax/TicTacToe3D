@@ -12,7 +12,7 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         {
             base.ComponentsAssignment();
         }
-
+        ///<inheritdoc/>
         public override void ToggleBehaviour(bool isOn)
         {
             base.ToggleBehaviour(isOn);

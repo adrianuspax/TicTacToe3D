@@ -67,7 +67,7 @@ namespace TicTacToe3D.GamePlay.Main
                 else
                     StartCoroutine(routine);
             }
-
+            // 
             IEnumerator _routine()
             {
                 routine = InstantiateSafetyAI(value => ai = value);
@@ -111,7 +111,7 @@ namespace TicTacToe3D.GamePlay.Main
             // Coroutine para aguardar o movimento do player.
             IEnumerator _routine()
             {
-                yield return e.Coroutine;
+                yield return e.Coroutine; //CORRIGIR AQUI
                 yield return SetInputAI(0.5f);
             }
         }
