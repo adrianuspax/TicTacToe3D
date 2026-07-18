@@ -39,7 +39,8 @@ namespace TicTacToe3D.GamePlay.Cube
         /// <summary>
         /// Evento para notificar quando o cubo é interagido, passando os dados associados à interação.
         /// </summary>
-        public static event EventHandler<Args> Handler;
+        //public static event EventHandler<Args> Handler;
+        public static event Func<Args, Coroutine> Handler;
 #if UNITY_EDITOR
         ///<inheritdoc/>
         [Button(nameof(Reset), SButtonEnableMode.Editor)]
@@ -115,18 +116,19 @@ namespace TicTacToe3D.GamePlay.Cube
         /// <param name="input"> Atribua  </param>
         /// <param name="delay"></param>
         /// <returns>Retorna a coroutina que está em execução no método em questão.</returns>
-        public Coroutine SetInput(Input.KindOf input, float delay = 0)
+        public (Coroutine Input, Coroutine Handler) SetInput(Input.KindOf input, float delay = 0)
         {
             if (_data.IsInputted)
-                return null;
+                return default;
 
+            IsInputting = true;
             var routine = _routine();
             var coroutine = StartCoroutine(routine);
             _data.SetInput(input);
             LastInput = _data.Input;
-            var e = new Args(_data, coroutine);
-            Handler.Invoke(this, e);
-            return coroutine;
+            var e = new Args(_data);
+            var handler = Handler?.Invoke(e);
+            return (coroutine, handler);
             // Local function para a execução da coroutina.
             IEnumerator _routine()
             {
@@ -137,6 +139,7 @@ namespace TicTacToe3D.GamePlay.Cube
                     yield break;
 
                 yield return _inputs[(int)input].SetTurnFlicker(true, 0.25f);
+                IsInputting = false;
             }
         }
         /// <summary>
@@ -164,6 +167,8 @@ namespace TicTacToe3D.GamePlay.Cube
         /// Retorna o que foi inputado no cubo (X ou O).
         /// </summary>
         public Input Inputted => _inputs[(int)_data.Input];
+
+        public static bool IsInputting { get; private set; }
         /// <summary>
         /// Atributo estático para armazenar a última entrada registrada em qualquer cubo.
         /// </summary>
