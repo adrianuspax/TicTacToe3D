@@ -74,6 +74,8 @@ namespace TicTacToe3D.GamePlay.Cube
         private void Start()
         {
             var index = transform.GetSiblingIndex();
+            IsInputting = false;
+            LastInput = Input.KindOf.hide;
             _data = new(index);
         }
         ///<inheritdoc/>
