@@ -47,9 +47,11 @@ namespace TicTacToe3D.GamePlay.Main
         [SerializeField] private Cube.Input.KindOf human;
         [Tooltip("The input type representing the AI player.")]
         [SerializeField] private Cube.Input.KindOf ai;
-        [Tooltip("Movimento.")]
-        [SerializeField] private int move;
-        [Tooltip("Melhores Movimentos.")]
+        [Tooltip("Best Move.")]
+        [SerializeField] private int bestMove;
+        [Tooltip("Best Score.")]
+        [SerializeField] private int bestScore;
+        [Tooltip("Best Moves.")]
         [SerializeField, NonReorderable] private List<int> bestMoves;
         /// <summary>
         /// Ação para acionar a notificação de que o player fatalmente irá perder o jogo.
@@ -98,9 +100,9 @@ namespace TicTacToe3D.GamePlay.Main
         /// </summary>
         /// <param name="board">The current state of the board.</param>
         /// <returns>The index of the best move.</returns>
-        public int GetBestMove(Cube.Data[] board)
+        public (int Move, int Score) GetBest(Cube.Data[] board)
         {
-            var bestScore = int.MinValue;
+            bestScore = int.MinValue;
             bestMoves = new List<int>();
 
             for (var i = 0; i < board.Length; i++)
@@ -127,15 +129,15 @@ namespace TicTacToe3D.GamePlay.Main
             if (bestScore > 0)
                 NotifyHandler?.Invoke();
 
-            move = -1;
+            bestMove = -1;
 
             if (bestMoves.Count > 0)
             {
                 var randomIndex = Random.Range(0, bestMoves.Count);
-                move = bestMoves[randomIndex];
+                bestMove = bestMoves[randomIndex];
             }
 
-            return move;
+            return (bestMove, bestScore);
         }
         /// <summary>
         /// The Minimax algorithm to find the best move.

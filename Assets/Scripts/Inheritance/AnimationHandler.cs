@@ -166,10 +166,12 @@ namespace TicTacToe3D.Inheritance
         /// </summary>
         public bool IsRunning => _coroutine != null;
         /// <summary>
-        /// Gets the handler for the Animator.
+        /// Gets a value indicating whether the animation is currently set to open.
         /// </summary>
         public virtual bool IsToOpen => _isToOpen;
-
+        /// <summary>
+        /// Gets the handler for the Animator.
+        /// </summary>
         public virtual AnimatorHandler AnimatorHandler => _animatorHandler;
 
         protected bool IsHandled => _isHandled;

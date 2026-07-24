@@ -98,23 +98,31 @@ namespace TicTacToe3D.GamePlay.Main
         /// <param name="sender">Sender Object<br/>Must receive <see cref="Cube.Control"/> as object</param>
         /// <param name="e">Arguments to Handler</param>
         /// <remarks>Default arguments when using <see cref="System.EventHandler"/></remarks>
-        public Coroutine OnPlayable(Cube.Args e)
+        public void OnPlayable(object sender, Cube.Args e)
         {
             Main.Cubes.Manager.Instance.Array[e.Data.Index].SetData(e.Data);
             var isEnd = ResultBehaviour();
             var routine = _routine();
             if (isEnd)
-                return default;
+                return;
 
             if (e.Data.Input == player)
                 _movement = StartCoroutine(routine);
 
-            return _movement;
+            return;
             // Coroutine para aguardar o movimento do player.
             IEnumerator _routine()
             {
                 yield return new WaitWhile(() => Cube.Control.IsInputting);
-                yield return SetInputAI(0.5f).Input;
+                board = GetBoard();
+                (var bestMove, var bestScore) = ai.GetBest(board);
+                if (bestMove != -1)
+                {
+                    if (bestScore > 0)
+                        yield return new WaitWhile(() => UI.PanelNotice.Manager.Instance.IsToOpen);
+
+                    yield return SetInputAI(bestMove, 0.5f);
+                }
             }
         }
 
@@ -138,6 +146,7 @@ namespace TicTacToe3D.GamePlay.Main
 
                 foreach (var cube in Main.Cubes.Manager.Instance.Array)
                     cube.Inputted.SetTurnFlicker(false);
+
                 return true;
             }
 
@@ -178,15 +187,10 @@ namespace TicTacToe3D.GamePlay.Main
         /// <summary>
         /// Initiates the AI's turn after a specified delay.
         /// </summary>
-        public (Coroutine Input, Coroutine Handler) SetInputAI(float delay = 0f)
+        public Coroutine SetInputAI(int bestMove, float delay = 0f)
         {
-            board = GetBoard();
-            var bestSlotIndex = ai.GetBestMove(board);
-            if (bestSlotIndex == -1)
-                return default;
-
             var nextInput = GetNextInput();
-            return Main.Cubes.Manager.Instance.Array[bestSlotIndex].SetInput(nextInput, delay);
+            return Main.Cubes.Manager.Instance.Array[bestMove].SetInput(nextInput, delay);
         }
 
         public void SetCubesInteractable(bool value)
@@ -222,20 +226,12 @@ namespace TicTacToe3D.GamePlay.Main
 
         private void OnNotify()
         {
-            var routine = _routine();
-            StartCoroutine(routine);
-            AI.NotifyHandler -= OnNotify;
+            if (result.main == Main.Result.none)
+                UI.PanelNotice.Manager.Instance.SetAnimation(true);
 
-            IEnumerator _routine()
-            {
-                yield return new WaitForEndOfFrame();
-                if (result.main == Main.Result.none)
-                {
-                    yield return _movement;
-                    UI.PanelNotice.Manager.Instance.SetAnimation(true);
-                }
-            }
+            AI.NotifyHandler -= OnNotify;
         }
+        // Em tempo de execução, a instancia monosingleton não funcionará
 #if UNITY_EDITOR
         private Cube.Data[] GetBoard()
         {
@@ -250,6 +246,7 @@ namespace TicTacToe3D.GamePlay.Main
 
             return cubes.Select(cube => cube.Data).ToArray();
         }
+        // Em tempo de execução, a instancia monosingleton funcionará
 #else
         private Cube.Data[] GetBoard()
         {

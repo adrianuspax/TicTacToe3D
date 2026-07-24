@@ -36,11 +36,12 @@ namespace TicTacToe3D.GamePlay.Cube
         [SerializeField, ReadOnly] private Pointer _pointer;
         [Tooltip("Referência ao script AnimatorHandler para controlar as animações do cubo.")]
         [SerializeField, ReadOnly] private AnimatorHandler _animatorHandler;
+        private static bool _isInputting;
+        private static Input.KindOf _lastInput;
         /// <summary>
         /// Evento para notificar quando o cubo é interagido, passando os dados associados à interação.
         /// </summary>
-        //public static event EventHandler<Args> Handler;
-        public static event Func<Args, Coroutine> Handler;
+        public static event EventHandler<Args> Handler;
 #if UNITY_EDITOR
         ///<inheritdoc/>
         [Button(nameof(Reset), SButtonEnableMode.Editor)]
@@ -74,8 +75,8 @@ namespace TicTacToe3D.GamePlay.Cube
         private void Start()
         {
             var index = transform.GetSiblingIndex();
-            IsInputting = false;
-            LastInput = Input.KindOf.hide;
+            _isInputting = false;
+            _lastInput = Input.KindOf.hide;
             _data = new(index);
         }
         ///<inheritdoc/>
@@ -118,19 +119,19 @@ namespace TicTacToe3D.GamePlay.Cube
         /// <param name="input"> Atribua  </param>
         /// <param name="delay"></param>
         /// <returns>Retorna a coroutina que está em execução no método em questão.</returns>
-        public (Coroutine Input, Coroutine Handler) SetInput(Input.KindOf input, float delay = 0)
+        public Coroutine SetInput(Input.KindOf input, float delay = 0)
         {
             if (_data.IsInputted)
                 return default;
 
-            IsInputting = true;
+            _isInputting = true;
             var routine = _routine();
             var coroutine = StartCoroutine(routine);
             _data.SetInput(input);
-            LastInput = _data.Input;
+            _lastInput = _data.Input;
             var e = new Args(_data);
-            var handler = Handler?.Invoke(e);
-            return (coroutine, handler);
+            Handler?.Invoke(this, e);
+            return coroutine;
             // Local function para a execução da coroutina.
             IEnumerator _routine()
             {
@@ -141,7 +142,7 @@ namespace TicTacToe3D.GamePlay.Cube
                     yield break;
 
                 yield return _inputs[(int)input].SetTurnFlicker(true, 0.25f);
-                IsInputting = false;
+                _isInputting = false;
             }
         }
         /// <summary>
@@ -169,11 +170,13 @@ namespace TicTacToe3D.GamePlay.Cube
         /// Retorna o que foi inputado no cubo (X ou O).
         /// </summary>
         public Input Inputted => _inputs[(int)_data.Input];
-
-        public static bool IsInputting { get; private set; }
+        /// <summary>
+        /// Atributo estático que indica se o cubo está em processo de input.
+        /// </summary>
+        public static bool IsInputting => _isInputting;
         /// <summary>
         /// Atributo estático para armazenar a última entrada registrada em qualquer cubo.
         /// </summary>
-        public static Input.KindOf LastInput { get; private set; }
+        public static Input.KindOf LastInput => _lastInput;
     }
 }
