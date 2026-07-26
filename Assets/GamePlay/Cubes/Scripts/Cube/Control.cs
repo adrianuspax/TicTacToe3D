@@ -41,7 +41,7 @@ namespace TicTacToe3D.GamePlay.Cube
         /// <summary>
         /// Evento para notificar quando o cubo é interagido, passando os dados associados à interação.
         /// </summary>
-        public static event EventHandler<Args> Handler;
+        public static event EventHandler<Args> InputHandler;
 #if UNITY_EDITOR
         ///<inheritdoc/>
         [Button(nameof(Reset), SButtonEnableMode.Editor)]
@@ -130,7 +130,7 @@ namespace TicTacToe3D.GamePlay.Cube
             _data.SetInput(input);
             _lastInput = _data.Input;
             var e = new Args(_data);
-            Handler?.Invoke(this, e);
+            InputHandler?.Invoke(this, e);
             return coroutine;
             // Local function para a execução da coroutina.
             IEnumerator _routine()

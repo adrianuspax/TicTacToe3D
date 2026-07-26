@@ -19,35 +19,27 @@ namespace TicTacToe3D.GamePlay.Cube
         [Header(Header.components, order = 0)]
         [SerializeField, ReadOnly] private MeshRenderer meshRenderer;
         [SerializeField, ReadOnly] private BoxCollider boxCollider;
-
-        private static bool _isInteractable; // Verificar se isso é necessário!
         /// <summary>
-        /// Evento para ser chamado no clique e valerá para todos os cubos.
+        /// Evento para ser chamado no clique.
         /// </summary>
         public event UnityAction ClickHandler;
+        /// <summary>
+        /// Evento para ser chamado quando o ponteiro é pressionado.
+        /// </summary>
         public event UnityAction DownHandler;
+        /// <summary>
+        /// Evento para ser chamado quando o ponteiro é levantado.
+        /// </summary>
         public event UnityAction UpHandler;
-        public static event UnityAction<bool> InteractableHandler;
         ///<inheritdoc/>
         private void Awake()
         {
             ComponentsAssignment();
         }
         ///<inheritdoc/>
-        private void OnEnable()
-        {
-            InteractableHandler += OnInteractable;
-        }
-        ///<inheritdoc/>
         private void Start()
         {
-            _isInteractable = true;
             isInteractable = true;
-        }
-        ///<inheritdoc/>
-        private void OnDisable()
-        {
-            InteractableHandler -= OnInteractable;
         }
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
@@ -59,44 +51,34 @@ namespace TicTacToe3D.GamePlay.Cube
         ///<inheritdoc/>
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (isInteractable && _isInteractable)
+            if (isInteractable)
                 ClickHandler?.Invoke();
         }
         ///<inheritdoc/>
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (isInteractable && _isInteractable)
+            if (isInteractable)
                 UpHandler?.Invoke();
         }
         ///<inheritdoc/>
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (isInteractable && _isInteractable)
+            if (isInteractable)
                 DownHandler?.Invoke();
         }
-
-        private void OnInteractable(bool value)
-        {
-            _isInteractable = value;
-
-            if (isInteractable)
-                isInteractable = value;
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
         public void SetInteractable(bool value)
         {
             isInteractable = value;
         }
-
-        public static void SetAllInteractable(bool value)
-        {
-            InteractableHandler?.Invoke(value);
-        }
         /// <summary>
-        /// Get if there is interactivity for this
+        /// Get if there is interactivity for this.<br/>
+        /// Read-only.
         /// </summary>
-        /// <remarks>It's read-only</remarks>
-        public bool IsInteractable => isInteractable && _isInteractable;
+        public bool IsInteractable => isInteractable;
         public MeshRenderer MeshRenderer => meshRenderer;
         public BoxCollider BoxCollider => boxCollider;
     }

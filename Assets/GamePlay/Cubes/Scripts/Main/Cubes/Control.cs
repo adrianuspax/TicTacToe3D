@@ -16,6 +16,9 @@ namespace TicTacToe3D.GamePlay.Main.Cubes
     {
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
+        [Header(Header.variables, order = 0)]
+        [SerializeField, ReadOnly] private bool isInteractable;
+
         [Header(Header.components, order = 2)]
         [Tooltip("Array de todos os cubos.")]
         [SerializeField, NonReorderable, ReadOnly] private Cube.Control[] cubes;
@@ -24,6 +27,7 @@ namespace TicTacToe3D.GamePlay.Main.Cubes
         {
             ComponentsAssignment();
         }
+
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
         public void ComponentsAssignment()
@@ -31,8 +35,25 @@ namespace TicTacToe3D.GamePlay.Main.Cubes
             this.GetComponentsInAllChildrenIfNull(ref cubes);
         }
         /// <summary>
-        /// Array de todos os cubos.
+        /// Atribua a interactividade de todos os cubos.<br/>
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetInteractable(bool value)
+        {
+            foreach (var cube in cubes)
+                cube.Pointer.SetInteractable(value);
+
+            isInteractable = value;
+        }
+        /// <summary>
+        /// Array de todos os cubos.<br/>
+        /// Somente leitura.
         /// </summary>
         public Cube.Control[] Array => cubes;
+        /// <summary>
+        /// Obtém o estado de interatividade dos cubos.<br/>
+        /// Somente leitura.
+        /// </summary>
+        public bool IsInteractable => isInteractable;
     }
 }

@@ -47,7 +47,7 @@ namespace TicTacToe3D.GamePlay.Main
         /// <inheritdoc/>
         private void OnEnable()
         {
-            Cube.Control.Handler += OnPlayable;
+            Cube.Control.InputHandler += OnPlayable;
             AI.NotifyHandler += OnNotify;
         }
         /// <inheritdoc/>
@@ -81,7 +81,7 @@ namespace TicTacToe3D.GamePlay.Main
         /// <inheritdoc/>
         private void OnDisable()
         {
-            Cube.Control.Handler -= OnPlayable;
+            Cube.Control.InputHandler -= OnPlayable;
             AI.NotifyHandler -= OnNotify;
         }
         /// <inheritdoc/>
@@ -93,7 +93,7 @@ namespace TicTacToe3D.GamePlay.Main
                 board = GetBoard();
         }
         /// <summary>
-        /// Function used to be called when <see cref="Cube.Control.Handler"/> is invoked.
+        /// Function used to be called when <see cref="Cube.Control.InputHandler"/> is invoked.
         /// </summary>
         /// <param name="sender">Sender Object<br/>Must receive <see cref="Cube.Control"/> as object</param>
         /// <param name="e">Arguments to Handler</param>
@@ -125,7 +125,10 @@ namespace TicTacToe3D.GamePlay.Main
                 }
             }
         }
-
+        /// <summary>
+        /// Manipula o comportamento do resultado do jogo.
+        /// </summary>
+        /// <returns>Retorna true se o jogo terminou.</returns>
         private bool ResultBehaviour()
         {
             board = GetBoard();
@@ -139,34 +142,34 @@ namespace TicTacToe3D.GamePlay.Main
                 Main.Result.youWin => _youWin(),
                 _ => _none(),
             };
-
+            // Método interno chamado em caso de empate.
             bool _draw()
             {
-                SetCubesInteractable(false);
+                Main.Cubes.Manager.Instance.SetInteractable(false);
 
                 foreach (var cube in Main.Cubes.Manager.Instance.Array)
                     cube.Inputted.SetTurnFlicker(false);
 
                 return true;
             }
-
+            // Método interno chamado em caso de derrota.
             bool _youLose()
             {
-                SetCubesInteractable(false);
+                Main.Cubes.Manager.Instance.SetInteractable(false);
                 StartCoroutine(routine);
                 return true;
             }
-
+            // Método interno chamado em caso de vitória.
             bool _youWin()
             {
-                SetCubesInteractable(false);
+                Main.Cubes.Manager.Instance.SetInteractable(false);
                 StartCoroutine(routine);
                 return true;
             }
-
+            // Método interno chamado em caso de não haver resultado.
             bool _none()
             {
-                return false;
+                return true;
             }
             // Comportamento dos cubos quando o jogo termina e há um ganhador.
             IEnumerator _beahviour()
@@ -190,12 +193,8 @@ namespace TicTacToe3D.GamePlay.Main
         public Coroutine SetInputAI(int bestMove, float delay = 0f)
         {
             var nextInput = GetNextInput();
-            return Main.Cubes.Manager.Instance.Array[bestMove].SetInput(nextInput, delay);
-        }
-
-        public void SetCubesInteractable(bool value)
-        {
-            Cube.Pointer.SetAllInteractable(value);
+            var routine = SetInput(bestMove, nextInput, delay);
+            return StartCoroutine(routine);
         }
 
         public void SetPlayer(bool isHuman)
@@ -220,7 +219,8 @@ namespace TicTacToe3D.GamePlay.Main
                 var index = Random.Range(0, values.Length);
                 var value = values[index];
                 var nextInput = GetNextInput();
-                yield return Main.Cubes.Manager.Instance.Array[value].SetInput(nextInput, delay);
+                var routine = SetInput(value, nextInput, delay);
+                yield return StartCoroutine(routine);
             }
         }
 
@@ -231,6 +231,10 @@ namespace TicTacToe3D.GamePlay.Main
 
             AI.NotifyHandler -= OnNotify;
         }
+        /// <summary>
+        /// Retorna uma cópia do estado atual do tabuleiro.
+        /// </summary>
+        /// <returns><see cref="Cube.Data[]"/></returns>
         // Em tempo de execução, a instancia monosingleton não funcionará
 #if UNITY_EDITOR
         private Cube.Data[] GetBoard()
@@ -260,6 +264,11 @@ namespace TicTacToe3D.GamePlay.Main
             return Main.Cubes.Manager.Instance.Array.Select(cube => cube.Data).ToArray();
         }
 #endif
+        /// <summary>
+        /// Retorna o próximo input baseado no input atual.
+        /// </summary>
+        /// <returns>Tipo de input.<br/>
+        /// </returns>
         public Cube.Input.KindOf GetNextInput()
         {
             return Cube.Control.LastInput switch
@@ -269,20 +278,38 @@ namespace TicTacToe3D.GamePlay.Main
                 _ => Cube.Input.KindOf.x,
             };
         }
+
+        private IEnumerator SetInput(int index, Cube.Input.KindOf input, float delay)
+        {
+            //Main.Cubes.Manager.Instance.SetInteractable(false);
+            print("A");
+            yield return Main.Cubes.Manager.Instance.Array[index].SetInput(input, delay);
+
+            if (result.main == Main.Result.none)
+            {
+                //Main.Cubes.Manager.Instance.SetInteractable(true);
+                print("B");
+            }
+        }
         /// <summary>
-        /// Return all Cubes
+        /// Return all Cubes.<br/>
+        /// Somente leitura.
         /// </summary>
-        /// <remarks>Read only</remarks>
         public Cube.Control[] Cubes => Main.Cubes.Manager.Instance.Array;
         /// <summary>
-        /// Gets the input type of the human player.
+        /// Gets the input type of the human player.<br/>
+        /// Somente leitura.
         /// </summary>
         public Cube.Input.KindOf Player => player;
         /// <summary>
-        /// Gets the current result of the game.
+        /// Gets the current result of the game.<br/>
+        /// Somente leitura.
         /// </summary>
         public AI.Result Result => result;
-
+        /// <summary>
+        /// An array of Cube data representing the state of the board.<br/>
+        /// Somente leitura.
+        /// </summary>
         public Cube.Data[] Board => board;
     }
 }
