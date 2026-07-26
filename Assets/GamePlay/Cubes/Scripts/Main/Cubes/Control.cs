@@ -27,7 +27,6 @@ namespace TicTacToe3D.GamePlay.Main.Cubes
         {
             ComponentsAssignment();
         }
-
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]
         public void ComponentsAssignment()

@@ -42,6 +42,10 @@ namespace TicTacToe3D.GamePlay.Cube
         /// Evento para notificar quando o cubo é interagido, passando os dados associados à interação.
         /// </summary>
         public static event EventHandler<Args> InputHandler;
+        /// <summary>
+        /// Evento para a manipulação da interatividade de todos os cubos. 
+        /// </summary>
+        public static event Action<bool> InteractivityHandler;
 #if UNITY_EDITOR
         ///<inheritdoc/>
         [Button(nameof(Reset), SButtonEnableMode.Editor)]
@@ -125,6 +129,7 @@ namespace TicTacToe3D.GamePlay.Cube
                 return default;
 
             _isInputting = true;
+            InteractivityHandler?.Invoke(false);
             var routine = _routine();
             var coroutine = StartCoroutine(routine);
             _data.SetInput(input);
@@ -142,6 +147,7 @@ namespace TicTacToe3D.GamePlay.Cube
                     yield break;
 
                 yield return _inputs[(int)input].SetTurnFlicker(true, 0.25f);
+                InteractivityHandler?.Invoke(true);
                 _isInputting = false;
             }
         }

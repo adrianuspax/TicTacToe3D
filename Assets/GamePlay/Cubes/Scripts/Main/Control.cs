@@ -48,6 +48,7 @@ namespace TicTacToe3D.GamePlay.Main
         private void OnEnable()
         {
             Cube.Control.InputHandler += OnPlayable;
+            Cube.Control.InteractivityHandler += OnInteractivity;
             AI.NotifyHandler += OnNotify;
         }
         /// <inheritdoc/>
@@ -71,8 +72,7 @@ namespace TicTacToe3D.GamePlay.Main
             // 
             IEnumerator _routine()
             {
-                routine = InstantiateSafetyAI(value => ai = value);
-                yield return StartCoroutine(routine);
+                InstantiateSafetyAI(value => ai = value);
                 routine = FirstMovement();
                 yield return StartCoroutine(routine);
                 Main.Cubes.Manager.SetInputPlayerInAllCubes(player);
@@ -83,6 +83,7 @@ namespace TicTacToe3D.GamePlay.Main
         private void OnDisable()
         {
             Cube.Control.InputHandler -= OnPlayable;
+            Cube.Control.InteractivityHandler -= OnInteractivity;
             AI.NotifyHandler -= OnNotify;
         }
         /// <inheritdoc/>
@@ -196,22 +197,27 @@ namespace TicTacToe3D.GamePlay.Main
         public Coroutine SetInputAI(int bestMove, float delay = 0f)
         {
             var nextInput = GetNextInput();
-            var routine = SetInput(bestMove, nextInput, delay);
-            return StartCoroutine(routine);
+            return Main.Cubes.Manager.Instance.Array[bestMove].SetInput(nextInput, delay);
         }
 
         public void SetPlayer(bool isHuman)
         {
             player = isHuman ? Cube.Input.KindOf.x : Cube.Input.KindOf.o;
         }
-
-        private IEnumerator InstantiateSafetyAI(UnityAction<AI> call)
+        /// <summary>
+        /// Routine para instaciar a IA com seguraça.
+        /// </summary>
+        /// <param name="call">Ação a ser chamada com a instância da IA.</param>
+        private void InstantiateSafetyAI(UnityAction<AI> call)
         {
             var value = new AI(player);
             call?.Invoke(value);
-            yield return null;
         }
-
+        /// <summary>
+        /// Routine para o primeiro movimento da IA do jogo onde há uma aleatoriedade de escolha para que a IA não inicie na mesma posição sempre.
+        /// </summary>
+        /// <param name="delay">Delay para início do movimento em segundos.</param>
+        /// <returns><see cref="IEnumerator"/> para coroutines.</returns>
         private IEnumerator FirstMovement(float delay = 0f)
         {
             yield return new WaitWhile(() => player == Cube.Input.KindOf.hide);
@@ -222,11 +228,13 @@ namespace TicTacToe3D.GamePlay.Main
                 var index = Random.Range(0, values.Length);
                 var value = values[index];
                 var nextInput = GetNextInput();
-                var routine = SetInput(value, nextInput, delay);
-                yield return StartCoroutine(routine);
+                yield return Main.Cubes.Manager.Instance.Array[value].SetInput(nextInput, delay);
             }
         }
-
+        /// <summary>
+        /// Função para ser atribuído ao evento <see cref="AI.NotifyHandler"/><br/>
+        /// para que haja a manipulãção da tela de notificação em <see cref="AI"/>.
+        /// </summary>
         private void OnNotify()
         {
             if (result.main == Main.Result.none)
@@ -282,19 +290,15 @@ namespace TicTacToe3D.GamePlay.Main
             };
         }
         /// <summary>
-        /// Rotina para imputar no tabuleiro.
+        /// Função para ser atribuído ao evento <see cref="Cube.Control.InteractivityHandler"/><br/>
+        /// para que haja a manipulãção da interatividade de todos os cubos em <see cref="Cube.Control"/>.
         /// </summary>
-        /// <param name="index">Índice da array dos cubos.</param>
-        /// <param name="input">Tipo de input.</param>
-        /// <param name="delay">Atraso.</param>
-        /// <returns><see cref="IEnumerator"/> para uma coroutine.</returns>
-        private IEnumerator SetInput(int index, Cube.Input.KindOf input, float delay)
+        private void OnInteractivity(bool value)
         {
-            Main.Cubes.Manager.Instance.SetInteractable(false);
-            yield return Main.Cubes.Manager.Instance.Array[index].SetInput(input, delay);
-
             if (result.main == Main.Result.none)
-                Main.Cubes.Manager.Instance.SetInteractable(true);
+                Main.Cubes.Manager.Instance.SetInteractable(value);
+            else
+                Main.Cubes.Manager.Instance.SetInteractable(false);
         }
         /// <summary>
         /// Return all Cubes.<br/>
