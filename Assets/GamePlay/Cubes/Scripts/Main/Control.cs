@@ -62,6 +62,7 @@ namespace TicTacToe3D.GamePlay.Main
             void _call(bool value)
             {
                 routine = _routine();
+
                 if (value)
                     return;
                 else
@@ -103,6 +104,7 @@ namespace TicTacToe3D.GamePlay.Main
             Main.Cubes.Manager.Instance.Array[e.Data.Index].SetData(e.Data);
             var isEnd = ResultBehaviour();
             var routine = _routine();
+
             if (isEnd)
                 return;
 
@@ -116,6 +118,7 @@ namespace TicTacToe3D.GamePlay.Main
                 yield return new WaitWhile(() => Cube.Control.IsInputting);
                 board = GetBoard();
                 (var bestMove, var bestScore) = ai.GetBest(board);
+
                 if (bestMove != -1)
                 {
                     if (bestScore > 0)
@@ -166,10 +169,10 @@ namespace TicTacToe3D.GamePlay.Main
                 StartCoroutine(routine);
                 return true;
             }
-            // Método interno chamado em caso de não haver resultado.
+            // Método interno chamado em caso de o jogo continuar.
             bool _none()
             {
-                return true;
+                return false;
             }
             // Comportamento dos cubos quando o jogo termina e há um ganhador.
             IEnumerator _beahviour()
@@ -278,18 +281,20 @@ namespace TicTacToe3D.GamePlay.Main
                 _ => Cube.Input.KindOf.x,
             };
         }
-
+        /// <summary>
+        /// Rotina para imputar no tabuleiro.
+        /// </summary>
+        /// <param name="index">Índice da array dos cubos.</param>
+        /// <param name="input">Tipo de input.</param>
+        /// <param name="delay">Atraso.</param>
+        /// <returns><see cref="IEnumerator"/> para uma coroutine.</returns>
         private IEnumerator SetInput(int index, Cube.Input.KindOf input, float delay)
         {
-            //Main.Cubes.Manager.Instance.SetInteractable(false);
-            print("A");
+            Main.Cubes.Manager.Instance.SetInteractable(false);
             yield return Main.Cubes.Manager.Instance.Array[index].SetInput(input, delay);
 
             if (result.main == Main.Result.none)
-            {
-                //Main.Cubes.Manager.Instance.SetInteractable(true);
-                print("B");
-            }
+                Main.Cubes.Manager.Instance.SetInteractable(true);
         }
         /// <summary>
         /// Return all Cubes.<br/>
