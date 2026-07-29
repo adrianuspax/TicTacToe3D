@@ -34,6 +34,14 @@ MonoBehaviour:
     m_Localized: "N\xE3o"
     m_Metadata:
       m_Items: []
+  - m_Id: 371583201677312
+    m_Localized: Sua vez
+    m_Metadata:
+      m_Items: []
+  - m_Id: 372595182374912
+    m_Localized: Minha vez
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -4462,8 +4462,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: TicTacToe3D.GamePlay.UI.PanelSelection.Upper::TicTacToe3D.GamePlay.UI.PanelSelection.Upper.Control
   _isHandled: 0
-  _startingAnimationClipIndex: 0
-  _finishingAnimationClipIndex: 0
+  _startingAnimationClipIndex: 1
+  _finishingAnimationClipIndex: 2
   _parameterIndex: 0
   _isToOpen: 0
   _animator: {fileID: 1614948448}
@@ -4481,9 +4481,37 @@ MonoBehaviour:
   toggleDefault: {fileID: 1338313434}
   humanSprite: {fileID: 21300000, guid: 98d3a677594aa0a43adc99822d71a198, type: 3}
   robotSprite: {fileID: 21300000, guid: 63aec14765561d840ae2da536533ee57, type: 3}
-  humanString: < Your Time >
-  robotString: < I.A. Time >
   bottom: {fileID: 1523715877}
+  selectWhoGoesFirst:
+    m_TableReference:
+      m_TableCollectionName: UI
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: selectWhoGoesFirst
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  humanString:
+    m_TableReference:
+      m_TableCollectionName: UI
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: yourTime
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  robotString:
+    m_TableReference:
+      m_TableCollectionName: UI
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: myTurn
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1617052777
 PrefabInstance:
   m_ObjectHideFlags: 0
