@@ -22,6 +22,20 @@ MonoBehaviour:
     m_Localized: Select who goes first
     m_Metadata:
       m_Items: []
+  - m_Id: 360562135240704
+    m_Localized: '<b>You''re going to lose!</b>
+
+      <size=90%>Don''t believe it?</size>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363543228420096
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363793376710656
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

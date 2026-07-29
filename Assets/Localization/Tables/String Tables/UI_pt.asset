@@ -22,6 +22,18 @@ MonoBehaviour:
     m_Localized: "Escolha quem come\xE7a"
     m_Metadata:
       m_Items: []
+  - m_Id: 360562135240704
+    m_Localized: "<b>Voc\xEA vai perder!</b>\n<size=90%>N\xE3o acredita?</size>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363543228420096
+    m_Localized: Sim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363793376710656
+    m_Localized: "N\xE3o"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -16,7 +16,19 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 8a971a09f0673f642977ae72487de649
   m_Entries:
   - m_Id: 338215709806592
-    m_Key: New Entry
+    m_Key: selectWhoGoesFirst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 360562135240704
+    m_Key: youAreGoingToLose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363543228420096
+    m_Key: yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363793376710656
+    m_Key: no
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -22,6 +22,18 @@ MonoBehaviour:
     m_Localized: "Selecciona qui\xE9n empieza"
     m_Metadata:
       m_Items: []
+  - m_Id: 360562135240704
+    m_Localized: "<b>\xA1Vas a perder!</b>\n<size=90%>\xBFNo te lo crees?</size>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363543228420096
+    m_Localized: "S\xED"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 363793376710656
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
