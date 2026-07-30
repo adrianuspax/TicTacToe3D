@@ -24,25 +24,16 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         [SerializeField, ReadOnly] private Bottom bottom;
         [Space(-10, order = 0)]
         [Header("Localization", order = 1)]
-        [SerializeField, ReadOnly] private LocalizedString selectWhoGoesFirst = new("UI","selectWhoGoesFirst");
-        [SerializeField, ReadOnly] private LocalizedString humanString = new("UI", "yourTime");
-        [SerializeField, ReadOnly] private LocalizedString robotString = new("UI", "myTurn");
-#if UNITY_EDITOR
-        ///<inheritdoc/>
-        [Button(nameof(Reset))]
-        protected override void Reset()
-        {
-            base.Reset();
-            selectWhoGoesFirst = new("UI", "selectWhoGoesFirst");
-            humanString = new("UI", "yourTime");
-            robotString = new("UI", "myTurn");
-        }
-#endif
+        [SerializeField, ReadOnly] private LocalizedString selectWhoGoesFirst = new("UI",nameof(selectWhoGoesFirst));
+        [SerializeField, ReadOnly] private LocalizedString currentPlayer = new("UI",nameof(currentPlayer));
+        [SerializeField, ReadOnly] private LocalizedString yourTime = new("UI", nameof(yourTime));
+        [SerializeField, ReadOnly] private LocalizedString myTurn = new("UI", nameof(myTurn));
         ///<inheritdoc/>
         private void OnEnable()
         {
             toggleDefault.OnToggleValueChanged += ToggleFunction;
             selectWhoGoesFirst.StringChanged += toggleDefault.SetTextOn;
+            currentPlayer.StringChanged += toggleDefault.SetTextOff;
         }
         ///<inheritdoc/>
         protected override void Start()
@@ -67,6 +58,7 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         {
             toggleDefault.OnToggleValueChanged -= ToggleFunction;
             selectWhoGoesFirst.StringChanged -= toggleDefault.SetTextOn;
+            currentPlayer.StringChanged -= toggleDefault.SetTextOff;
         }
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]

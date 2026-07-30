@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 338215709806592
-    m_Localized: "Selecciona qui\xE9n empieza"
+    m_Localized: "< Selecciona qui\xE9n empieza >"
     m_Metadata:
       m_Items: []
   - m_Id: 360562135240704
@@ -40,6 +40,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 372595182374912
     m_Localized: Es mi turno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693602271203328
+    m_Localized: Jugador actual >>>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696230308843520
+    m_Localized: '| IA |'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697424381054976
+    m_Localized: "| T\xFA |"
     m_Metadata:
       m_Items: []
   references:

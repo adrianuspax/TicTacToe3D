@@ -39,6 +39,18 @@ MonoBehaviour:
     m_Key: myTurn
     m_Metadata:
       m_Items: []
+  - m_Id: 693602271203328
+    m_Key: currentPlayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696230308843520
+    m_Key: AI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697424381054976
+    m_Key: you
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

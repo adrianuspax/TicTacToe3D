@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 338215709806592
-    m_Localized: "Escolha quem come\xE7a"
+    m_Localized: "< Escolha quem come\xE7a >"
     m_Metadata:
       m_Items: []
   - m_Id: 360562135240704
@@ -40,6 +40,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 372595182374912
     m_Localized: Minha vez
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693602271203328
+    m_Localized: Player atual >>>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696230308843520
+    m_Localized: '| .A.I |'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697424381054976
+    m_Localized: "| Voc\xEA |"
     m_Metadata:
       m_Items: []
   references:

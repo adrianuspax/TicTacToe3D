@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 338215709806592
-    m_Localized: Select who goes first
+    m_Localized: < Select who goes first >
     m_Metadata:
       m_Items: []
   - m_Id: 360562135240704
@@ -42,6 +42,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 372595182374912
     m_Localized: My turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 693602271203328
+    m_Localized: Current player >>>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 696230308843520
+    m_Localized: '| AI |'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697424381054976
+    m_Localized: '| you |'
     m_Metadata:
       m_Items: []
   references:

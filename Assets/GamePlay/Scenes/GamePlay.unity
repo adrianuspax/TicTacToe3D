@@ -3171,7 +3171,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1997901252}
-  toggleTransition: 0
+  toggleTransition: 1
   graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
@@ -3617,7 +3617,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2083623501}
-  toggleTransition: 0
+  toggleTransition: 1
   graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
@@ -3646,7 +3646,7 @@ Animator:
   m_GameObject: {fileID: 1338313429}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: a4e01e4b8742c3045a97f93763063d56, type: 2}
+  m_Controller: {fileID: 22100000, guid: e6ee5459a74e80440ad4938a009fbf76, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4376,6 +4376,28 @@ MonoBehaviour:
   _delay: 0
   _isToOpenTest: 0
   toggleDefault: {fileID: 1160493032}
+  bottom: {fileID: 0}
+  you:
+    m_TableReference:
+      m_TableCollectionName: UI
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: you
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  AI:
+    m_TableReference:
+      m_TableCollectionName: UI
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: AI
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1614948445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4491,7 +4513,16 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  humanString:
+  currentPlayer:
+    m_TableReference:
+      m_TableCollectionName: UI
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: currentPlayer
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  yourTime:
     m_TableReference:
       m_TableCollectionName: UI
     m_TableEntryReference:
@@ -4500,7 +4531,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  robotString:
+  myTurn:
     m_TableReference:
       m_TableCollectionName: UI
     m_TableEntryReference:
