@@ -12,6 +12,13 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
 {
     public class Upper : TicTacToe3D.GamePlay.UI.PanelSelection.Default
     {
+        public enum CurrentPlayer
+        {
+            None = 0,
+            Human = 1,
+            Robot = 2
+        }
+
         [Header(Header.MANAGEABLE, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header(Header.sprites, order = 2)]
@@ -51,6 +58,7 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
                 toggleDefault.Toggle.interactable = true;
                 bottom.TogglePlayer.Toggle.interactable = true;
                 toggleDefault.Toggle.isOn = true;
+                toggleDefault.Toggle.onValueChanged.AddListener((_) => toggleDefault.Toggle.interactable = false);
             }
         }
         ///<inheritdoc/>
@@ -73,6 +81,23 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         private void ToggleFunction(bool isOn)
         {
             bottom.SetAnimation(isOn);
+        }
+
+        public void SetCurrentPlayer(CurrentPlayer currentPlayer)
+        {
+            switch (currentPlayer)
+            {
+                case CurrentPlayer.Human:
+                    toggleDefault.TMPro.text = yourTime.GetLocalizedString();
+                    toggleDefault.Icon.sprite = humanSprite;
+                    break;
+                case CurrentPlayer.Robot:
+                    toggleDefault.TMPro.text = myTurn.GetLocalizedString();
+                    toggleDefault.Icon.sprite = robotSprite;
+                    break;
+                default:
+                    return;
+            }
         }
     }
 }

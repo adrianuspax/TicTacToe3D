@@ -104,13 +104,24 @@ namespace TicTacToe3D.GamePlay.Main
         {
             Main.Cubes.Manager.Instance.Array[e.Data.Index].SetData(e.Data);
             var isEnd = ResultBehaviour();
-            var routine = _routine();
 
             if (isEnd)
                 return;
 
+            var routine = _routine();
+            var icon = UI.PanelSelection.Upper.CurrentPlayer.None;
+
             if (e.Data.Input == player)
+            {
                 _movement = StartCoroutine(routine);
+                icon = UI.PanelSelection.Upper.CurrentPlayer.Robot;
+            }
+            else
+            {
+                icon = UI.PanelSelection.Upper.CurrentPlayer.Human;
+            }
+
+            UI.PanelSelection.Manager.Instance.Upper.SetCurrentPlayer(icon); // RODAR DEPOIS DA ANIMAÇÃO DO CUBO GIRANDO
 
             return;
             // Coroutine para aguardar o movimento do player.

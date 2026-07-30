@@ -11,10 +11,7 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
     {
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
-        [Header(Header.scripts, order = 2)]
-        [SerializeField, ReadOnly] private Bottom bottom;
-        [Space(-10, order = 0)]
-        [Header("Localization", order = 1)]
+        [Header("Localization", order = 2)]
         [SerializeField, ReadOnly] private LocalizedString you = new("UI",nameof(you));
         [SerializeField, ReadOnly] private LocalizedString AI = new("UI",nameof(AI));
         ///<inheritdoc/>
