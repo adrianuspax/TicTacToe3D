@@ -12,13 +12,13 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         [Header(Header.READONLY, order = 0), HorizontalLine]
         [Space(-10, order = 1)]
         [Header("Localization", order = 2)]
-        [SerializeField, ReadOnly] private LocalizedString you = new("UI",nameof(you));
-        [SerializeField, ReadOnly] private LocalizedString AI = new("UI",nameof(AI));
+        [SerializeField, ReadOnly] private LocalizedString ui_you = new("UI",nameof(ui_you));
+        [SerializeField, ReadOnly] private LocalizedString ui_AI = new("UI",nameof(ui_AI));
         ///<inheritdoc/>
         private void OnEnable()
         {
-            you.StringChanged += toggleDefault.SetTextOn;
-            AI.StringChanged += toggleDefault.SetTextOff;
+            ui_you.StringChanged += toggleDefault.SetTextOn;
+            ui_AI.StringChanged += toggleDefault.SetTextOff;
         }
         ///<inheritdoc/>
         protected override void Start()
@@ -29,8 +29,8 @@ namespace TicTacToe3D.GamePlay.UI.PanelSelection
         ///<inheritdoc/>
         private void OnDisable()
         {
-            you.StringChanged -= toggleDefault.SetTextOn;
-            AI.StringChanged -= toggleDefault.SetTextOff;
+            ui_you.StringChanged -= toggleDefault.SetTextOn;
+            ui_AI.StringChanged -= toggleDefault.SetTextOff;
         }
         ///<inheritdoc/>
         [Button(nameof(ComponentsAssignment), SButtonEnableMode.Editor)]

@@ -16,39 +16,39 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 8a971a09f0673f642977ae72487de649
   m_Entries:
   - m_Id: 338215709806592
-    m_Key: selectWhoGoesFirst
+    m_Key: ui_selectWhoGoesFirst
     m_Metadata:
       m_Items: []
   - m_Id: 360562135240704
-    m_Key: youAreGoingToLose
+    m_Key: ui_youAreGoingToLose
     m_Metadata:
       m_Items: []
   - m_Id: 363543228420096
-    m_Key: yes
+    m_Key: ui_yes
     m_Metadata:
       m_Items: []
   - m_Id: 363793376710656
-    m_Key: no
+    m_Key: ui_no
     m_Metadata:
       m_Items: []
   - m_Id: 371583201677312
-    m_Key: yourTime
+    m_Key: ui_yourTime
     m_Metadata:
       m_Items: []
   - m_Id: 372595182374912
-    m_Key: myTurn
+    m_Key: ui_myTurn
     m_Metadata:
       m_Items: []
   - m_Id: 693602271203328
-    m_Key: currentPlayer
+    m_Key: ui_currentPlayer
     m_Metadata:
       m_Items: []
   - m_Id: 696230308843520
-    m_Key: AI
+    m_Key: ui_AI
     m_Metadata:
       m_Items: []
   - m_Id: 697424381054976
-    m_Key: you
+    m_Key: ui_you
     m_Metadata:
       m_Items: []
   m_Metadata:

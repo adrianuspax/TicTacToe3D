@@ -43,9 +43,10 @@ namespace TicTacToe3D.GamePlay.Cube
         /// </summary>
         public static event EventHandler<Args> InputHandler;
         /// <summary>
-        /// Evento para a manipulação da interatividade de todos os cubos. 
+        /// Evento para a manipulação da fluxo do processo de input.<br/> 
+        /// Use true para início do fluxo e false para final do fluxo.
         /// </summary>
-        public static event Action<bool> InteractivityHandler;
+        public static event Action<bool> InputtingHandler;
 #if UNITY_EDITOR
         ///<inheritdoc/>
         [Button(nameof(Reset), SButtonEnableMode.Editor)]
@@ -129,7 +130,7 @@ namespace TicTacToe3D.GamePlay.Cube
                 return default;
 
             _isInputting = true;
-            InteractivityHandler?.Invoke(false);
+            InputtingHandler?.Invoke(true);
             var routine = _routine();
             var coroutine = StartCoroutine(routine);
             _data.SetInput(input);
@@ -147,7 +148,7 @@ namespace TicTacToe3D.GamePlay.Cube
                     yield break;
 
                 yield return _inputs[(int)input].SetTurnFlicker(true, 0.25f);
-                InteractivityHandler?.Invoke(true);
+                InputtingHandler?.Invoke(false);
                 _isInputting = false;
             }
         }
@@ -177,7 +178,8 @@ namespace TicTacToe3D.GamePlay.Cube
         /// </summary>
         public Input Inputted => _inputs[(int)_data.Input];
         /// <summary>
-        /// Atributo estático que indica se o cubo está em processo de input.
+        /// Atributo estático que indica se o cubo está em processo de input.<br/>
+        /// Incuindo a animação de input e o delay de input.
         /// </summary>
         public static bool IsInputting => _isInputting;
         /// <summary>

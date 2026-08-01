@@ -48,7 +48,8 @@ namespace TicTacToe3D.GamePlay.Main
         private void OnEnable()
         {
             Cube.Control.InputHandler += OnPlayable;
-            Cube.Control.InteractivityHandler += OnInteractivity;
+            Cube.Control.InputtingHandler += OnInteractivity;
+            Cube.Control.InputtingHandler += OnPanelUpperBehaviour;
             AI.NotifyHandler += OnNotify;
         }
         /// <inheritdoc/>
@@ -83,7 +84,8 @@ namespace TicTacToe3D.GamePlay.Main
         private void OnDisable()
         {
             Cube.Control.InputHandler -= OnPlayable;
-            Cube.Control.InteractivityHandler -= OnInteractivity;
+            Cube.Control.InputtingHandler -= OnInteractivity;
+            Cube.Control.InputtingHandler -= OnPanelUpperBehaviour;
             AI.NotifyHandler -= OnNotify;
         }
         /// <inheritdoc/>
@@ -103,25 +105,16 @@ namespace TicTacToe3D.GamePlay.Main
         public void OnPlayable(object sender, Cube.Args e)
         {
             Main.Cubes.Manager.Instance.Array[e.Data.Index].SetData(e.Data);
-            var isEnd = ResultBehaviour();
 
+            var isEnd = ResultBehaviour();
             if (isEnd)
                 return;
 
-            var routine = _routine();
-            var icon = UI.PanelSelection.Upper.CurrentPlayer.None;
-
             if (e.Data.Input == player)
             {
+                var routine = _routine();
                 _movement = StartCoroutine(routine);
-                icon = UI.PanelSelection.Upper.CurrentPlayer.Robot;
             }
-            else
-            {
-                icon = UI.PanelSelection.Upper.CurrentPlayer.Human;
-            }
-
-            UI.PanelSelection.Manager.Instance.Upper.SetCurrentPlayer(icon); // RODAR DEPOIS DA ANIMAÇÃO DO CUBO GIRANDO
 
             return;
             // Coroutine para aguardar o movimento do player.
@@ -136,6 +129,7 @@ namespace TicTacToe3D.GamePlay.Main
                     if (bestScore > 0)
                         yield return new WaitWhile(() => UI.PanelNotice.Manager.Instance.IsToOpen);
 
+                    UI.PanelSelection.Manager.Instance.Upper.SetCurrentPlayer(UI.PanelSelection.CurrentPlayer.Robot);
                     yield return SetInputAI(bestMove, 0.5f);
                 }
             }
@@ -239,7 +233,12 @@ namespace TicTacToe3D.GamePlay.Main
                 var index = Random.Range(0, values.Length);
                 var value = values[index];
                 var nextInput = GetNextInput();
+                UI.PanelSelection.Manager.Instance.Upper.SetCurrentPlayer(UI.PanelSelection.CurrentPlayer.Robot);
                 yield return Main.Cubes.Manager.Instance.Array[value].SetInput(nextInput, delay);
+            }
+            else
+            {
+                UI.PanelSelection.Manager.Instance.Upper.SetCurrentPlayer(UI.PanelSelection.CurrentPlayer.Human);
             }
         }
         /// <summary>
@@ -301,15 +300,36 @@ namespace TicTacToe3D.GamePlay.Main
             };
         }
         /// <summary>
-        /// Função para ser atribuído ao evento <see cref="Cube.Control.InteractivityHandler"/><br/>
+        /// Função para ser atribuído ao evento <see cref="Cube.Control.InputtingHandler"/><br/>
         /// para que haja a manipulãção da interatividade de todos os cubos em <see cref="Cube.Control"/>.
         /// </summary>
+        /// <param name="value">True para o início e false para o fim do Iput.</param>
         private void OnInteractivity(bool value)
         {
             if (result.main == Main.Result.none)
-                Main.Cubes.Manager.Instance.SetInteractable(value);
+                Main.Cubes.Manager.Instance.SetInteractable(!value);
             else
                 Main.Cubes.Manager.Instance.SetInteractable(false);
+        }
+        /// <summary>
+        /// Função para ser atribuído ao evento <see cref="Cube.Control.InputtingHandler"/><br/>
+        /// para que haja a manipulãção do painel superior em <see cref="GamePlay.UI.PanelSelection.Upper"/>.
+        /// </summary>
+        /// <param name="value">True para o início e false para o fim do Iput.</param>
+        private void OnPanelUpperBehaviour(bool value)
+        {
+            var routine = _routine();
+            StartCoroutine(routine);
+            return;
+            IEnumerator _routine()
+            {
+                yield return new WaitWhile(() => Cube.Control.IsInputting);
+                var isOn = GamePlay.UI.PanelSelection.Manager.Instance.Bottom.TogglePlayer.Toggle.isOn;
+                var isX = player == Cube.Input.KindOf.x;
+                bool isRobot = value == (isX == isOn);
+                var playerType = isRobot ? UI.PanelSelection.CurrentPlayer.Robot : UI.PanelSelection.CurrentPlayer.Human;
+                UI.PanelSelection.Manager.Instance.Upper.SetCurrentPlayer(playerType);
+            }
         }
         /// <summary>
         /// Return all Cubes.<br/>
