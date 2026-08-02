@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 64589843}
   - component: {fileID: 64589842}
   - component: {fileID: 64589841}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgCropFree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 78963809}
   - component: {fileID: 78963808}
   - component: {fileID: 78963807}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgIconShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 88896593}
   - component: {fileID: 88896595}
   - component: {fileID: 88896594}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 137507572}
   - component: {fileID: 137507571}
   - component: {fileID: 137507570}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 253264663}
   - component: {fileID: 253264662}
   - component: {fileID: 253264661}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 279574599}
   - component: {fileID: 279574598}
   - component: {fileID: 279574600}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: tmpYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1067,7 +1067,7 @@ GameObject:
   - component: {fileID: 301490443}
   - component: {fileID: 301490445}
   - component: {fileID: 301490446}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SelectionControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 319341862}
   - component: {fileID: 319341864}
   - component: {fileID: 319341863}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgCropFree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.PhysicsRaycaster
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 64
   m_MaxRayIntersections: 0
 --- !u!1 &348962634
 GameObject:
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 406985553}
   - component: {fileID: 406985552}
   - component: {fileID: 406985554}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: tmpNotice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1876,7 +1876,7 @@ GameObject:
   - component: {fileID: 501964552}
   - component: {fileID: 501964551}
   - component: {fileID: 501964549}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: btnRestart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2027,7 +2027,7 @@ GameObject:
   - component: {fileID: 574751787}
   - component: {fileID: 574751786}
   - component: {fileID: 574751785}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelNotice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2127,7 +2127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 604068748}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BottomArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2167,7 +2167,7 @@ GameObject:
   - component: {fileID: 644177367}
   - component: {fileID: 644177366}
   - component: {fileID: 644177365}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: tmpPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2318,7 +2318,7 @@ GameObject:
   - component: {fileID: 694679264}
   - component: {fileID: 694679266}
   - component: {fileID: 694679265}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgNoticeBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2394,7 +2394,7 @@ GameObject:
   - component: {fileID: 713253604}
   - component: {fileID: 713253606}
   - component: {fileID: 713253605}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2469,7 +2469,7 @@ GameObject:
   - component: {fileID: 804652000}
   - component: {fileID: 804652002}
   - component: {fileID: 804652001}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: tmpArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2639,7 +2639,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
+  sharedProfile: {fileID: 11400000, guid: ab09877e2e707104187f6f83e2f62510, type: 2}
 --- !u!4 &832575519
 Transform:
   m_ObjectHideFlags: 0
@@ -2713,7 +2713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 972625474}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CANVAS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2750,7 +2750,7 @@ GameObject:
   - component: {fileID: 989856634}
   - component: {fileID: 989856636}
   - component: {fileID: 989856635}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2825,7 +2825,7 @@ GameObject:
   - component: {fileID: 1066278345}
   - component: {fileID: 1066278347}
   - component: {fileID: 1066278346}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: tmpDot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2964,7 +2964,7 @@ GameObject:
   - component: {fileID: 1081668427}
   - component: {fileID: 1081668428}
   - component: {fileID: 1081668430}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: btnYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3102,7 +3102,7 @@ GameObject:
   - component: {fileID: 1160493028}
   - component: {fileID: 1160493029}
   - component: {fileID: 1160493031}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TogglePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3247,7 +3247,7 @@ GameObject:
   - component: {fileID: 1193717361}
   - component: {fileID: 1193717360}
   - component: {fileID: 1193717359}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelCubes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3347,7 +3347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1198859086}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AreaPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3470,7 +3470,7 @@ GameObject:
   - component: {fileID: 1277260375}
   - component: {fileID: 1277260377}
   - component: {fileID: 1277260376}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgCropFree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3548,7 +3548,7 @@ GameObject:
   - component: {fileID: 1338313431}
   - component: {fileID: 1338313432}
   - component: {fileID: 1338313433}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: togglePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3772,7 +3772,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1405116281}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AreaBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3813,7 +3813,7 @@ GameObject:
   - component: {fileID: 1420106784}
   - component: {fileID: 1420106785}
   - component: {fileID: 1420106787}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: btnNop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3950,7 +3950,7 @@ GameObject:
   - component: {fileID: 1440631301}
   - component: {fileID: 1440631300}
   - component: {fileID: 1440631299}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgIconSiren
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4039,7 +4039,7 @@ GameObject:
   - component: {fileID: 1480901535}
   - component: {fileID: 1480901537}
   - component: {fileID: 1480901536}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4112,7 +4112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1481729953}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4146,7 +4146,7 @@ GameObject:
   - component: {fileID: 1487356440}
   - component: {fileID: 1487356443}
   - component: {fileID: 1487356442}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: tmpSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4284,7 +4284,7 @@ GameObject:
   - component: {fileID: 1523715877}
   - component: {fileID: 1523715876}
   - component: {fileID: 1523715875}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelSelectionBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4376,22 +4376,21 @@ MonoBehaviour:
   _delay: 0
   _isToOpenTest: 0
   toggleDefault: {fileID: 1160493032}
-  bottom: {fileID: 0}
-  you:
+  ui_you:
     m_TableReference:
       m_TableCollectionName: UI
     m_TableEntryReference:
       m_KeyId: 0
-      m_Key: you
+      m_Key: ui_you
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  AI:
+  ui_AI:
     m_TableReference:
       m_TableCollectionName: UI
     m_TableEntryReference:
       m_KeyId: 0
-      m_Key: AI
+      m_Key: ui_AI
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
@@ -4410,7 +4409,7 @@ GameObject:
   - component: {fileID: 1614948449}
   - component: {fileID: 1614948448}
   - component: {fileID: 1614948447}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelSelectionUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4503,40 +4502,41 @@ MonoBehaviour:
   toggleDefault: {fileID: 1338313434}
   humanSprite: {fileID: 21300000, guid: 98d3a677594aa0a43adc99822d71a198, type: 3}
   robotSprite: {fileID: 21300000, guid: 63aec14765561d840ae2da536533ee57, type: 3}
+  currentPlayer: 0
   bottom: {fileID: 1523715877}
-  selectWhoGoesFirst:
+  ui_selectWhoGoesFirst:
     m_TableReference:
       m_TableCollectionName: UI
     m_TableEntryReference:
       m_KeyId: 0
-      m_Key: selectWhoGoesFirst
+      m_Key: ui_selectWhoGoesFirst
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  currentPlayer:
+  ui_currentPlayer:
     m_TableReference:
       m_TableCollectionName: UI
     m_TableEntryReference:
       m_KeyId: 0
-      m_Key: currentPlayer
+      m_Key: ui_currentPlayer
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  yourTime:
+  ui_yourTime:
     m_TableReference:
       m_TableCollectionName: UI
     m_TableEntryReference:
       m_KeyId: 0
-      m_Key: yourTime
+      m_Key: ui_yourTime
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  myTurn:
+  ui_myTurn:
     m_TableReference:
       m_TableCollectionName: UI
     m_TableEntryReference:
       m_KeyId: 0
-      m_Key: myTurn
+      m_Key: ui_myTurn
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
@@ -4648,7 +4648,7 @@ GameObject:
   - component: {fileID: 1630210744}
   - component: {fileID: 1630210743}
   - component: {fileID: 1630210742}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PanelSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4751,7 +4751,7 @@ GameObject:
   - component: {fileID: 1674906451}
   - component: {fileID: 1674906450}
   - component: {fileID: 1674906449}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4877,7 +4877,7 @@ GameObject:
   - component: {fileID: 1770448174}
   - component: {fileID: 1770448173}
   - component: {fileID: 1770448176}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NoticeControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5086,7 +5086,7 @@ GameObject:
   - component: {fileID: 1847414924}
   - component: {fileID: 1847414925}
   - component: {fileID: 1847414926}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cubes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5177,7 +5177,7 @@ GameObject:
   - component: {fileID: 1867140463}
   - component: {fileID: 1867140460}
   - component: {fileID: 1867140462}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: btnBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5308,7 +5308,7 @@ GameObject:
   - component: {fileID: 1880092993}
   - component: {fileID: 1880092995}
   - component: {fileID: 1880092994}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5383,7 +5383,7 @@ GameObject:
   - component: {fileID: 1904845951}
   - component: {fileID: 1904845953}
   - component: {fileID: 1904845952}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgCropFree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5471,7 +5471,7 @@ GameObject:
   - component: {fileID: 1974980556}
   - component: {fileID: 1974980555}
   - component: {fileID: 1974980557}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: tmpNop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5649,7 +5649,7 @@ GameObject:
   - component: {fileID: 1997901253}
   - component: {fileID: 1997901252}
   - component: {fileID: 1997901254}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgIconToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5739,7 +5739,7 @@ GameObject:
   - component: {fileID: 2053701752}
   - component: {fileID: 2053701754}
   - component: {fileID: 2053701753}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5816,7 +5816,7 @@ GameObject:
   - component: {fileID: 2083623502}
   - component: {fileID: 2083623501}
   - component: {fileID: 2083623503}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: imgIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
