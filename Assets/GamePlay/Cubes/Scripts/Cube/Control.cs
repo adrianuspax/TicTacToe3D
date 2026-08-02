@@ -36,6 +36,8 @@ namespace TicTacToe3D.GamePlay.Cube
         [SerializeField, ReadOnly] private Pointer _pointer;
         [Tooltip("Referência ao script AnimatorHandler para controlar as animações do cubo.")]
         [SerializeField, ReadOnly] private AnimatorHandler _animatorHandler;
+        [Tooltip("Referência ao script Sparks.Control para controlar os efeitos de partículas do cubo.")]
+        [SerializeField, ReadOnly] private GamePlay.Cubes.Sparks.Control sparks;
         private static bool _isInputting;
         private static Input.KindOf _lastInput;
         /// <summary>
@@ -92,6 +94,7 @@ namespace TicTacToe3D.GamePlay.Cube
             this.GetComponentIfNull(ref _transform, 0);
             this.GetComponentsInAllChildrenIfNull(ref _inputs);
             this.GetComponentIfNull(ref _pointer, 0);
+            this.GetComponentInChildrenIfNull(ref sparks);
             var conditional = _animatorHandler.IsNecessaryUpdateInstance();
             if (conditional)
                 _animatorHandler = new(_animator);
@@ -186,5 +189,9 @@ namespace TicTacToe3D.GamePlay.Cube
         /// Atributo estático para armazenar a última entrada registrada em qualquer cubo.
         /// </summary>
         public static Input.KindOf LastInput => _lastInput;
+        /// <summary>
+        /// Retorna a instância de <see cref="GamePlay.Cubes.Sparks.Control"/> associada ao cubo.
+        /// </summary>
+        public GamePlay.Cubes.Sparks.Control Sparks => sparks;
     }
 }

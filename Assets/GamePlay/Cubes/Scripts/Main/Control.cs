@@ -142,7 +142,7 @@ namespace TicTacToe3D.GamePlay.Main
         {
             board = GetBoard();
             result = ai.CheckForWinner(board);
-            var routine = _beahviour();
+            var routine = _defaultBeahviour();
 
             return result.main switch
             {
@@ -154,11 +154,8 @@ namespace TicTacToe3D.GamePlay.Main
             // Método interno chamado em caso de empate.
             bool _draw()
             {
-                Main.Cubes.Manager.Instance.SetInteractable(false);
-
-                foreach (var cube in Main.Cubes.Manager.Instance.Array)
-                    cube.Inputted.SetTurnFlicker(false);
-
+                var routine = _drawBehaviour();
+                StartCoroutine(routine);
                 return true;
             }
             // Método interno chamado em caso de derrota.
@@ -181,18 +178,32 @@ namespace TicTacToe3D.GamePlay.Main
                 return false;
             }
             // Comportamento dos cubos quando o jogo termina e há um ganhador.
-            IEnumerator _beahviour()
+            IEnumerator _defaultBeahviour()
             {
                 Cube.Control cube;
                 var exceptIndexes = result.GetExceptIndexes();
-                yield return _movement;
+                yield return new WaitWhile(() => Cube.Control.IsInputting);
                 for (int i = 0; i < exceptIndexes.Length; i++)
                 {
                     var x = exceptIndexes[i];
                     cube = Main.Cubes.Manager.Instance.Array[x];
 
                     if (cube.Data.IsInputted)
+                    {
                         cube.Inputted.SetTurnFlicker(false);
+                        cube.Sparks.Play();
+                    }
+                }
+            }
+            // Comportamento dos cubos quando o jogo empata.
+            IEnumerator _drawBehaviour()
+            {
+                Main.Cubes.Manager.Instance.SetInteractable(false);
+                yield return new WaitWhile(() => Cube.Control.IsInputting);
+                foreach (var cube in Main.Cubes.Manager.Instance.Array)
+                {
+                    cube.Inputted.SetTurnFlicker(false);
+                    cube.Sparks.Play();
                 }
             }
         }

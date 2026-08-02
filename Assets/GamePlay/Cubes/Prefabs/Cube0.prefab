@@ -311,6 +311,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dcf4f2a59d459d4aacd2e81db0b5d12, type: 3}
+--- !u!114 &2327528014536680181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7202549741176168916, guid: 6dcf4f2a59d459d4aacd2e81db0b5d12, type: 3}
+  m_PrefabInstance: {fileID: 4880092962569683745}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57bc6b5e43842e40a5922b874855869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Control
 --- !u!4 &2838449592185959137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7268141759761297856, guid: 6dcf4f2a59d459d4aacd2e81db0b5d12, type: 3}
@@ -613,6 +624,7 @@ MonoBehaviour:
     animationClips:
     - {fileID: 7400000, guid: 898b6a07080742e4f8b4d9bd3163759b, type: 2}
     - {fileID: 7400000, guid: 5bf0d44733ef70c42bd72ddb65a3fd82, type: 2}
+  sparks: {fileID: 2327528014536680181}
 --- !u!95 &3933124885911524952
 Animator:
   serializedVersion: 7
