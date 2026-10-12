@@ -1,4 +1,4 @@
-using ASPax.Attributes.Drawer.SpecialCases;
+using ASPax.Attributes;
 using UnityEngine.Events;
 
 namespace TicTacToe3D.GamePlay.UI.PanelSelection

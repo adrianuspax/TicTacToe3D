@@ -1,4 +1,4 @@
-using ASPax.Attributes.Drawer.SpecialCases;
+using ASPax.Attributes;
 
 namespace TicTacToe3D.GamePlay.UI.PanelNotice.Button
 {
